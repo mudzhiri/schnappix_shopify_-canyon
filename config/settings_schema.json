@@ -30,24 +30,24 @@
         "id": "logo_height",
         "label": "t:settings.desktop_height",
         "min": 12,
-        "max": 100,
+        "max": 200,
         "step": 1,
         "unit": "px",
-        "default": 36,
+        "default": 200,
         "visible_if": "{{ settings.logo != blank or settings.logo_inverse != blank }}",
-        "info": "t:info.logo_height"
+        "info": "Max width: 200px for Schnappix brand"
       },
       {
         "type": "range",
         "id": "logo_height_mobile",
         "label": "t:settings.mobile_height",
         "min": 12,
-        "max": 100,
+        "max": 140,
         "step": 1,
         "unit": "px",
-        "default": 28,
+        "default": 140,
         "visible_if": "{{ settings.logo != blank or settings.logo_inverse != blank }}",
-        "info": "t:info.logo_height"
+        "info": "Max width: 140px for Schnappix brand mobile"
       },
       {
         "type": "image_picker",
@@ -88,7 +88,7 @@
             "type": "color",
             "id": "primary",
             "label": "t:settings.primary_color",
-            "default": "#000F9F",
+            "default": "#F15A29",
             "alpha": true
           },
           {
@@ -120,7 +120,7 @@
             "type": "color",
             "id": "primary_button_background",
             "label": "t:settings.background",
-            "default": "#000F9F",
+            "default": "#F15A29",
             "alpha": true
           },
           {
@@ -141,7 +141,7 @@
             "type": "color",
             "id": "primary_button_hover_background",
             "label": "t:settings.hover_background",
-            "default": "#000F9F",
+            "default": "#D44E22",
             "alpha": true
           },
           {
@@ -354,7 +354,7 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "work_sans_n4",
+        "default": "inter_n4",
         "label": "t:options.body"
       },
       {
@@ -366,13 +366,13 @@
       {
         "type": "font_picker",
         "id": "type_heading_font",
-        "default": "anonymous_pro_n4",
+        "default": "montserrat_n7",
         "label": "t:options.heading"
       },
       {
         "type": "font_picker",
         "id": "type_accent_font",
-        "default": "anonymous_pro_n4",
+        "default": "montserrat_n7",
         "label": "t:options.accent"
       },
       {
@@ -2282,6 +2282,257 @@
           }
         ],
         "default": "equal-width-buttons"
+      }
+    ]
+  },
+  {
+    "name": "Schnappix 24/7 - Page Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "max_container_width",
+        "label": "Max container width",
+        "min": 1200,
+        "max": 1920,
+        "step": 20,
+        "unit": "px",
+        "default": 1440,
+        "info": "Maximum width for content containers"
+      },
+      {
+        "type": "range",
+        "id": "section_spacing_desktop",
+        "label": "Section spacing (desktop)",
+        "min": 40,
+        "max": 160,
+        "step": 10,
+        "unit": "px",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "section_spacing_mobile",
+        "label": "Section spacing (mobile)",
+        "min": 20,
+        "max": 80,
+        "step": 10,
+        "unit": "px",
+        "default": 50
+      },
+      {
+        "type": "select",
+        "id": "layout_preset",
+        "label": "Layout preset",
+        "options": [
+          {
+            "value": "ultra-wide",
+            "label": "Ultra-wide"
+          },
+          {
+            "value": "compact",
+            "label": "Compact"
+          },
+          {
+            "value": "magazine",
+            "label": "Magazine"
+          },
+          {
+            "value": "hero-focused",
+            "label": "Hero-focused"
+          }
+        ],
+        "default": "ultra-wide"
+      }
+    ]
+  },
+  {
+    "name": "Schnappix 24/7 - Advanced Animations",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Animation Types"
+      },
+      {
+        "type": "select",
+        "id": "animation_type",
+        "label": "Default animation type",
+        "options": [
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "slide-in-left",
+            "label": "Slide in (left)"
+          },
+          {
+            "value": "slide-in-right",
+            "label": "Slide in (right)"
+          },
+          {
+            "value": "zoom-in",
+            "label": "Zoom in (subtle)"
+          },
+          {
+            "value": "glow-pulse",
+            "label": "Glow pulse (CTA)"
+          }
+        ],
+        "default": "fade-in"
+      },
+      {
+        "type": "range",
+        "id": "animation_duration",
+        "label": "Animation duration",
+        "min": 120,
+        "max": 500,
+        "step": 20,
+        "unit": "ms",
+        "default": 240
+      },
+      {
+        "type": "range",
+        "id": "animation_delay",
+        "label": "Animation delay",
+        "min": 0,
+        "max": 500,
+        "step": 50,
+        "unit": "ms",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Sticky Header"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_header_enabled",
+        "label": "Enable sticky header",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_header_shrink",
+        "label": "Shrink header on scroll",
+        "default": true,
+        "visible_if": "{{ settings.sticky_header_enabled == true }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_header_shadow",
+        "label": "Add shadow on scroll",
+        "default": true,
+        "visible_if": "{{ settings.sticky_header_enabled == true }}"
+      }
+    ]
+  },
+  {
+    "name": "Schnappix 24/7 - Badge Styles",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Badge Labels"
+      },
+      {
+        "type": "text",
+        "id": "badge_label_new",
+        "label": "New badge label",
+        "default": "Neu"
+      },
+      {
+        "type": "text",
+        "id": "badge_label_hot",
+        "label": "Hot badge label",
+        "default": "Hot"
+      },
+      {
+        "type": "text",
+        "id": "badge_label_24_7",
+        "label": "24/7 badge label",
+        "default": "24/7"
+      },
+      {
+        "type": "text",
+        "id": "badge_label_limited",
+        "label": "Limited badge label",
+        "default": "Limited"
+      },
+      {
+        "type": "text",
+        "id": "badge_label_bestseller",
+        "label": "Bestseller badge label",
+        "default": "Bestseller"
+      },
+      {
+        "type": "header",
+        "content": "Badge Styling"
+      },
+      {
+        "type": "color",
+        "id": "badge_background_color",
+        "label": "Badge background color",
+        "default": "#F15A29"
+      },
+      {
+        "type": "color",
+        "id": "badge_text_color",
+        "label": "Badge text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "range",
+        "id": "badge_corner_radius_schnappix",
+        "label": "Badge corner radius",
+        "min": 0,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Schnappix 24/7 - Theme Style Presets",
+    "settings": [
+      {
+        "type": "select",
+        "id": "theme_style_preset",
+        "label": "Select theme style preset",
+        "options": [
+          {
+            "value": "schnappix-default",
+            "label": "Schnappix Default"
+          },
+          {
+            "value": "schnappix-dark-neon",
+            "label": "Schnappix Dark Neon"
+          },
+          {
+            "value": "schnappix-minimal-black",
+            "label": "Schnappix Minimal Black"
+          },
+          {
+            "value": "schnappix-orange-blast",
+            "label": "Schnappix Orange Blast"
+          }
+        ],
+        "default": "schnappix-default",
+        "info": "Apply a complete style preset for Schnappix 24/7 brand"
+      }
+    ]
+  },
+  {
+    "name": "Schnappix 24/7 - Custom CSS",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Add custom CSS for Schnappix brand styling, animations, and utilities"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS",
+        "info": "Add your custom CSS here. Use CSS variables for theme colors."
       }
     ]
   }
