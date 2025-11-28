@@ -1,5 +1,6 @@
 import { mediaQueryLarge, isMobileBreakpoint } from '@theme/utilities';
-//hallo as development // Accordion Customcsdfasdflass AccordionCustom extends HTMLElement {
+
+class AccordionCustom extends HTMLElement {
   /** @type {HTMLDetailsElement} */
   get details() {
     const details = this.querySelector('details');
