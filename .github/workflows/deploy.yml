@@ -11,40 +11,52 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      
+          node-version: "18"
+
       - name: Install Shopify CLI
-        run: npm install -g @shopify/cli @shopify/theme
-      
+        run: npm install -g @shopify/cli
+
+      # DEV Deployment
       - name: Deploy to Development Theme
         if: github.ref == 'refs/heads/dev'
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_STORE: p1pmt1-zi.myshopify.com
         run: |
-          shopify theme push --theme 148524400836 --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
-      
-      - name: Deploy to Live Theme
-        if: github.ref == 'refs/heads/live'
-        env:
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_STORE: p1pmt1-zi.myshopify.com
-        run: |
-          shopify theme push --theme 148518502596 --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path . --allow-live
-      
+          shopify theme push \
+            --store p1pmt1-zi.myshopify.com \
+            --theme-id 148524400836 \
+            --token $SHOPIFY_CLI_THEME_TOKEN \
+            --path .
+
+      # MAIN Deployment
       - name: Deploy to Main Theme
         if: github.ref == 'refs/heads/main'
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_STORE: p1pmt1-zi.myshopify.com
         run: |
-          shopify theme push --theme 148524433604 --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
+          shopify theme push \
+            --store p1pmt1-zi.myshopify.com \
+            --theme-id 148524433604 \
+            --token $SHOPIFY_CLI_THEME_TOKEN \
+            --path .
 
+      # LIVE Deployment
+      - name: Deploy to Live Theme
+        if: github.ref == 'refs/heads/live'
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        run: |
+          shopify theme push \
+            --store p1pmt1-zi.myshopify.com \
+            --theme-id 148518502596 \
+            --token $SHOPIFY_CLI_THEME_TOKEN \
+            --allow-live \
+            --path .
