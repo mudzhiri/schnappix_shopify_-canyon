@@ -207,7 +207,12 @@
 
       case row
         when 'top'
-          assign first = mobile_menu
+          # Show hamburger menu on desktop when menu is positioned right
+          if section.settings.menu_position == 'right'
+            assign first = mobile_menu
+          else
+            assign first = mobile_menu
+          endif
 
           if bottom_row_blocks.size > 0 and section.settings.divider_size == 'page-width'
             assign class = class | append: ' divider--page-width'
@@ -444,15 +449,20 @@
     }
   }
 
-  .header__column--left,
-  .header__column--center {
+  .header__column--left {
     gap: var(--gap-xl);
     grid-area: left;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
   }
 
   .header__column--center {
+    gap: var(--gap-xl);
     justify-content: center;
     grid-area: center;
+    display: flex;
+    align-items: center;
 
     header-menu:only-child .overflow-menu::part(list) {
       justify-content: center;
@@ -463,6 +473,8 @@
     gap: var(--gap-xl);
     justify-content: flex-end;
     grid-area: right;
+    display: flex;
+    align-items: center;
 
     .overflow-menu::part(list) {
       justify-content: flex-end;
@@ -470,9 +482,9 @@
   }
 
   .header__columns {
-    /* Three column layout */
+    /* Three column layout - gleichmäßige Verteilung */
     --header-left: 1fr;
-    --header-center: auto;
+    --header-center: 1fr;
     --header-right: 1fr;
     --header-template-columns: var(--header-left) var(--header-center) var(--header-right);
 
@@ -483,6 +495,14 @@
     grid-template-areas: 'left center right';
     grid-gap: var(--gap-xl);
     grid-template-columns: var(--header-template-columns);
+    
+    /* Gleichmäßige Verteilung für Schnappix: Menu links, Logo Mitte, Icons rechts */
+    @media screen and (min-width: 750px) {
+      --header-left: 1fr;
+      --header-center: 1fr;
+      --header-right: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
     /* If menu is in center column */
     &:has(.header__column--center header-menu) {

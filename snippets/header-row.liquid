@@ -4,8 +4,16 @@
   assign center = ''
   assign right = ''
 
+  # Place mobile menu (first) in the same column as the menu position
   if first != blank
-    assign left = 'first '
+    assign menu_position = settings.menu_position | default: 'left'
+    if menu_position == 'right'
+      assign right = 'first '
+    elsif menu_position == 'center'
+      assign center = 'first '
+    else
+      assign left = 'first '
+    endif
   endif
 
   for item in order

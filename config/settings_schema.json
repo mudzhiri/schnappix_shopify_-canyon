@@ -1361,24 +1361,14 @@
     "name": "t:names.page_layout",
     "settings": [
       {
-        "type": "select",
+        "type": "range",
         "id": "page_width",
-        "label": "t:settings.page_width",
-        "options": [
-          {
-            "value": "narrow",
-            "label": "t:options.narrow"
-          },
-          {
-            "value": "normal",
-            "label": "t:options.normal"
-          },
-          {
-            "value": "wide",
-            "label": "t:options.wide"
-          }
-        ],
-        "default": "narrow"
+        "min": 1000,
+        "max": 1600,
+        "step": 100,
+        "default": 1200,
+        "unit": "px",
+        "label": "t:settings.page_width"
       }
     ]
   },

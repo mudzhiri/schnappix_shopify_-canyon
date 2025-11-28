@@ -649,11 +649,48 @@
     position: initial;
   }
 
+  /* Show hamburger menu on desktop when menu is in left column */
   @media screen and (min-width: 750px) {
-    .header--desktop header-menu + .header__drawer header-drawer {
-      display: none;
+    /* Hide regular menu when hamburger menu is shown */
+    .header__column--left header-menu,
+    .header__column--right header-menu {
+      display: none !important;
+    }
+    
+    /* Show hamburger menu drawer on desktop (left column) */
+    .header__column--left .header__drawer {
+      display: flex !important;
+      min-height: 60px;
+    }
+    
+    .header__column--left header-drawer {
+      display: block !important;
+    }
+    
+    .header__column--left .menu-drawer-container {
+      display: block !important;
+    }
+    
+    .header__column--left .menu-drawer-container .header__icon--summary {
+      display: flex !important;
     }
   }
+
+  /* Menu drawer links positioning - Schnappix customization */
+  .menu-drawer__menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-xs);
+  }
+
+  .menu-drawer__list-item {
+    order: 0; /* Standard order, kann für einzelne Links angepasst werden */
+  }
+
+  /* Beispiel: Spezifische Links verschieben (anpassen nach Bedarf) */
+  /* .menu-drawer__list-item:nth-child(1) { order: 1; } */
+  /* .menu-drawer__list-item:nth-child(2) { order: 2; } */
+  /* .menu-drawer__list-item:nth-child(3) { order: 3; } */
 
   .menu-drawer-container .header__icon--summary {
     color: var(--color-foreground);
@@ -720,7 +757,7 @@
     left: 0;
     top: 0;
     padding: 0;
-    background-color: var(--color-background);
+    background-color: #000000 !important;
     overflow: auto;
     display: flex;
     border-right: var(--style-border-drawer);
@@ -914,11 +951,18 @@
     font-size: var(--menu-top-level-font-size);
     line-height: var(--menu-top-level-font-line-height);
     text-transform: var(--menu-top-level-font-case);
-    color: var(--menu-top-level-font-color);
+    color: #ffffff !important;
     justify-content: space-between;
+    transition: all 0.3s ease;
+    transform: scale(1);
 
     &:hover {
-      color: var(--menu-top-level-font-color);
+      color: #ffffff !important;
+      transform: scale(1.1);
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                   0 0 30px rgba(255, 255, 255, 0.6),
+                   0 0 40px rgba(255, 255, 255, 0.4);
+      filter: brightness(1.2);
     }
   }
 
@@ -929,10 +973,16 @@
     font-size: var(--menu-parent-font-size);
     line-height: var(--menu-parent-font-line-height);
     text-transform: var(--menu-parent-font-case);
-    color: var(--menu-parent-font-color);
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+    transform: scale(1);
 
     &:hover {
-      color: var(--menu-parent-font-color);
+      color: #ffffff !important;
+      transform: scale(1.08);
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+                   0 0 25px rgba(255, 255, 255, 0.5);
+      filter: brightness(1.15);
     }
   }
 
@@ -943,10 +993,16 @@
     font-size: var(--menu-child-font-size);
     line-height: var(--menu-child-font-line-height);
     text-transform: var(--menu-child-font-case);
-    color: var(--menu-child-font-color);
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+    transform: scale(1);
 
     &:hover {
-      color: var(--menu-child-font-color);
+      color: #ffffff !important;
+      transform: scale(1.05);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+                   0 0 20px rgba(255, 255, 255, 0.4);
+      filter: brightness(1.1);
     }
   }
 
@@ -980,6 +1036,8 @@
     text-decoration: none;
     justify-content: space-between;
     align-items: center;
+    color: #ffffff !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .menu-drawer__menu-item:has(> .menu-drawer__link-image) {
@@ -1050,6 +1108,63 @@
   .menu-drawer__menu-item-text {
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+  }
+
+  /* Schnappix: Black menu drawer with white text and cool hover effects */
+  .menu-drawer {
+    --color-background: #000000 !important;
+    --color-foreground: #ffffff !important;
+  }
+
+  .menu-drawer * {
+    color: #ffffff !important;
+  }
+
+  .menu-drawer__menu-item,
+  .menu-drawer__menu-item-text,
+  .menu-drawer__menu-item--mainlist,
+  .menu-drawer__menu-item--parent,
+  .menu-drawer__menu-item--child {
+    color: #ffffff !important;
+  }
+
+  /* Enhanced hover effects for all menu items */
+  .menu-drawer__menu-item:hover .menu-drawer__menu-item-text {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
+                 0 0 30px rgba(255, 255, 255, 0.7),
+                 0 0 40px rgba(255, 255, 255, 0.5);
+    filter: brightness(1.3);
+  }
+
+  /* Icon colors in menu drawer */
+  .menu-drawer .svg-wrapper svg {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Close button and navigation buttons */
+  .menu-drawer__close-button,
+  .menu-drawer__back-button {
+    color: #ffffff !important;
+  }
+
+  .menu-drawer__close-button svg,
+  .menu-drawer__back-button svg,
+  .menu-drawer .icon-close svg,
+  .menu-drawer .icon-plus svg,
+  .menu-drawer .icon-caret svg {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* Ensure all text in menu drawer is white */
+  .menu-drawer__navigation,
+  .menu-drawer__utility-links {
+    color: #ffffff !important;
   }
 
   /** Styles when the country selector is hidden */
