@@ -28,24 +28,23 @@ jobs:
         if: github.ref == 'refs/heads/dev'
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_STORE: p1pmt1-zi.myshopify.com
         run: |
-          shopify theme push --development --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
+          shopify theme push --theme 148524400836 --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
       
       - name: Deploy to Live Theme
         if: github.ref == 'refs/heads/live'
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_STORE: p1pmt1-zi.myshopify.com
         run: |
-          shopify theme push --live --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path . --allow-live
+          shopify theme push --theme 148518502596 --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path . --allow-live
       
       - name: Deploy to Main Theme
         if: github.ref == 'refs/heads/main'
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
-          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_MAIN_THEME_ID }}
+          SHOPIFY_STORE: p1pmt1-zi.myshopify.com
         run: |
-          shopify theme push --theme $SHOPIFY_THEME_ID --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
+          shopify theme push --theme 148524433604 --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
 
