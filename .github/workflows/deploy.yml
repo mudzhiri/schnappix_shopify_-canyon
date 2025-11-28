@@ -30,7 +30,7 @@ jobs:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
           SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
         run: |
-          shopify theme push --development --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN
+          shopify theme push --development --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
       
       - name: Deploy to Live Theme
         if: github.ref == 'refs/heads/live'
@@ -38,13 +38,14 @@ jobs:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
           SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
         run: |
-          shopify theme push --live --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN
+          shopify theme push --live --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path . --allow-live
       
       - name: Deploy to Main Theme
         if: github.ref == 'refs/heads/main'
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
           SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_MAIN_THEME_ID }}
         run: |
-          shopify theme push --theme ${{ secrets.SHOPIFY_MAIN_THEME_ID }} --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN
+          shopify theme push --theme $SHOPIFY_THEME_ID --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN --path .
 
