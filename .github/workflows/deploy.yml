@@ -1,0 +1,50 @@
+name: Deploy to Shopify
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - live
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+      
+      - name: Deploy to Development Theme
+        if: github.ref == 'refs/heads/dev'
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+        run: |
+          shopify theme push --development --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN
+      
+      - name: Deploy to Live Theme
+        if: github.ref == 'refs/heads/live'
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+        run: |
+          shopify theme push --live --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN
+      
+      - name: Deploy to Main Theme
+        if: github.ref == 'refs/heads/main'
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+        run: |
+          shopify theme push --theme ${{ secrets.SHOPIFY_MAIN_THEME_ID }} --store $SHOPIFY_STORE --password $SHOPIFY_CLI_THEME_TOKEN
+
