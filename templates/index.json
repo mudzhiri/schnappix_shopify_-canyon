@@ -11,77 +11,23 @@
   "sections": {
     "schnappix_homepage": {
       "type": "schnappix-homepage",
-      "settings": {}
-    },
-    "media_with_content_RVymQU": {
-      "type": "media-with-content",
-      "blocks": {
-        "media": {
-          "type": "_media-without-appearance",
-          "static": true,
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/0_1_345f9a9f-84a4-43f0-8b0b-43c1c51cd26e.png",
-            "link": "",
-            "video_loop": true,
-            "video_autoplay": false,
-            "image_position": "cover",
-            "video_position": "cover"
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "_content-without-appearance",
-          "disabled": true,
-          "static": true,
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-end",
-            "gap": 24
-          },
-          "blocks": {
-            "text_H46yFc": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h1><strong>Elevate your experience</strong></h1>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "custom",
-                "font": "var(--font-heading--family)",
-                "font_size": "5.5rem",
-                "line_height": "tight",
-                "letter_spacing": "tight",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 40
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_H46yFc"
-          ]
-        }
-      },
-      "name": "t:names.editorial",
       "settings": {
-        "media_position": "right",
-        "media_width": "wide",
-        "media_height": "60svh",
-        "section_width": "page-width",
-        "extend_media": false,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 0,
-        "padding-block-end": 48
+        "hero_subheadline": "Urban Snacks. Neon Energy. Anytime, Anywhere.",
+        "cta_primary_text": "JETZT SNACKEN",
+        "cta_primary_link": "",
+        "cta_secondary_text": "PRODUKTE ANSEHEN",
+        "cta_secondary_link": "",
+        "featured_collection": "asia-us-trends-1",
+        "products_limit": 4,
+        "products_title": "TRENDING NOW",
+        "story_text": "Wir glauben daran, dass Snacken ein Erlebnis sein sollte. Keine langweiligen Automaten in dunklen Ecken. SCHNAPPIX bringt Neon-Vibes und Premium-Snacks genau dahin, wo das Leben passiert.",
+        "story_image": "shopify://shop_images/SCHNAPPIX_black.svg",
+        "story_link": "",
+        "vending_text": "High-Tech Vending. Touchscreen, App-Connect und Heat-Map Tracking für die besten Snacks in deiner City.",
+        "vending_cta_text": "AUTOMATEN ENTDECKEN",
+        "vending_cta_link": "",
+        "vending_image": "shopify://shop_images/0_1_345f9a9f-84a4-43f0-8b0b-43c1c51cd26e.png",
+        "drops_collection": "energy"
       }
     },
     "product_list_themegen": {
@@ -1061,7 +1007,6 @@
   },
   "order": [
     "schnappix_homepage",
-    "media_with_content_RVymQU",
     "product_list_themegen",
     "section_UpjyCL",
     "individual_product_card_theme_install",
