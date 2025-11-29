@@ -6,6 +6,36 @@ Diese Datei dokumentiert alle Commits mit Branch, Datum, Änderungen und betroff
 
 ## 2025-11-29
 
+### Commit: `5b417d2` - Fix pipeline: Add error handling, verify token, install @shopify/theme, and improve working directory handling
+**Branch:** `dev`  
+**Datum:** 2025-11-29 (aktuell)  
+**Autor:** mudzhiri (mudzhirime@googlemail.com)  
+**Status:** ✅ Gepusht zu `origin/dev`
+
+**Beschreibung:**
+Pipeline-Fehler behoben: Fehlerbehandlung hinzugefügt, Token-Verifizierung, @shopify/theme Installation und verbesserte working-directory Behandlung.
+
+**Geänderte Dateien:**
+- `.github/workflows/deploy.yml` (34 Zeilen hinzugefügt, 8 entfernt)
+
+**Änderungen:**
+- **@shopify/theme Package hinzugefügt:** `npm install -g @shopify/cli @shopify/theme`
+- **Token-Verifizierung:** Prüfung ob `SHOPIFY_CLI_THEME_TOKEN` gesetzt ist
+- **Working Directory Verifizierung:** Prüfung ob das Verzeichnis existiert
+- **Fehlerbehandlung:** Exit-Code 1 bei fehlendem Token
+- **Environment Variables:** Token wird jetzt als Environment Variable übergeben
+- **Shopify CLI Version Check:** `shopify version` nach Installation
+
+**Häufige Fehler behoben:**
+- Fehlende @shopify/theme Installation
+- Token nicht als Environment Variable übergeben
+- Keine Fehlerbehandlung bei fehlendem Token
+- Working directory mit Leerzeichen im Pfad
+
+---
+
+## 2025-11-29
+
 ### Commit: `0d115d6` - Add scheme-7 (schnappix-light) color scheme with brand colors
 **Branch:** `dev`  
 **Datum:** 2025-11-29 12:46:47 +0100  
