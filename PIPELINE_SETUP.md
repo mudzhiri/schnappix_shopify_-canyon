@@ -15,11 +15,17 @@ Die Pipeline schlägt fehl, weil das GitHub Secret `SHOPIFY_CLI_THEME_TOKEN` nic
 
 ### Schritt 3: Secret hinzufügen
 1. **Name:** `SHOPIFY_CLI_THEME_TOKEN`
-2. **Value:** Dein Shopify CLI Theme Token
-   - **WICHTIG:** Verwende einen **Theme Access Token** (nicht Admin API Token)
-   - Token-Format: Beginnt normalerweise mit `shpat_` oder `shpss_`
-   - Du kannst einen neuen Token erstellen in Shopify Admin (siehe unten)
+2. **Value:** Füge einen deiner Shopify Tokens ein
+   - **Option 1 (Empfohlen):** Admin API Token (beginnt mit `shpat_`)
+   - **Option 2:** App Shared Secret (beginnt mit `shpss_`)
+   - **Hinweis:** Verwende den Token, den du von Shopify erhalten hast
 3. Klicke auf **Add secret**
+
+**Wichtig:** 
+- Kopiere den Token **genau** wie er dir vorliegt
+- Keine Leerzeichen am Anfang oder Ende
+- Der Token wird als Secret gespeichert und ist nicht sichtbar nach dem Speichern
+- **Die Tokens sind in deinen persönlichen Notizen gespeichert - füge sie hier manuell ein**
 
 ### Schritt 4: Pipeline erneut ausführen
 1. Gehe zu **Actions** im Repository
