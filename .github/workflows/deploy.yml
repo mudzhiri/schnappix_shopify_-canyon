@@ -11,6 +11,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -78,7 +80,8 @@ jobs:
 
       - name: Verify theme directory
         run: |
-          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
           echo "Working in: $(pwd)"
           echo ""
           echo "=== Theme structure ==="
@@ -92,14 +95,13 @@ jobs:
       # DEV Deployment
       - name: Deploy to Development Theme
         if: github.ref == 'refs/heads/dev'
-        env:
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
             echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
             exit 1
           fi
-          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
           echo "Deploying from: $(pwd)"
           echo "Store: p1pmt1-zi.myshopify.com"
           echo "Theme ID: 148524400836"
@@ -112,14 +114,13 @@ jobs:
       # MAIN Deployment
       - name: Deploy to Main Theme
         if: github.ref == 'refs/heads/main'
-        env:
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
             echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
             exit 1
           fi
-          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
           echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
@@ -130,14 +131,13 @@ jobs:
       # LIVE Deployment
       - name: Deploy to Live Theme
         if: github.ref == 'refs/heads/live'
-        env:
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
             echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
             exit 1
           fi
-          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
           echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
