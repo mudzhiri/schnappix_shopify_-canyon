@@ -22,35 +22,61 @@ jobs:
           node-version: "18"
 
       - name: Install Shopify CLI
-        run: npm install -g @shopify/cli
+        run: |
+          npm install -g @shopify/cli @shopify/theme
+          shopify version
+
+      - name: Verify working directory exists
+        working-directory: "schnappix_ shopify_canyon/schnappix-dev"
+        run: |
+          pwd
+          ls -la
 
       # DEV Deployment
       - name: Deploy to Development Theme
         if: github.ref == 'refs/heads/dev'
-        working-directory: schnappix_ shopify_canyon/schnappix-dev
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        working-directory: "schnappix_ shopify_canyon/schnappix-dev"
         run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524400836 \
-            --password ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+            --password "$SHOPIFY_CLI_THEME_TOKEN"
 
       # MAIN Deployment
       - name: Deploy to Main Theme
         if: github.ref == 'refs/heads/main'
-        working-directory: schnappix_ shopify_canyon/schnappix-dev
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        working-directory: "schnappix_ shopify_canyon/schnappix-dev"
         run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524433604 \
-            --password ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+            --password "$SHOPIFY_CLI_THEME_TOKEN"
 
       # LIVE Deployment
       - name: Deploy to Live Theme
         if: github.ref == 'refs/heads/live'
-        working-directory: schnappix_ shopify_canyon/schnappix-dev
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        working-directory: "schnappix_ shopify_canyon/schnappix-dev"
         run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148518502596 \
-            --password ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }} \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
             --allow-live
