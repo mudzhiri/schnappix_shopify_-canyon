@@ -26,32 +26,68 @@ jobs:
           npm install -g @shopify/cli @shopify/theme
           shopify version
 
-      - name: Find theme directory
-        id: find-theme
+      - name: Debug directory structure
         run: |
-          # Check if we're already in the theme directory (config exists)
-          if [ -d "config" ] && [ -d "sections" ] && [ -d "assets" ]; then
-            echo "THEME_DIR=." >> $GITHUB_OUTPUT
-            echo "Found theme directory: . (root)"
+          echo "=== Current directory ==="
+          pwd
+          echo ""
+          echo "=== Directory structure ==="
+          ls -la
+          echo ""
+          echo "=== Looking for theme directories ==="
+          find . -type d -name "*schnappix*" -o -name "config" -type d | head -10
+          echo ""
+          echo "=== Checking for config directory ==="
+          if [ -d "config" ]; then
+            echo "✓ config/ exists in root"
           else
-            # Try to find schnappix-dev directory
-            THEME_DIR=$(find . -type d -name "schnappix-dev" | head -1)
-            if [ -z "$THEME_DIR" ]; then
-              echo "Error: Theme directory not found"
-              echo "Current directory structure:"
-              find . -type d -maxdepth 3 | head -20
-              exit 1
-            fi
-            echo "THEME_DIR=${THEME_DIR#./}" >> $GITHUB_OUTPUT
-            echo "Found theme directory: ${THEME_DIR#./}"
+            echo "✗ config/ not found in root"
           fi
 
-      - name: Verify working directory
+      - name: Determine theme directory
+        id: theme-dir
         run: |
-          cd "${{ steps.find-theme.outputs.THEME_DIR }}"
-          pwd
-          echo "---"
-          ls -la config/ sections/ assets/ 2>&1 | head -10
+          # Check if we're in the theme root (config exists)
+          if [ -d "config" ] && [ -d "sections" ] && [ -d "assets" ]; then
+            THEME_DIR="."
+            echo "THEME_DIR=." >> $GITHUB_OUTPUT
+            echo "✓ Found theme in root directory"
+          else
+            # Search for schnappix-dev directory
+            THEME_DIR=$(find . -type d -name "schnappix-dev" 2>/dev/null | head -1)
+            if [ -n "$THEME_DIR" ]; then
+              # Remove leading ./
+              THEME_DIR="${THEME_DIR#./}"
+              echo "THEME_DIR=$THEME_DIR" >> $GITHUB_OUTPUT
+              echo "✓ Found theme directory: $THEME_DIR"
+            else
+              # Try to find any directory with config
+              THEME_DIR=$(find . -type d -exec test -d {}/config \; -print 2>/dev/null | head -1)
+              if [ -n "$THEME_DIR" ]; then
+                THEME_DIR="${THEME_DIR#./}"
+                echo "THEME_DIR=$THEME_DIR" >> $GITHUB_OUTPUT
+                echo "✓ Found theme directory with config: $THEME_DIR"
+              else
+                echo "✗ Error: Could not find theme directory"
+                echo "Directory listing:"
+                find . -maxdepth 2 -type d | head -20
+                exit 1
+              fi
+            fi
+          fi
+
+      - name: Verify theme directory
+        run: |
+          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
+          echo "Working in: $(pwd)"
+          echo ""
+          echo "=== Theme structure ==="
+          ls -la | head -15
+          echo ""
+          echo "=== Required directories ==="
+          [ -d "config" ] && echo "✓ config/" || echo "✗ config/ missing"
+          [ -d "sections" ] && echo "✓ sections/" || echo "✗ sections/ missing"
+          [ -d "assets" ] && echo "✓ assets/" || echo "✗ assets/ missing"
 
       # DEV Deployment
       - name: Deploy to Development Theme
@@ -60,11 +96,13 @@ jobs:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
-            echo "Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
             exit 1
           fi
-          cd "${{ steps.find-theme.outputs.THEME_DIR }}"
+          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
           echo "Deploying from: $(pwd)"
+          echo "Store: p1pmt1-zi.myshopify.com"
+          echo "Theme ID: 148524400836"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524400836 \
@@ -77,10 +115,10 @@ jobs:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
-            echo "Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
             exit 1
           fi
-          cd "${{ steps.find-theme.outputs.THEME_DIR }}"
+          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
           echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
@@ -94,10 +132,10 @@ jobs:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
-            echo "Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
             exit 1
           fi
-          cd "${{ steps.find-theme.outputs.THEME_DIR }}"
+          cd "${{ steps.theme-dir.outputs.THEME_DIR }}"
           echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
