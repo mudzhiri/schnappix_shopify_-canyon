@@ -1,6 +1,6 @@
 /**
- * SCHNAPPIX Homepage Interactive Features
- * Parallax, Smooth Scroll, Animations
+ * SCHNAPPIX Homepage Interactive Features - Figma Design Integration
+ * Parallax, Smooth Scroll, Animations, Carousel
  */
 
 (function() {
@@ -19,16 +19,18 @@
       this.setupIntersectionObserver();
     }
 
-    // Parallax Effect
+    // Parallax Effect for Hero
     setupParallax() {
       const parallaxContainer = document.querySelector('[data-parallax-container]');
       if (!parallaxContainer) return;
 
-      const layers = parallaxContainer.querySelectorAll('[data-parallax-speed]');
-      if (layers.length === 0) return;
+      const parallaxBg = parallaxContainer.querySelector('[data-parallax-speed]');
+      if (!parallaxBg) return;
 
       // Disable parallax on mobile
-      if (window.innerWidth <= 768) return;
+      if (window.innerWidth <= 768) {
+        return;
+      }
 
       let ticking = false;
 
@@ -40,15 +42,12 @@
 
         // Only animate when container is in viewport
         if (scrollY + windowHeight > containerTop && scrollY < containerTop + containerHeight) {
-          const progress = (scrollY - containerTop + windowHeight) / (containerHeight + windowHeight);
+          const progress = Math.max(0, Math.min(1, (scrollY - containerTop + windowHeight) / (containerHeight + windowHeight)));
+          const speed = 0.3;
+          const translateY = (scrollY - containerTop) * speed;
           
-          layers.forEach(layer => {
-            const speed = parseFloat(layer.dataset.parallaxSpeed) || 0.5;
-            const translateY = (scrollY - containerTop) * speed * 0.5;
-            layer.style.transform = `translate3d(0, ${translateY}px, 0)`;
-          });
+          parallaxBg.style.transform = `translate3d(0, ${translateY}px, 0)`;
         }
-
         ticking = false;
       };
 
@@ -63,7 +62,7 @@
       updateParallax();
     }
 
-    // Smooth Scroll
+    // Smooth Scroll Behavior
     setupSmoothScroll() {
       document.documentElement.style.scrollBehavior = 'smooth';
     }
@@ -74,27 +73,16 @@
       
       productCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-          card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        });
-
-        // Add glow effect on hover
-        card.addEventListener('mouseenter', () => {
-          const image = card.querySelector('.schnappix-product-card__image');
-          if (image) {
-            image.style.boxShadow = '0 0 30px rgba(255, 106, 62, 0.3)';
-          }
+          card.style.transform = 'translateY(-10px)';
         });
 
         card.addEventListener('mouseleave', () => {
-          const image = card.querySelector('.schnappix-product-card__image');
-          if (image) {
-            image.style.boxShadow = 'none';
-          }
+          card.style.transform = 'translateY(0)';
         });
       });
     }
 
-    // Carousel Auto-scroll
+    // Weekly Drops Carousel
     setupCarousel() {
       const carousel = document.querySelector('[data-carousel]');
       if (!carousel) return;
@@ -102,20 +90,88 @@
       const track = carousel.querySelector('.schnappix-drops__track');
       if (!track) return;
 
-      // Clone items for infinite scroll
-      const items = track.querySelectorAll('.schnappix-drops__item');
-      items.forEach(item => {
-        const clone = item.cloneNode(true);
-        track.appendChild(clone);
-      });
+      // Auto-scroll carousel
+      let scrollPosition = 0;
+      const scrollSpeed = 0.5;
+      let animationFrameId = null;
+
+      const scroll = () => {
+        scrollPosition += scrollSpeed;
+        const maxScroll = track.scrollWidth - track.offsetWidth;
+        
+        if (scrollPosition >= maxScroll) {
+          scrollPosition = 0;
+        }
+
+        track.style.transform = `translateX(-${scrollPosition}px)`;
+        animationFrameId = requestAnimationFrame(scroll);
+      };
+
+      // Start auto-scroll
+      scroll();
 
       // Pause on hover
       carousel.addEventListener('mouseenter', () => {
-        track.style.animationPlayState = 'paused';
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
       });
 
       carousel.addEventListener('mouseleave', () => {
-        track.style.animationPlayState = 'running';
+        scroll();
+      });
+
+      // Touch/Drag support for mobile
+      let isDragging = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = scrollPosition;
+        track.style.cursor = 'grabbing';
+      });
+
+      track.addEventListener('mouseleave', () => {
+        isDragging = false;
+        track.style.cursor = 'grab';
+      });
+
+      track.addEventListener('mouseup', () => {
+        isDragging = false;
+        track.style.cursor = 'grab';
+      });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollPosition = Math.max(0, Math.min(scrollLeft - walk, track.scrollWidth - track.offsetWidth));
+        track.style.transform = `translateX(-${scrollPosition}px)`;
+      });
+
+      // Touch events
+      let touchStartX = 0;
+      let touchScrollLeft = 0;
+
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].pageX;
+        touchScrollLeft = scrollPosition;
+      });
+
+      track.addEventListener('touchmove', (e) => {
+        if (!touchStartX) return;
+        const x = e.touches[0].pageX;
+        const walk = (x - touchStartX) * 2;
+        scrollPosition = Math.max(0, Math.min(touchScrollLeft - walk, track.scrollWidth - track.offsetWidth));
+        track.style.transform = `translateX(-${scrollPosition}px)`;
+      });
+
+      track.addEventListener('touchend', () => {
+        touchStartX = 0;
       });
     }
 
@@ -131,18 +187,17 @@
           if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      // Observe sections
-      const sections = document.querySelectorAll('.schnappix-products, .schnappix-story, .schnappix-vending, .schnappix-drops');
-      sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+      // Observe elements that should fade in on scroll
+      const fadeElements = document.querySelectorAll('.schnappix-story__image-wrapper, .schnappix-story__content, .schnappix-vending__feature, .schnappix-vending__image-wrapper');
+      fadeElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        observer.observe(el);
       });
     }
   }
@@ -156,4 +211,3 @@
     new SchnappixHomepage();
   }
 })();
-
