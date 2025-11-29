@@ -106,7 +106,8 @@ jobs:
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524400836 \
-            --password "$SHOPIFY_CLI_THEME_TOKEN"
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --json
 
       # MAIN Deployment
       - name: Deploy to Main Theme
@@ -123,7 +124,8 @@ jobs:
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524433604 \
-            --password "$SHOPIFY_CLI_THEME_TOKEN"
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --json
 
       # LIVE Deployment
       - name: Deploy to Live Theme
@@ -141,4 +143,5 @@ jobs:
             --store p1pmt1-zi.myshopify.com \
             --theme 148518502596 \
             --password "$SHOPIFY_CLI_THEME_TOKEN" \
-            --allow-live
+            --allow-live \
+            --json
