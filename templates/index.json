@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "schnappix_homepage": {
+      "type": "schnappix-homepage",
+      "settings": {}
+    },
     "media_with_content_RVymQU": {
       "type": "media-with-content",
       "blocks": {
@@ -1056,6 +1060,7 @@
     }
   },
   "order": [
+    "schnappix_homepage",
     "media_with_content_RVymQU",
     "product_list_themegen",
     "section_UpjyCL",

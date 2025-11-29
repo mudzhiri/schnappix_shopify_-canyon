@@ -1,0 +1,287 @@
+{% comment %}
+  SCHNAPPIX Premium Homepage
+  Full responsive layout with parallax, neon effects, and modern UI
+{% endcomment %}
+
+{{ 'schnappix-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="schnappix-homepage" data-section-id="{{ section.id }}">
+  
+  {%- comment -%} HERO SECTION {%- endcomment -%}
+  <div class="schnappix-hero" data-parallax-container>
+    <div class="schnappix-hero__layers">
+      <div class="schnappix-hero__layer schnappix-hero__layer--bg" data-parallax-speed="0.3">
+        <div class="schnappix-hero__city-bg"></div>
+      </div>
+      <div class="schnappix-hero__layer schnappix-hero__layer--neon" data-parallax-speed="0.5">
+        <div class="schnappix-hero__neon-reflections"></div>
+      </div>
+      <div class="schnappix-hero__layer schnappix-hero__layer--floating" data-parallax-speed="0.7">
+        <div class="schnappix-hero__floating-elements">
+          <div class="floating-snack floating-snack--1"></div>
+          <div class="floating-snack floating-snack--2"></div>
+          <div class="floating-snack floating-snack--3"></div>
+        </div>
+      </div>
+      <div class="schnappix-hero__layer schnappix-hero__layer--pixel" data-parallax-speed="0.4">
+        <div class="schnappix-hero__pixel-elements"></div>
+      </div>
+    </div>
+    
+    <div class="schnappix-hero__content">
+      <div class="schnappix-hero__vignette"></div>
+      <h1 class="schnappix-hero__headline">{{ section.settings.hero_headline | default: "Immer da. Immer gut." }}</h1>
+      <p class="schnappix-hero__subheadline">{{ section.settings.hero_subheadline | default: "Urban Snacks. Neon Energy. Anytime, Anywhere." }}</p>
+      <div class="schnappix-hero__cta">
+        <a href="{{ section.settings.cta_primary_link | default: '/collections/all' }}" class="schnappix-btn schnappix-btn--primary">
+          {{ section.settings.cta_primary_text | default: "JETZT SNACKEN" }}
+        </a>
+        <a href="{{ section.settings.cta_secondary_link | default: '/collections/all' }}" class="schnappix-btn schnappix-btn--secondary">
+          {{ section.settings.cta_secondary_text | default: "PRODUKTE ANSEHEN" }}
+        </a>
+      </div>
+      <div class="schnappix-hero__glow-accent"></div>
+    </div>
+  </div>
+
+  {%- comment -%} FEATURED PRODUCT GRID {%- endcomment -%}
+  {%- if section.settings.featured_collection != blank -%}
+    <div class="schnappix-products">
+      <div class="schnappix-container">
+        <h2 class="schnappix-products__title">{{ section.settings.products_title | default: "Featured Products" }}</h2>
+        <div class="schnappix-products__grid">
+          {%- for product in collections[section.settings.featured_collection].products limit: section.settings.products_limit | default: 4 -%}
+            <div class="schnappix-product-card" data-product-card>
+              {%- if product.featured_image -%}
+                <div class="schnappix-product-card__image">
+                  <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
+                  {%- if forloop.index == 1 -%}
+                    <span class="schnappix-badge schnappix-badge--neu">NEU</span>
+                  {%- elsif forloop.index == 2 -%}
+                    <span class="schnappix-badge schnappix-badge--deal">TOP DEAL</span>
+                  {%- elsif forloop.index == 3 -%}
+                    <span class="schnappix-badge schnappix-badge--drop">SNACK DROP</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              <div class="schnappix-product-card__content">
+                <h3 class="schnappix-product-card__title">{{ product.title }}</h3>
+                <p class="schnappix-product-card__price">{{ product.price | money }}</p>
+                <a href="{{ product.url }}" class="schnappix-product-card__link">View Product</a>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} BRAND STORY BLOCK {%- endcomment -%}
+  <div class="schnappix-story">
+    <div class="schnappix-container schnappix-container--wide">
+      <div class="schnappix-story__content">
+        <div class="schnappix-story__pixel-block"></div>
+        <div class="schnappix-story__text">
+          <h2 class="schnappix-story__claim">{{ section.settings.story_claim | default: "Snack. Swipe. Go." }}</h2>
+          <p class="schnappix-story__description">{{ section.settings.story_text | default: "SCHNAPPIX revolutionizes urban snacking with 24/7 self-service vending solutions. Fast, fresh, and always available when you need it most." }}</p>
+        </div>
+        {%- if section.settings.story_image -%}
+          <div class="schnappix-story__image">
+            <img src="{{ section.settings.story_image | image_url: width: 800 }}" alt="Brand Story" loading="lazy">
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} VENDING MACHINE SHOWCASE {%- endcomment -%}
+  <div class="schnappix-vending">
+    <div class="schnappix-container">
+      <div class="schnappix-vending__showcase">
+        <div class="schnappix-vending__mockup">
+          <div class="schnappix-vending__heat-map"></div>
+          <div class="schnappix-vending__neon-accent schnappix-vending__neon-accent--left"></div>
+          <div class="schnappix-vending__neon-accent schnappix-vending__neon-accent--right"></div>
+          <div class="schnappix-vending__reflection"></div>
+          {%- if section.settings.vending_image -%}
+            <img src="{{ section.settings.vending_image | image_url: width: 1200 }}" alt="Vending Machine" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="schnappix-vending__content">
+          <h2 class="schnappix-vending__title">{{ section.settings.vending_title | default: "24/7 Energy Spot" }}</h2>
+          <p class="schnappix-vending__description">{{ section.settings.vending_text | default: "Finde deinen nächsten SCHNAPPIX Automaten und hole dir deine Snacks, wann immer du sie brauchst." }}</p>
+          <a href="{{ section.settings.vending_cta_link | default: '/pages/locations' }}" class="schnappix-btn schnappix-btn--primary">
+            {{ section.settings.vending_cta_text | default: "AUTOMATEN ENTDECKEN" }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} WEEKLY DROPS SECTION {%- endcomment -%}
+  {%- if section.settings.drops_collection != blank -%}
+    <div class="schnappix-drops">
+      <div class="schnappix-container">
+        <h2 class="schnappix-drops__title">{{ section.settings.drops_title | default: "Weekly Drops" }}</h2>
+        <div class="schnappix-drops__carousel" data-carousel>
+          <div class="schnappix-drops__track">
+            {%- for product in collections[section.settings.drops_collection].products limit: 10 -%}
+              <div class="schnappix-drops__item">
+                <div class="schnappix-drops__sticker"></div>
+                {%- if product.featured_image -%}
+                  <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
+                {%- endif -%}
+                <h4 class="schnappix-drops__name">{{ product.title }}</h4>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+</section>
+
+{{ 'schnappix-homepage.js' | asset_url | defer | script_tag }}
+
+{% schema %}
+{
+  "name": "SCHNAPPIX Homepage",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_headline",
+      "label": "Headline",
+      "default": "Immer da. Immer gut."
+    },
+    {
+      "type": "text",
+      "id": "hero_subheadline",
+      "label": "Subheadline",
+      "default": "Urban Snacks. Neon Energy. Anytime, Anywhere."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA Text",
+      "default": "JETZT SNACKEN"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA Text",
+      "default": "PRODUKTE ANSEHEN"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Featured Products"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products to show",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "products_title",
+      "label": "Section Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "header",
+      "content": "Brand Story"
+    },
+    {
+      "type": "text",
+      "id": "story_claim",
+      "label": "Claim",
+      "default": "Snack. Swipe. Go."
+    },
+    {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Vending Machine"
+    },
+    {
+      "type": "text",
+      "id": "vending_title",
+      "label": "Title",
+      "default": "24/7 Energy Spot"
+    },
+    {
+      "type": "textarea",
+      "id": "vending_text",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "vending_cta_text",
+      "label": "CTA Text",
+      "default": "AUTOMATEN ENTDECKEN"
+    },
+    {
+      "type": "url",
+      "id": "vending_cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "vending_image",
+      "label": "Vending Machine Image"
+    },
+    {
+      "type": "header",
+      "content": "Weekly Drops"
+    },
+    {
+      "type": "collection",
+      "id": "drops_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "drops_title",
+      "label": "Section Title",
+      "default": "Weekly Drops"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SCHNAPPIX Homepage"
+    }
+  ]
+}
+{% endschema %}
+

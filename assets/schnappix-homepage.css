@@ -1,0 +1,747 @@
+/* ============================================
+   SCHNAPPIX Premium Homepage Styles
+   Corporate Identity: Urban, Neon, Modern
+   ============================================ */
+
+/* Color Variables */
+:root {
+  --schnappix-orange: #F15A29;
+  --schnappix-black: #000000;
+  --schnappix-white: #FFFFFF;
+  --schnappix-urban-night: #121212;
+  --schnappix-asphalt: #1E1E1E;
+  --schnappix-concrete: #2F2F2F;
+  --schnappix-steel: #9D9D9D;
+  --schnappix-neon-ember: #FF6A3E;
+  --schnappix-mint: #3CFFDD;
+  --schnappix-yellow: #FFBD2E;
+}
+
+/* Container */
+.schnappix-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 120px;
+}
+
+.schnappix-container--wide {
+  max-width: 1600px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.schnappix-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--schnappix-black);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schnappix-hero__layers {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.schnappix-hero__layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.schnappix-hero__layer--bg {
+  background: linear-gradient(180deg, #000 0%, #121212 100%);
+  opacity: 0.8;
+}
+
+.schnappix-hero__city-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800"><rect fill="%23121212" width="1440" height="800"/><path fill="%231E1E1E" d="M0 600 L200 500 L400 550 L600 450 L800 500 L1000 480 L1200 520 L1440 450 L1440 800 L0 800 Z"/></svg>');
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  opacity: 0.6;
+}
+
+.schnappix-hero__neon-reflections {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(255, 106, 62, 0.3) 0%, transparent 70%);
+  animation: neonPulse 4s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.schnappix-hero__floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.floating-snack {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--schnappix-orange);
+  border-radius: 12px;
+  opacity: 0.4;
+  animation: float 6s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(241, 90, 41, 0.5);
+}
+
+.floating-snack--1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-snack--2 {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+  width: 60px;
+  height: 60px;
+}
+
+.floating-snack--3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+.schnappix-hero__pixel-elements {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(241, 90, 41, 0.03) 2px, rgba(241, 90, 41, 0.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(241, 90, 41, 0.03) 2px, rgba(241, 90, 41, 0.03) 4px);
+  opacity: 0.5;
+}
+
+.schnappix-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 1200px;
+}
+
+.schnappix-hero__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+}
+
+.schnappix-hero__headline {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.01em;
+  color: var(--schnappix-white);
+  margin: 0 0 24px;
+  text-shadow: 0 0 40px rgba(255, 106, 62, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+.schnappix-hero__subheadline {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--schnappix-steel);
+  margin: 0 0 48px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.schnappix-hero__cta {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.schnappix-hero__glow-accent {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(255, 106, 62, 0.4) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: glowMove 8s ease-in-out infinite;
+}
+
+@keyframes glowMove {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.schnappix-btn {
+  display: inline-block;
+  padding: 16px 32px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.schnappix-btn--primary {
+  background: var(--schnappix-orange);
+  color: var(--schnappix-white);
+  box-shadow: 0 4px 20px rgba(241, 90, 41, 0.3);
+}
+
+.schnappix-btn--primary:hover {
+  background: var(--schnappix-neon-ember);
+  box-shadow: 0 8px 40px rgba(255, 106, 62, 0.6);
+  transform: translateY(-2px);
+}
+
+.schnappix-btn--secondary {
+  background: var(--schnappix-black);
+  color: var(--schnappix-orange);
+  border: 2px solid var(--schnappix-orange);
+}
+
+.schnappix-btn--secondary:hover {
+  background: var(--schnappix-urban-night);
+  border-color: var(--schnappix-neon-ember);
+  box-shadow: 0 0 20px rgba(255, 106, 62, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   FEATURED PRODUCTS
+   ============================================ */
+
+.schnappix-products {
+  padding: 120px 0;
+  background: var(--schnappix-black);
+}
+
+.schnappix-products__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  color: var(--schnappix-white);
+  text-align: center;
+  margin: 0 0 64px;
+}
+
+.schnappix-products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.schnappix-product-card {
+  background: var(--schnappix-asphalt);
+  border: 1px solid var(--schnappix-concrete);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.schnappix-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(255, 106, 62, 0.2);
+  border-color: var(--schnappix-neon-ember);
+}
+
+.schnappix-product-card__image {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  background: var(--schnappix-concrete);
+}
+
+.schnappix-product-card__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.schnappix-product-card:hover .schnappix-product-card__image img {
+  transform: scale(1.05);
+}
+
+.schnappix-product-card__content {
+  padding: 24px;
+}
+
+.schnappix-product-card__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--schnappix-white);
+  margin: 0 0 12px;
+}
+
+.schnappix-product-card__price {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--schnappix-orange);
+  margin: 0 0 16px;
+}
+
+.schnappix-product-card__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--schnappix-steel);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.schnappix-product-card__link:hover {
+  color: var(--schnappix-orange);
+}
+
+/* Badges */
+.schnappix-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.schnappix-badge--neu {
+  background: var(--schnappix-orange);
+  color: var(--schnappix-white);
+}
+
+.schnappix-badge--deal {
+  background: var(--schnappix-yellow);
+  color: var(--schnappix-black);
+}
+
+.schnappix-badge--drop {
+  background: var(--schnappix-black);
+  color: var(--schnappix-orange);
+  border: 2px solid var(--schnappix-orange);
+}
+
+/* ============================================
+   BRAND STORY
+   ============================================ */
+
+.schnappix-story {
+  padding: 120px 0;
+  background: var(--schnappix-black);
+  position: relative;
+}
+
+.schnappix-story__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+
+.schnappix-story__pixel-block {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: var(--schnappix-orange);
+  opacity: 0.1;
+  top: -50px;
+  left: -50px;
+  z-index: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+}
+
+.schnappix-story__text {
+  position: relative;
+  z-index: 1;
+}
+
+.schnappix-story__claim {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.01em;
+  color: var(--schnappix-white);
+  margin: 0 0 32px;
+}
+
+.schnappix-story__description {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--schnappix-steel);
+  margin: 0;
+}
+
+.schnappix-story__image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.schnappix-story__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   VENDING MACHINE SHOWCASE
+   ============================================ */
+
+.schnappix-vending {
+  padding: 120px 0;
+  background: var(--schnappix-urban-night);
+  position: relative;
+}
+
+.schnappix-vending__showcase {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.schnappix-vending__mockup {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+}
+
+.schnappix-vending__mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.schnappix-vending__heat-map {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(241, 90, 41, 0.2) 0%, rgba(255, 106, 62, 0.1) 100%);
+  z-index: 1;
+}
+
+.schnappix-vending__neon-accent {
+  position: absolute;
+  width: 4px;
+  height: 60%;
+  background: var(--schnappix-neon-ember);
+  box-shadow: 0 0 20px rgba(255, 106, 62, 0.8);
+  z-index: 3;
+  animation: neonFlicker 3s ease-in-out infinite;
+}
+
+.schnappix-vending__neon-accent--left {
+  left: 0;
+  top: 20%;
+}
+
+.schnappix-vending__neon-accent--right {
+  right: 0;
+  top: 20%;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.schnappix-vending__reflection {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.schnappix-vending__content {
+  position: relative;
+  z-index: 1;
+}
+
+.schnappix-vending__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  color: var(--schnappix-white);
+  margin: 0 0 24px;
+}
+
+.schnappix-vending__description {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--schnappix-steel);
+  margin: 0 0 40px;
+}
+
+/* ============================================
+   WEEKLY DROPS
+   ============================================ */
+
+.schnappix-drops {
+  padding: 120px 0;
+  background: var(--schnappix-urban-night);
+}
+
+.schnappix-drops__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  color: var(--schnappix-white);
+  text-align: center;
+  margin: 0 0 64px;
+  position: relative;
+}
+
+.schnappix-drops__title::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--schnappix-neon-ember);
+  box-shadow: 0 0 20px rgba(255, 106, 62, 0.6);
+}
+
+.schnappix-drops__carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.schnappix-drops__track {
+  display: flex;
+  gap: 32px;
+  animation: scrollHorizontal 30s linear infinite;
+  will-change: transform;
+}
+
+.schnappix-drops__item {
+  flex: 0 0 280px;
+  background: var(--schnappix-asphalt);
+  border: 1px solid var(--schnappix-concrete);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.schnappix-drops__item:hover {
+  transform: translateY(-8px);
+  border-color: var(--schnappix-neon-ember);
+  box-shadow: 0 12px 40px rgba(255, 106, 62, 0.2);
+}
+
+.schnappix-drops__sticker {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: var(--schnappix-neon-ember);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 106, 62, 0.6);
+  z-index: 2;
+}
+
+.schnappix-drops__item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.schnappix-drops__name {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--schnappix-white);
+  margin: 0;
+}
+
+@keyframes scrollHorizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet (768px) */
+@media screen and (max-width: 1024px) {
+  .schnappix-container {
+    padding: 0 60px;
+  }
+
+  .schnappix-hero__headline {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .schnappix-hero__subheadline {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .schnappix-story__content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .schnappix-vending__showcase {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .schnappix-products__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (375px) */
+@media screen and (max-width: 768px) {
+  .schnappix-container {
+    padding: 0 24px;
+  }
+
+  .schnappix-hero {
+    min-height: 80vh;
+  }
+
+  .schnappix-hero__headline {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .schnappix-hero__subheadline {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .schnappix-hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .schnappix-hero__cta .schnappix-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .schnappix-products,
+  .schnappix-story,
+  .schnappix-vending,
+  .schnappix-drops {
+    padding: 60px 0;
+  }
+
+  .schnappix-products__title,
+  .schnappix-drops__title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .schnappix-products__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .schnappix-story__claim {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .schnappix-vending__title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .schnappix-drops__item {
+    flex: 0 0 240px;
+  }
+
+  /* Disable parallax on mobile */
+  .schnappix-hero__layer {
+    transform: none !important;
+  }
+}
+
+/* Film Grain Texture */
+.schnappix-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
