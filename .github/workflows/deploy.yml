@@ -1,0 +1,398 @@
+name: Deploy to Shopify
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - live
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for creating and pushing tags
+    env:
+      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tags
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: |
+          # Install jq for JSON parsing and zip for backups
+          sudo apt-get update && sudo apt-get install -y jq zip || echo "Dependencies already installed"
+          # Install Shopify CLI
+          npm install -g @shopify/cli @shopify/theme
+          shopify version
+
+      - name: Debug directory structure
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo ""
+          echo "=== Directory structure ==="
+          ls -la
+          echo ""
+          echo "=== Looking for theme directories ==="
+          find . -type d -name "*schnappix*" -o -name "config" -type d | head -10
+          echo ""
+          echo "=== Checking for config directory ==="
+          if [ -d "config" ]; then
+            echo "✓ config/ exists in root"
+          else
+            echo "✗ config/ not found in root"
+          fi
+
+      - name: Determine theme directory
+        id: theme-dir
+        run: |
+          # Check if we're in the theme root (config exists)
+          if [ -d "config" ] && [ -d "sections" ] && [ -d "assets" ]; then
+            THEME_DIR="."
+            echo "THEME_DIR=." >> $GITHUB_OUTPUT
+            echo "✓ Found theme in root directory"
+          else
+            # Search for schnappix-dev directory
+            THEME_DIR=$(find . -type d -name "schnappix-dev" 2>/dev/null | head -1)
+            if [ -n "$THEME_DIR" ]; then
+              # Remove leading ./
+              THEME_DIR="${THEME_DIR#./}"
+              echo "THEME_DIR=$THEME_DIR" >> $GITHUB_OUTPUT
+              echo "✓ Found theme directory: $THEME_DIR"
+            else
+              # Try to find any directory with config
+              THEME_DIR=$(find . -type d -exec test -d {}/config \; -print 2>/dev/null | head -1)
+              if [ -n "$THEME_DIR" ]; then
+                THEME_DIR="${THEME_DIR#./}"
+                echo "THEME_DIR=$THEME_DIR" >> $GITHUB_OUTPUT
+                echo "✓ Found theme directory with config: $THEME_DIR"
+              else
+                echo "✗ Error: Could not find theme directory"
+                echo "Directory listing:"
+                find . -maxdepth 2 -type d | head -20
+                exit 1
+              fi
+            fi
+          fi
+
+      - name: Verify theme directory
+        run: |
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
+          echo "Working in: $(pwd)"
+          echo ""
+          echo "=== Theme structure ==="
+          ls -la | head -15
+          echo ""
+          echo "=== Required directories ==="
+          [ -d "config" ] && echo "✓ config/" || echo "✗ config/ missing"
+          [ -d "sections" ] && echo "✓ sections/" || echo "✗ sections/ missing"
+          [ -d "assets" ] && echo "✓ assets/" || echo "✗ assets/ missing"
+
+      # Determine deployment info
+      - name: Set deployment variables
+        id: deployment-info
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          VERSION="${BRANCH_NAME}-${TIMESTAMP}"
+          
+          if [ "$BRANCH_NAME" = "dev" ]; then
+            THEME_ID="148524400836"
+            THEME_NAME="Development"
+          elif [ "$BRANCH_NAME" = "main" ]; then
+            THEME_ID="148524433604"
+            THEME_NAME="Main"
+          elif [ "$BRANCH_NAME" = "live" ]; then
+            THEME_ID="148518502596"
+            THEME_NAME="Live"
+          fi
+          
+          echo "BRANCH=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          echo "THEME_ID=$THEME_ID" >> $GITHUB_OUTPUT
+          echo "THEME_NAME=$THEME_NAME" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_OUTPUT
+          
+          echo "📦 Deployment Info:"
+          echo "  Branch: $BRANCH_NAME"
+          echo "  Theme: $THEME_NAME (ID: $THEME_ID)"
+          echo "  Version: $VERSION"
+
+      # Backup Theme before deployment
+      - name: Backup Theme
+        id: backup
+        run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
+          
+          THEME_ID="${{ steps.deployment-info.outputs.THEME_ID }}"
+          BRANCH_NAME="${{ steps.deployment-info.outputs.BRANCH }}"
+          TIMESTAMP="${{ steps.deployment-info.outputs.TIMESTAMP }}"
+          BACKUP_DIR="backups"
+          BACKUP_NAME="theme-${THEME_ID}-${BRANCH_NAME}-${TIMESTAMP}"
+          BACKUP_PATH="${BACKUP_DIR}/${BACKUP_NAME}"
+          
+          mkdir -p "$BACKUP_DIR"
+          
+          echo "📦 Creating backup..."
+          echo "  Theme ID: $THEME_ID"
+          echo "  Backup path: $BACKUP_PATH"
+          
+          # Download theme to backup directory
+          shopify theme download \
+            --store p1pmt1-zi.myshopify.com \
+            --theme "$THEME_ID" \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --path "$BACKUP_PATH" \
+            --json > /tmp/backup_result.json 2>&1 || echo "⚠️ Backup failed, but continuing deployment..."
+          
+          # Create zip archive if backup directory exists
+          if [ -d "$BACKUP_PATH" ]; then
+            cd "$BACKUP_DIR" || exit 1
+            zip -r "${BACKUP_NAME}.zip" "$BACKUP_NAME" > /dev/null 2>&1 || echo "⚠️ ZIP creation failed"
+            cd - || exit 1
+            
+            if [ -f "${BACKUP_PATH}.zip" ]; then
+              BACKUP_SIZE=$(du -h "${BACKUP_PATH}.zip" | cut -f1)
+              echo "✅ Backup created: ${BACKUP_NAME}.zip ($BACKUP_SIZE)"
+              echo "BACKUP_FILE=${BACKUP_NAME}.zip" >> $GITHUB_OUTPUT
+              echo "BACKUP_SIZE=$BACKUP_SIZE" >> $GITHUB_OUTPUT
+              echo "BACKUP_PATH=$BACKUP_PATH" >> $GITHUB_OUTPUT
+            else
+              # Fallback: use directory size
+              BACKUP_SIZE=$(du -sh "$BACKUP_PATH" | cut -f1)
+              echo "✅ Backup created: $BACKUP_PATH ($BACKUP_SIZE)"
+              echo "BACKUP_FILE=$BACKUP_NAME" >> $GITHUB_OUTPUT
+              echo "BACKUP_SIZE=$BACKUP_SIZE" >> $GITHUB_OUTPUT
+              echo "BACKUP_PATH=$BACKUP_PATH" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "⚠️ Backup directory not found, but continuing..."
+            echo "BACKUP_FILE=" >> $GITHUB_OUTPUT
+            echo "BACKUP_SIZE=0" >> $GITHUB_OUTPUT
+            echo "BACKUP_PATH=" >> $GITHUB_OUTPUT
+          fi
+
+      # DEV Deployment
+      - name: Deploy to Development Theme
+        id: deploy-dev
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
+          echo "Deploying from: $(pwd)"
+          echo "Store: p1pmt1-zi.myshopify.com"
+          echo "Theme ID: 148524400836"
+          
+          DEPLOY_RESULT=$(shopify theme push \
+            --store p1pmt1-zi.myshopify.com \
+            --theme 148524400836 \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --json)
+          
+          echo "DEPLOY_RESULT<<EOF" >> $GITHUB_OUTPUT
+          echo "$DEPLOY_RESULT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          echo "$DEPLOY_RESULT" | jq -r '.theme.id // empty' > /tmp/theme_id.txt || echo "" > /tmp/theme_id.txt
+          echo "$DEPLOY_RESULT" | jq -r '.theme.name // empty' > /tmp/theme_name.txt || echo "" > /tmp/theme_name.txt
+          
+          echo "✅ Deployment successful"
+
+      # MAIN Deployment
+      - name: Deploy to Main Theme
+        id: deploy-main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
+          echo "Deploying from: $(pwd)"
+          
+          DEPLOY_RESULT=$(shopify theme push \
+            --store p1pmt1-zi.myshopify.com \
+            --theme 148524433604 \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --json)
+          
+          echo "DEPLOY_RESULT<<EOF" >> $GITHUB_OUTPUT
+          echo "$DEPLOY_RESULT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          echo "$DEPLOY_RESULT" | jq -r '.theme.id // empty' > /tmp/theme_id.txt || echo "" > /tmp/theme_id.txt
+          echo "$DEPLOY_RESULT" | jq -r '.theme.name // empty' > /tmp/theme_name.txt || echo "" > /tmp/theme_name.txt
+          
+          echo "✅ Deployment successful"
+
+      # LIVE Deployment
+      - name: Deploy to Live Theme
+        id: deploy-live
+        if: github.ref == 'refs/heads/live'
+        run: |
+          if [ -z "$SHOPIFY_CLI_THEME_TOKEN" ]; then
+            echo "✗ Error: SHOPIFY_CLI_THEME_TOKEN secret is not set"
+            exit 1
+          fi
+          THEME_DIR="${{ steps.theme-dir.outputs.THEME_DIR }}"
+          cd "$THEME_DIR" || exit 1
+          echo "Deploying from: $(pwd)"
+          
+          DEPLOY_RESULT=$(shopify theme push \
+            --store p1pmt1-zi.myshopify.com \
+            --theme 148518502596 \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --allow-live \
+            --json)
+          
+          echo "DEPLOY_RESULT<<EOF" >> $GITHUB_OUTPUT
+          echo "$DEPLOY_RESULT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          echo "$DEPLOY_RESULT" | jq -r '.theme.id // empty' > /tmp/theme_id.txt || echo "" > /tmp/theme_id.txt
+          echo "$DEPLOY_RESULT" | jq -r '.theme.name // empty' > /tmp/theme_name.txt || echo "" > /tmp/theme_name.txt
+          
+          echo "✅ Deployment successful"
+
+      # Create Git Tag for version
+      - name: Create Version Tag
+        if: success()
+        run: |
+          BRANCH_NAME="${{ steps.deployment-info.outputs.BRANCH }}"
+          VERSION="${{ steps.deployment-info.outputs.VERSION }}"
+          TAG_NAME="deploy/${BRANCH_NAME}/${VERSION}"
+          
+          # Configure git
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          # Create tag
+          if git tag -a "$TAG_NAME" -m "Deployment to $BRANCH_NAME: $VERSION" 2>&1; then
+            echo "✅ Tag created: $TAG_NAME"
+            
+            # Push tag with proper authentication
+            if git push origin "$TAG_NAME" 2>&1; then
+              echo "✅ Tag pushed successfully: $TAG_NAME"
+              echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+              echo "TAG_PUSHED=true" >> $GITHUB_ENV
+            else
+              echo "⚠️ Tag push failed (but tag was created locally)"
+              echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+              echo "TAG_PUSHED=false" >> $GITHUB_ENV
+            fi
+          else
+            echo "⚠️ Tag creation failed"
+            echo "TAG_PUSHED=false" >> $GITHUB_ENV
+          fi
+
+      # Generate Deployment Dashboard
+      - name: Generate Deployment Dashboard
+        if: always()
+        run: |
+          BRANCH_NAME="${{ steps.deployment-info.outputs.BRANCH }}"
+          THEME_NAME="${{ steps.deployment-info.outputs.THEME_NAME }}"
+          THEME_ID="${{ steps.deployment-info.outputs.THEME_ID }}"
+          VERSION="${{ steps.deployment-info.outputs.VERSION }}"
+          TIMESTAMP="${{ steps.deployment-info.outputs.TIMESTAMP }}"
+          BACKUP_FILE="${{ steps.backup.outputs.BACKUP_FILE }}"
+          BACKUP_SIZE="${{ steps.backup.outputs.BACKUP_SIZE }}"
+          COMMIT_SHA="${{ github.sha }}"
+          COMMIT_MSG="${{ github.event.head_commit.message }}"
+          ACTOR="${{ github.actor }}"
+          
+          # Determine deployment status
+          if [ "${{ job.status }}" = "success" ]; then
+            STATUS_EMOJI="✅"
+            STATUS_TEXT="SUCCESS"
+            STATUS_COLOR="green"
+          else
+            STATUS_EMOJI="❌"
+            STATUS_TEXT="FAILED"
+            STATUS_COLOR="red"
+          fi
+          
+          # Generate dashboard
+          cat >> $GITHUB_STEP_SUMMARY <<EOF
+          # 🚀 Deployment Dashboard
+          
+          ## Deployment Status
+          
+          ${STATUS_EMOJI} **${STATUS_TEXT}** - ${THEME_NAME} Theme
+          
+          ---
+          
+          ## 📋 Deployment Information
+          
+          | Property | Value |
+          |----------|-------|
+          | **Branch** | \`${BRANCH_NAME}\` |
+          | **Theme** | ${THEME_NAME} (ID: \`${THEME_ID}\`) |
+          | **Version** | \`${VERSION}\` |
+          | **Deployed by** | @${ACTOR} |
+          | **Commit** | \`${COMMIT_SHA:0:7}\` |
+          | **Timestamp** | ${TIMESTAMP} |
+          
+          ---
+          
+          ## 📦 Backup Information
+          
+          EOF
+          
+          if [ -n "$BACKUP_FILE" ] && [ "$BACKUP_SIZE" != "0" ]; then
+            cat >> $GITHUB_STEP_SUMMARY <<EOF
+          ✅ **Backup created successfully**
+          
+          - **File:** \`${BACKUP_FILE}\`
+          - **Size:** ${BACKUP_SIZE}
+          
+          EOF
+          else
+            cat >> $GITHUB_STEP_SUMMARY <<EOF
+          ⚠️ **Backup not available**
+          
+          EOF
+          fi
+          
+          cat >> $GITHUB_STEP_SUMMARY <<EOF
+          ---
+          
+          ## 🔗 Quick Links
+          
+          - [View Theme in Shopify](https://p1pmt1-zi.myshopify.com/admin/themes/${THEME_ID})
+          - [Preview Theme](https://p1pmt1-zi.myshopify.com?preview_theme_id=${THEME_ID})
+          - [View Commit](https://github.com/${{ github.repository }}/commit/${COMMIT_SHA})
+          - [View Workflow Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          
+          ---
+          
+          ## 📝 Commit Message
+          
+          \`\`\`
+          ${COMMIT_MSG}
+          \`\`\`
+          
+          ---
+          
+          *Generated automatically by GitHub Actions*
+          EOF
+          
+          echo "✅ Deployment dashboard generated"
