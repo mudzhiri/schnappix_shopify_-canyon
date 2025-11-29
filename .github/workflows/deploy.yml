@@ -29,20 +29,29 @@ jobs:
       - name: Find theme directory
         id: find-theme
         run: |
-          THEME_DIR=$(find . -type d -name "schnappix-dev" -o -type d -path "*/schnappix-dev" | head -1)
-          if [ -z "$THEME_DIR" ]; then
-            echo "Error: schnappix-dev directory not found"
-            find . -type d -maxdepth 3 | head -20
-            exit 1
+          # Check if we're already in the theme directory (config exists)
+          if [ -d "config" ] && [ -d "sections" ] && [ -d "assets" ]; then
+            echo "THEME_DIR=." >> $GITHUB_OUTPUT
+            echo "Found theme directory: . (root)"
+          else
+            # Try to find schnappix-dev directory
+            THEME_DIR=$(find . -type d -name "schnappix-dev" | head -1)
+            if [ -z "$THEME_DIR" ]; then
+              echo "Error: Theme directory not found"
+              echo "Current directory structure:"
+              find . -type d -maxdepth 3 | head -20
+              exit 1
+            fi
+            echo "THEME_DIR=${THEME_DIR#./}" >> $GITHUB_OUTPUT
+            echo "Found theme directory: ${THEME_DIR#./}"
           fi
-          echo "THEME_DIR=${THEME_DIR#./}" >> $GITHUB_OUTPUT
-          echo "Found theme directory: ${THEME_DIR#./}"
 
-      - name: Verify working directory exists
+      - name: Verify working directory
         run: |
           cd "${{ steps.find-theme.outputs.THEME_DIR }}"
           pwd
-          ls -la config/ sections/ assets/ | head -10
+          echo "---"
+          ls -la config/ sections/ assets/ 2>&1 | head -10
 
       # DEV Deployment
       - name: Deploy to Development Theme
@@ -55,6 +64,7 @@ jobs:
             exit 1
           fi
           cd "${{ steps.find-theme.outputs.THEME_DIR }}"
+          echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524400836 \
@@ -71,6 +81,7 @@ jobs:
             exit 1
           fi
           cd "${{ steps.find-theme.outputs.THEME_DIR }}"
+          echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148524433604 \
@@ -87,6 +98,7 @@ jobs:
             exit 1
           fi
           cd "${{ steps.find-theme.outputs.THEME_DIR }}"
+          echo "Deploying from: $(pwd)"
           shopify theme push \
             --store p1pmt1-zi.myshopify.com \
             --theme 148518502596 \
