@@ -46,11 +46,12 @@
 
   {%- comment -%} FEATURED PRODUCT GRID {%- endcomment -%}
   {%- if section.settings.featured_collection != blank -%}
+    {%- assign products_limit = section.settings.products_limit | default: 4 -%}
     <div class="schnappix-products">
       <div class="schnappix-container">
         <h2 class="schnappix-products__title">{{ section.settings.products_title | default: "Featured Products" }}</h2>
         <div class="schnappix-products__grid">
-          {%- for product in collections[section.settings.featured_collection].products limit: section.settings.products_limit | default: 4 -%}
+          {%- for product in collections[section.settings.featured_collection].products limit: products_limit -%}
             <div class="schnappix-product-card" data-product-card>
               {%- if product.featured_image -%}
                 <div class="schnappix-product-card__image">
