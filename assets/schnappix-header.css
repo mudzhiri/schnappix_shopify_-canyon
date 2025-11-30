@@ -70,21 +70,79 @@
 
 .header__columns {
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'left center right';
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
   padding: 0 24px;
   max-width: 1440px;
   margin: 0 auto;
+  width: 100%;
 }
 
-@media screen and (min-width: 750px) {
+/* Mobile: Simplified layout */
+@media screen and (max-width: 749px) {
   .header__columns {
-    padding: 0 48px;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'left center right';
+    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .header__column--left {
+    grid-area: left;
+    justify-self: start;
+  }
+
+  .header__column--center {
+    grid-area: center;
+    justify-self: center;
+  }
+
+  .header__column--right {
+    grid-area: right;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 }
 
+/* Tablet: Adjusted spacing */
+@media screen and (min-width: 750px) and (max-width: 1023px) {
+  .header__columns {
+    padding: 0 32px;
+    gap: 20px;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .header__column--left {
+    grid-area: left;
+  }
+
+  .header__column--center {
+    grid-area: center;
+    justify-self: center;
+  }
+
+  .header__column--right {
+    grid-area: right;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+/* Desktop */
 @media screen and (min-width: 1024px) {
+  .header__columns {
+    padding: 0 48px;
+    gap: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .header__columns {
     padding: 0 120px;
   }
@@ -663,17 +721,574 @@ details[open] .menu-drawer__menu--childlist {
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 
+/* Mobile (375px - 479px) */
+@media screen and (max-width: 479px) {
+  .header {
+    height: 64px;
+    min-height: 64px;
+  }
+
+  .header__row--top {
+    height: 64px;
+    min-height: 64px;
+  }
+
+  .header__columns {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .header__logo img {
+    max-height: 36px;
+  }
+
+  .header-actions__action {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-actions__action svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header__icon--menu {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-drawer-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .menu-drawer-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .menu-drawer__navigation {
+    padding: 64px 16px 16px;
+    padding-bottom: 100px;
+  }
+
+  .menu-drawer__menu-item--mainlist {
+    font-size: 18px;
+    padding: 20px 0;
+  }
+
+  .menu-drawer__menu-item--child {
+    font-size: 14px;
+    padding-left: 16px;
+  }
+
+  .menu-drawer__cta {
+    padding: 16px;
+  }
+
+  .menu-drawer__cta-button {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .menu-drawer__close-button {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-drawer__close-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .localization__button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .cart-bubble {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+    top: 2px;
+    right: 1px;
+  }
+}
+
+/* Mobile (480px - 749px) */
+@media screen and (min-width: 480px) and (max-width: 749px) {
+  .header {
+    height: 72px;
+    min-height: 72px;
+  }
+
+  .header__row--top {
+    height: 72px;
+    min-height: 72px;
+  }
+
+  .header__columns {
+    padding: 0 20px;
+    gap: 12px;
+  }
+
+  .header__logo img {
+    max-height: 42px;
+  }
+
+  .header-actions__action {
+    width: 42px;
+    height: 42px;
+  }
+
+  .menu-drawer-container {
+    max-width: 380px;
+  }
+
+  .menu-drawer__navigation {
+    padding: 80px 20px 20px;
+    padding-bottom: 110px;
+  }
+
+  .menu-drawer__menu-item--mainlist {
+    font-size: 19px;
+  }
+
+  .menu-drawer__menu-item--child {
+    font-size: 15px;
+    padding-left: 20px;
+  }
+
+  .menu-drawer__cta {
+    padding: 20px;
+  }
+
+  .menu-drawer__cta-button {
+    padding: 15px 22px;
+    font-size: 15px;
+  }
+}
+
+/* Tablet (750px - 1023px) */
+@media screen and (min-width: 750px) and (max-width: 1023px) {
+  .header {
+    height: 80px;
+    min-height: 80px;
+  }
+
+  .header__row--top {
+    height: 80px;
+    min-height: 80px;
+  }
+
+  .header__columns {
+    padding: 0 32px;
+    gap: 16px;
+  }
+
+  .header__logo img {
+    max-height: 44px;
+  }
+
+  .menu-list__link {
+    padding: 0 16px;
+    font-size: 13px;
+  }
+
+  .header-actions__action {
+    width: 42px;
+    height: 42px;
+  }
+
+  .header-actions__action svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .menu-list__submenu {
+    min-width: 220px;
+    padding: 12px 0;
+  }
+
+  .menu-list__submenu .menu-list__link {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .menu-drawer-container {
+    max-width: 420px;
+  }
+
+  .menu-drawer__navigation {
+    padding: 84px 24px 24px;
+    padding-bottom: 120px;
+  }
+
+  .menu-drawer__menu-item--mainlist {
+    font-size: 20px;
+  }
+
+  .menu-drawer__menu-item--child {
+    font-size: 16px;
+  }
+
+  .localization__button {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Hide desktop menu on mobile/tablet */
 @media screen and (max-width: 749px) {
   .header__columns {
     padding: 0 16px;
   }
 
   .menu-list {
-    display: none;
+    display: none !important;
   }
 
   header-menu {
+    display: none !important;
+  }
+
+  .header__column--center header-menu {
+    display: none !important;
+  }
+
+  .header__column--left header-menu {
+    display: none !important;
+  }
+
+  .header__column--right header-menu {
+    display: none !important;
+  }
+
+  /* Ensure hamburger is visible on mobile */
+  .header__icon--menu {
+    display: flex !important;
+  }
+}
+
+/* Tablet specific: Show menu but with adjusted spacing */
+@media screen and (min-width: 750px) and (max-width: 1023px) {
+  header-menu {
+    display: block !important;
+  }
+
+  .menu-list {
+    display: flex !important;
+    gap: 0;
+  }
+
+  .menu-list__link {
+    padding: 0 12px;
+  }
+
+  /* Reduce gap between actions on tablet */
+  header-actions {
+    gap: 12px;
+  }
+}
+
+/* Ensure proper column layout on all devices */
+@media screen and (max-width: 749px) {
+  .header__column--left,
+  .header__column--center,
+  .header__column--right {
+    display: flex;
+    align-items: center;
+    min-width: 0; /* Prevent overflow */
+  }
+
+  .header__column--left {
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+
+  .header__column--center {
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .header__column--right {
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Ensure logo doesn't overflow on mobile */
+  .header__column--center .header__logo,
+  .header__column--left .header__logo {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .header__logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Stack actions vertically if needed on very small screens */
+  @media screen and (max-width: 360px) {
+    header-actions {
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .header-actions__action {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .header-actions__action svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+/* Tablet: Optimize logo and menu positioning */
+@media screen and (min-width: 750px) and (max-width: 1023px) {
+  .header__column--left {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .header__column--center {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .header__column--right {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  /* Adjust menu spacing for tablet */
+  .menu-list {
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .menu-list__list-item {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  /* Ensure menu doesn't overflow on tablet */
+  .menu-list__link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Logo sizing for tablet */
+  .header__logo img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Fix for search and localization on mobile */
+@media screen and (max-width: 749px) {
+  .header__column--right .search {
     display: none;
+  }
+
+  .header__column--right .localization {
+    display: none;
+  }
+
+  /* Show mobile search if configured */
+  .header__column--left .search.mobile\:hidden {
+    display: none;
+  }
+}
+
+/* Mobile menu drawer optimizations */
+@media screen and (max-width: 749px) {
+  .menu-drawer {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    position: relative;
+  }
+
+  .menu-drawer__navigation {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Better touch targets on mobile */
+  .menu-drawer__menu-item {
+    min-height: 48px;
+    padding: 16px 0;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(241, 90, 41, 0.2);
+  }
+
+  .menu-drawer__menu-item--mainlist {
+    min-height: 56px;
+    padding: 20px 0;
+  }
+
+  .menu-drawer__menu-item--child {
+    min-height: 44px;
+    padding: 14px 0 14px 24px;
+  }
+
+  /* Larger touch area for close button */
+  .menu-drawer__close-button {
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(241, 90, 41, 0.2);
+  }
+
+  /* Better spacing for utility links */
+  .menu-drawer__utility-links {
+    padding: 16px 0;
+  }
+
+  /* Ensure CTA button is always accessible */
+  .menu-drawer__cta {
+    position: sticky;
+    bottom: 0;
+    background: var(--schnappix-black);
+    z-index: 100;
+  }
+
+  /* Prevent content from being hidden behind CTA */
+  .menu-drawer__navigation {
+    padding-bottom: 140px;
+  }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 374px) {
+  .menu-drawer__navigation {
+    padding: 60px 12px 12px;
+    padding-bottom: 120px;
+  }
+
+  .menu-drawer__menu-item--mainlist {
+    font-size: 16px;
+    padding: 18px 0;
+  }
+
+  .menu-drawer__menu-item--child {
+    font-size: 13px;
+    padding: 12px 0 12px 16px;
+  }
+
+  .menu-drawer__cta {
+    padding: 12px;
+  }
+
+  .menu-drawer__cta-button {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Tablet menu drawer */
+@media screen and (min-width: 750px) and (max-width: 1023px) {
+  .menu-drawer-container {
+    max-width: 450px;
+  }
+
+  .menu-drawer__navigation {
+    padding: 88px 28px 28px;
+    padding-bottom: 130px;
+  }
+
+  .menu-drawer__menu-item--mainlist {
+    font-size: 21px;
+    padding: 22px 0;
+  }
+
+  .menu-drawer__menu-item--child {
+    font-size: 16px;
+    padding-left: 28px;
+  }
+
+  .menu-drawer__cta {
+    padding: 24px 28px;
+  }
+
+  .menu-drawer__cta-button {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+}
+
+/* Ensure header actions don't overflow on any device */
+header-actions {
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.header-actions__action {
+  flex-shrink: 0;
+}
+
+/* Fix for search icon on mobile */
+@media screen and (max-width: 749px) {
+  .search {
+    display: none !important;
+  }
+
+  .search.mobile\:hidden {
+    display: none !important;
+  }
+}
+
+/* Localization button responsive */
+@media screen and (max-width: 479px) {
+  .localization {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 749px) {
+  .localization__button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Logo responsive sizing */
+@media screen and (max-width: 479px) {
+  .header__logo img {
+    max-height: 32px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 749px) {
+  .header__logo img {
+    max-height: 38px;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1023px) {
+  .header__logo img {
+    max-height: 42px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header__logo img {
+    max-height: 48px;
   }
 }
 
