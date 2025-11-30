@@ -1,0 +1,763 @@
+/* ============================================
+   SCHNAPPIX Header & Navigation Styles
+   Corporate Identity: Urban, Neon, Modern
+   Based on Figma Design Requirements
+   ============================================ */
+
+/* Color Variables - SCHNAPPIX CI */
+:root {
+  --schnappix-orange: #F15A29;
+  --schnappix-black: #000000;
+  --schnappix-white: #FFFFFF;
+  --schnappix-urban-night: #121212;
+  --schnappix-asphalt: #1E1E1E;
+  --schnappix-concrete: #2F2F2F;
+  --schnappix-steel: #9D9D9D;
+  --schnappix-neon-ember: #FF6A3E;
+  --schnappix-glow: rgba(255, 106, 62, 0.45);
+}
+
+/* ============================================
+   HEADER CONTAINER
+   ============================================ */
+
+.header {
+  background: var(--schnappix-black) !important;
+  height: 78px;
+  min-height: 78px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1000;
+}
+
+@media screen and (min-width: 750px) {
+  .header {
+    height: 88px;
+    min-height: 88px;
+  }
+}
+
+/* Sticky Header with Shadow */
+.header[sticky="always"],
+.header[sticky="scroll-up"] {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.3s ease, height 0.3s ease;
+}
+
+.header[sticky="always"].header--scrolled,
+.header[sticky="scroll-up"].header--scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(241, 90, 41, 0.2);
+}
+
+.header__row {
+  background: var(--schnappix-black) !important;
+  border-bottom: none !important;
+}
+
+.header__row--top {
+  height: 78px;
+  min-height: 78px;
+}
+
+@media screen and (min-width: 750px) {
+  .header__row--top {
+    height: 88px;
+    min-height: 88px;
+  }
+}
+
+.header__columns {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 750px) {
+  .header__columns {
+    padding: 0 48px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header__columns {
+    padding: 0 120px;
+  }
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+
+.header__column--center .header__logo,
+.header__column--left .header__logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header__logo img {
+  max-height: 48px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.header__logo:hover img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   NAVIGATION MENU - Desktop
+   ============================================ */
+
+header-menu {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  header-menu {
+    display: block;
+  }
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.menu-list__list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menu-list__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--schnappix-white) !important;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.menu-list__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: var(--schnappix-orange);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  transform-origin: left;
+}
+
+.menu-list__link:hover {
+  color: var(--schnappix-orange) !important;
+  text-shadow: 0 0 10px var(--schnappix-glow);
+}
+
+.menu-list__link:hover::after {
+  transform: scaleX(1);
+}
+
+.menu-list__link--active {
+  color: var(--schnappix-orange) !important;
+}
+
+.menu-list__link--active::after {
+  transform: scaleX(1);
+}
+
+.menu-list__link-title {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   DROPDOWN MENUS - Desktop
+   ============================================ */
+
+.menu-list__submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--schnappix-urban-night);
+  border: 1px solid var(--schnappix-concrete);
+  border-radius: 8px;
+  padding: 16px 0;
+  min-width: 240px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(241, 90, 41, 0.1);
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.menu-list__list-item:hover .menu-list__submenu,
+.menu-list__list-item:focus-within .menu-list__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-list__submenu-inner {
+  padding: 0;
+}
+
+.menu-list__submenu .menu-list__link {
+  padding: 12px 24px;
+  height: auto;
+  font-size: 14px;
+  color: var(--schnappix-white) !important;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.menu-list__submenu .menu-list__link::after {
+  display: none;
+}
+
+.menu-list__submenu .menu-list__link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--schnappix-orange);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.menu-list__submenu .menu-list__link:hover {
+  background: var(--schnappix-asphalt);
+  color: var(--schnappix-orange) !important;
+  text-shadow: 0 0 8px var(--schnappix-glow);
+}
+
+.menu-list__submenu .menu-list__link:hover::before {
+  transform: scaleY(1);
+}
+
+/* ============================================
+   HEADER ACTIONS (Cart, Search, Account)
+   ============================================ */
+
+header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-actions__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--schnappix-white) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.header-actions__action svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: all 0.3s ease;
+}
+
+.header-actions__action:hover {
+  color: var(--schnappix-neon-ember) !important;
+  transform: scale(1.1);
+}
+
+.header-actions__action:hover svg {
+  filter: drop-shadow(0 0 8px var(--schnappix-glow));
+}
+
+/* Cart Bubble */
+.header-actions__cart-icon {
+  position: relative;
+}
+
+.cart-bubble {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  background: var(--schnappix-orange);
+  color: var(--schnappix-white);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 10px rgba(241, 90, 41, 0.6);
+}
+
+/* ============================================
+   HAMBURGER MENU ICON
+   ============================================ */
+
+.header__icon--menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+}
+
+@media screen and (min-width: 750px) {
+  .header__icon--menu {
+    display: none;
+  }
+}
+
+.header-drawer-icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.header-drawer-icon--open {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.header-drawer-icon--close {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.header__icon--summary[aria-expanded="true"] .header-drawer-icon--open {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.header__icon--summary[aria-expanded="true"] .header-drawer-icon--close {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.header-drawer-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--schnappix-white);
+  transition: fill 0.3s ease;
+}
+
+.header__icon--menu:hover .header-drawer-icon svg {
+  fill: var(--schnappix-orange);
+  filter: drop-shadow(0 0 8px var(--schnappix-glow));
+}
+
+/* Hamburger Animation */
+.header-drawer-icon--open svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__icon--summary[aria-expanded="true"] .header-drawer-icon--open svg {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   MOBILE NAVIGATION DRAWER
+   ============================================ */
+
+.menu-drawer-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  z-index: 10000;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-drawer-container[open] {
+  transform: translateX(0);
+}
+
+.menu-drawer {
+  width: 100%;
+  height: 100%;
+  background: var(--schnappix-black);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0;
+  position: relative;
+}
+
+.menu-drawer__close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+  color: var(--schnappix-white);
+  transition: color 0.3s ease;
+}
+
+.menu-drawer__close-button:hover {
+  color: var(--schnappix-orange);
+}
+
+.menu-drawer__close-button svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.menu-drawer__navigation {
+  padding: 88px 24px 24px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 120px; /* Space for CTA button */
+}
+
+.menu-drawer__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.menu-drawer__list-item {
+  border-bottom: 1px solid var(--schnappix-concrete);
+}
+
+.menu-drawer__list-item:last-child {
+  border-bottom: none;
+}
+
+.menu-drawer__menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--schnappix-white) !important;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.menu-drawer__menu-item--mainlist {
+  font-size: 20px;
+  color: var(--schnappix-orange) !important;
+  padding: 24px 0;
+}
+
+.menu-drawer__menu-item--child {
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 24px;
+  color: var(--schnappix-white) !important;
+}
+
+.menu-drawer__menu-item:hover {
+  color: var(--schnappix-orange) !important;
+  text-shadow: 0 0 10px var(--schnappix-glow);
+  transform: translateX(8px);
+}
+
+.menu-drawer__menu-item--active {
+  color: var(--schnappix-orange) !important;
+}
+
+.menu-drawer__menu-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--schnappix-orange);
+  box-shadow: 0 0 10px var(--schnappix-glow);
+}
+
+/* Accordion Icons */
+.menu-drawer__menu-item .icon-plus,
+.menu-drawer__menu-item .icon-caret {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  color: var(--schnappix-white);
+}
+
+.menu-drawer__menu-item[aria-expanded="true"] .icon-plus,
+.menu-drawer__menu-item[aria-expanded="true"] .icon-caret {
+  transform: rotate(45deg);
+}
+
+.menu-drawer__menu-item[aria-expanded="true"] .icon-caret--forward {
+  transform: rotate(90deg);
+}
+
+/* Accordion Content */
+.menu-drawer__menu--childlist {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+details[open] .menu-drawer__menu--childlist {
+  max-height: 2000px;
+  padding: 8px 0;
+}
+
+/* CTA Button at Bottom */
+.menu-drawer__cta {
+  position: sticky;
+  bottom: 0;
+  padding: 24px;
+  border-top: 1px solid var(--schnappix-concrete);
+  background: var(--schnappix-black);
+  z-index: 10;
+  margin-top: auto;
+}
+
+.menu-drawer__cta-button {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--schnappix-orange);
+  color: var(--schnappix-white);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(241, 90, 41, 0.4);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.menu-drawer__cta-button:hover {
+  background: var(--schnappix-neon-ember);
+  box-shadow: 0 0 30px rgba(255, 106, 62, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   SEARCH
+   ============================================ */
+
+.header__column--right .search {
+  display: flex;
+  align-items: center;
+}
+
+.search__button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--schnappix-white);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search__button:hover {
+  color: var(--schnappix-neon-ember);
+  transform: scale(1.1);
+}
+
+.search__button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: filter 0.3s ease;
+}
+
+.search__button:hover svg {
+  filter: drop-shadow(0 0 8px var(--schnappix-glow));
+}
+
+/* ============================================
+   LOCALIZATION
+   ============================================ */
+
+.localization {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.localization__button {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--schnappix-concrete);
+  border-radius: 6px;
+  color: var(--schnappix-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.localization__button:hover {
+  border-color: var(--schnappix-orange);
+  color: var(--schnappix-orange);
+  box-shadow: 0 0 10px rgba(241, 90, 41, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media screen and (max-width: 749px) {
+  .header__columns {
+    padding: 0 16px;
+  }
+
+  .menu-list {
+    display: none;
+  }
+
+  header-menu {
+    display: none;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-drawer__animated-element {
+  animation: fadeIn 0.4s ease-out forwards;
+  animation-delay: calc(var(--menu-drawer-animation-index, 0) * 0.05s);
+  opacity: 0;
+}
+
+/* ============================================
+   OVERLAY FOR MOBILE MENU
+   ============================================ */
+
+.menu-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.menu-drawer-container[open] ~ .menu-drawer-overlay,
+body:has(.menu-drawer-container[open]) .menu-drawer-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.schnappix-glow {
+  text-shadow: 0 0 10px var(--schnappix-glow);
+}
+
+.schnappix-glow-strong {
+  text-shadow: 0 0 20px var(--schnappix-glow), 0 0 40px var(--schnappix-glow);
+}
+
+/* ============================================
+   FIXES FOR EXISTING THEME COMPATIBILITY
+   ============================================ */
+
+.header[transparent] {
+  background: transparent !important;
+}
+
+.header[transparent].header--scrolled {
+  background: var(--schnappix-black) !important;
+}
+
+/* Ensure header stays on top */
+.header {
+  z-index: 1000;
+}
+
+/* Fix for header row backgrounds */
+.header__row.color-scheme-1,
+.header__row.color-scheme-6 {
+  background: var(--schnappix-black) !important;
+}
+

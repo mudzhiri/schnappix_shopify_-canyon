@@ -559,6 +559,14 @@
           {% endif %}
         </ul>
       </nav>
+      
+      {%- comment -%} SCHNAPPIX CTA Button at Bottom {%- endcomment -%}
+      <div class="menu-drawer__cta">
+        <a href="/collections/all" class="menu-drawer__cta-button">
+          {{ 'general.navigation.shop_now' | t | default: 'JETZT SNACKEN' }}
+        </a>
+      </div>
+      
       <div
         class="menu-drawer__utility-links menu-drawer__animated-element"
         style="--menu-drawer-animation-index: {{ linklist.links.size }};"

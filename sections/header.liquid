@@ -270,10 +270,80 @@
   {% endif %}
 </header-component>
 
+{{ 'schnappix-header.css' | asset_url | stylesheet_tag }}
+
 <script
   src="{{ 'header.js' | asset_url }}"
   type="module"
 ></script>
+
+<script>
+  // SCHNAPPIX Header Enhancements
+  (function() {
+    'use strict';
+    
+    // Sticky Header Shadow Effect
+    const header = document.querySelector('.header[sticky]');
+    if (header) {
+      let lastScroll = 0;
+      
+      const handleScroll = () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 20) {
+          header.classList.add('header--scrolled');
+        } else {
+          header.classList.remove('header--scrolled');
+        }
+        
+        lastScroll = currentScroll;
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // Initial check
+    }
+    
+    // Mobile Menu Overlay
+    const menuDrawer = document.querySelector('.menu-drawer-container');
+    if (menuDrawer) {
+      let overlay = document.querySelector('.menu-drawer-overlay');
+      
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'menu-drawer-overlay';
+        document.body.appendChild(overlay);
+      }
+      
+      const observer = new MutationObserver(() => {
+        if (menuDrawer.hasAttribute('open')) {
+          overlay.style.display = 'block';
+          setTimeout(() => {
+            overlay.style.opacity = '1';
+            overlay.style.visibility = 'visible';
+          }, 10);
+        } else {
+          overlay.style.opacity = '0';
+          overlay.style.visibility = 'hidden';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 300);
+        }
+      });
+      
+      observer.observe(menuDrawer, {
+        attributes: true,
+        attributeFilter: ['open']
+      });
+      
+      overlay.addEventListener('click', () => {
+        const summary = document.querySelector('.header__icon--summary');
+        if (summary && summary.getAttribute('aria-expanded') === 'true') {
+          summary.click();
+        }
+      });
+    }
+  })();
+</script>
 
 {% stylesheet %}
   body {
