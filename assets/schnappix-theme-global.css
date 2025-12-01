@@ -1,0 +1,502 @@
+/* -------------------------------------------------------
+
+   SCHNAPPIX GLOBAL VARIABLES
+
+------------------------------------------------------- */
+
+
+
+:root {
+
+  --s-orange: #F15A29;
+
+  --s-orange-glow: #FF6A3E;
+
+  --s-black: #000000;
+
+  --s-white: #FFFFFF;
+
+  --s-grey-dark: #121212;
+
+  --s-grey-mid: #1E1E1E;
+
+  --s-grey-border: #2F2F2F;
+
+  --s-yellow: #FFBD2E;
+
+  --s-mint: #3CFFDD;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   GLOBAL BACKGROUND & TEXT
+
+------------------------------------------------------- */
+
+
+
+body {
+
+  background-color: var(--s-black) !important;
+
+  color: var(--s-white) !important;
+
+}
+
+
+
+/* Override Shopify default backgrounds */
+
+.section,
+
+.shopify-section {
+
+  background-color: var(--s-black) !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   HEADINGS — Montserrat Alternates Look
+
+------------------------------------------------------- */
+
+
+
+h1, h2, h3, h4, h5, h6 {
+
+  letter-spacing: -0.5px;
+
+  font-weight: 800 !important;
+
+  color: var(--s-white) !important;
+
+}
+
+
+
+h1 {
+
+  font-size: 3.4rem !important;
+
+}
+
+h2 {
+
+  font-size: 2.5rem !important;
+
+}
+
+h3 {
+
+  font-size: 1.9rem !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   LINKS
+
+------------------------------------------------------- */
+
+
+
+a {
+
+  color: var(--s-orange) !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+a:hover {
+
+  color: var(--s-orange-glow) !important;
+
+  filter: drop-shadow(0 0 5px var(--s-orange-glow));
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   BUTTONS — SCHNAPPIX PRIMARY & SECONDARY
+
+------------------------------------------------------- */
+
+
+
+/* Primary (Orange) */
+
+button, .button, .btn, .shopify-payment-button__button {
+
+  background-color: var(--s-orange) !important;
+
+  color: var(--s-white) !important;
+
+  border-radius: 10px !important;
+
+  border: 2px solid var(--s-orange) !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: 0.5px;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+button:hover,
+
+.button:hover,
+
+.btn:hover {
+
+  background-color: var(--s-orange-glow) !important;
+
+  border-color: var(--s-orange-glow) !important;
+
+  filter: drop-shadow(0 0 8px var(--s-orange-glow));
+
+}
+
+
+
+/* Secondary (Black border, Orange text) */
+
+.button--secondary,
+
+.btn-secondary {
+
+  background: transparent !important;
+
+  border: 2px solid var(--s-orange) !important;
+
+  color: var(--s-orange) !important;
+
+}
+
+
+
+.button--secondary:hover,
+
+.btn-secondary:hover {
+
+  background: var(--s-grey-dark) !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   FORM ELEMENTS / INPUTS / SEARCH
+
+------------------------------------------------------- */
+
+
+
+input, textarea, select {
+
+  background-color: #ffffff !important;
+
+  color: #000 !important;
+
+  border: 1px solid var(--s-grey-border) !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+input:hover, textarea:hover, select:hover {
+
+  background-color: #f5f5f5 !important;
+
+}
+
+
+
+/* Search bar adjustments */
+
+.search__input {
+
+  background-color: #fff !important;
+
+  color: #000 !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   PRODUCT CARDS
+
+------------------------------------------------------- */
+
+
+
+.card, .product-card, .product-item {
+
+  background-color: var(--s-grey-mid) !important;
+
+  border: 1px solid var(--s-grey-border) !important;
+
+  color: var(--s-white) !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+.card:hover, .product-card:hover {
+
+  transform: translateY(-2px);
+
+  filter: drop-shadow(0 0 10px rgba(255,106,62,0.35));
+
+}
+
+
+
+/* Price */
+
+.price, .price__regular, .price__sale {
+
+  color: var(--s-white) !important;
+
+}
+
+
+
+/* Discount */
+
+.price__sale .price-item--sale {
+
+  color: var(--s-yellow) !important;
+
+}
+
+
+
+/* Tag Badges */
+
+.badge--new {
+
+  background-color: var(--s-orange) !important;
+
+  color: var(--s-white) !important;
+
+}
+
+.badge--sale {
+
+  background-color: var(--s-yellow) !important;
+
+  color: var(--s-black) !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   VARIANT PICKERS
+
+------------------------------------------------------- */
+
+
+
+.variant-picker__option {
+
+  border: 1px solid var(--s-grey-border) !important;
+
+  background: var(--s-black) !important;
+
+  color: var(--s-white) !important;
+
+}
+
+
+
+.variant-picker__option:hover {
+
+  border-color: var(--s-orange) !important;
+
+}
+
+
+
+.variant-picker__option--selected {
+
+  background: var(--s-orange) !important;
+
+  color: var(--s-white) !important;
+
+  border-color: var(--s-orange) !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   HEADER + NAVIGATION (universal)
+
+------------------------------------------------------- */
+
+
+
+.header,
+
+.site-header {
+
+  background-color: var(--s-black) !important;
+
+  border-bottom: 1px solid var(--s-grey-border) !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+/* Sticky + Shadow */
+
+.header--sticky {
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.7) !important;
+
+}
+
+
+
+/* Desktop Nav Links */
+
+.header__menu-item {
+
+  color: var(--s-white) !important;
+
+  font-weight: 700 !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+.header__menu-item:hover {
+
+  color: var(--s-orange) !important;
+
+  filter: drop-shadow(0 0 6px var(--s-orange-glow));
+
+}
+
+
+
+/* Mobile drawer */
+
+.drawer--right {
+
+  background: var(--s-black) !important;
+
+}
+
+
+
+.drawer__menu-item {
+
+  color: var(--s-white) !important;
+
+  font-weight: 600 !important;
+
+}
+
+
+
+.drawer__menu-item:hover {
+
+  color: var(--s-orange) !important;
+
+  filter: drop-shadow(0 0 6px var(--s-orange-glow));
+
+}
+
+
+
+/* Mobile CTA button */
+
+.schnappix-mobile-cta {
+
+  background-color: var(--s-orange) !important;
+
+  color: var(--s-white) !important;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  text-align: center;
+
+  font-weight: 700;
+
+  position: absolute;
+
+  bottom: 20px;
+
+  width: 88%;
+
+  left: 6%;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   FOOTER
+
+------------------------------------------------------- */
+
+
+
+.footer {
+
+  background-color: var(--s-grey-dark) !important;
+
+  color: var(--s-white) !important;
+
+}
+
+
+
+.footer a {
+
+  color: var(--s-orange) !important;
+
+}
+
+
+
+.footer a:hover {
+
+  color: var(--s-orange-glow) !important;
+
+}
+
