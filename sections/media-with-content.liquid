@@ -21,7 +21,7 @@
     {% render 'border-override', settings: section.settings %}
     --media-height: {{ section.settings.media_height }};
     {%- case section.settings.media_height %}
-      {% when '50svh' %}
+      {% when '100svh' %}
         --media-height-mobile: 30svh;
       {% when '60svh' %}
         --media-height-mobile: 50svh;

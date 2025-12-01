@@ -16,13 +16,14 @@
           "type": "_media-without-appearance",
           "static": true,
           "settings": {
-            "media_type": "image",
+            "media_type": "video",
             "image": "shopify://shop_images/0_1_345f9a9f-84a4-43f0-8b0b-43c1c51cd26e.png",
             "link": "",
+            "video": "shopify://files/videos/Cinematic_Neon_Logo_Animation_Generated.mp4",
             "video_loop": true,
-            "video_autoplay": false,
+            "video_autoplay": true,
             "image_position": "cover",
-            "video_position": "cover"
+            "video_position": "contain"
           },
           "blocks": {}
         },
@@ -72,12 +73,12 @@
       "settings": {
         "media_position": "right",
         "media_width": "wide",
-        "media_height": "60svh",
-        "section_width": "page-width",
+        "media_height": "100svh",
+        "section_width": "full-width",
         "extend_media": false,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
-        "padding-block-end": 48
+        "padding-block-end": 0
       }
     },
     "product_list_themegen": {
