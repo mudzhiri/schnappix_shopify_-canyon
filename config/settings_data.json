@@ -9,8 +9,6 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Schnappix_white_b6227d9c-7bee-41cc-9ca1-a853533f3904.svg",
-    "logo_inverse": "shopify://shop_images/1.svg",
     "logo_height": 50,
     "logo_height_mobile": 31,
     "type_body_font": "work_sans_n4",
