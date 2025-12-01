@@ -91,7 +91,7 @@
         "media_type_1": "video",
         "video_1": "shopify://files/videos/Cinematic_Neon_Logo_Animation_Generated.mp4",
         "media_type_2": "image",
-        "stack_media_on_mobile": false,
+        "stack_media_on_mobile": true,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
