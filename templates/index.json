@@ -106,7 +106,7 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 0,
         "section_width": "full-width",
-        "section_height": "custom",
+        "section_height": "auto",
         "section_height_custom": 40,
         "color_scheme": "scheme-5",
         "toggle_overlay": true,
