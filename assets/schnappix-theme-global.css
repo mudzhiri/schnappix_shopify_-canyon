@@ -570,6 +570,165 @@ input:hover, textarea:hover, select:hover {
 
 }
 
+/* -------------------------------------------------------
+
+   HEADER + NAVIGATION (universal)
+
+------------------------------------------------------- */
+
+
+
+.header,
+
+.site-header {
+
+  background-color: var(--s-black) !important;
+
+  border-bottom: 1px solid var(--s-grey-border) !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+/* Remove borders/outlines from header icons */
+
+.header-actions__action,
+
+.header-actions__action svg,
+
+.header-actions__action .svg-wrapper,
+
+.header-actions__cart-icon,
+
+.header-actions__cart-icon svg,
+
+button.header-actions__action,
+
+.header__icon,
+
+.header__icon svg {
+
+  border: none !important;
+
+  outline: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+
+.header-actions__action:focus-visible,
+
+.header-actions__action:focus,
+
+button.header-actions__action:focus-visible,
+
+button.header-actions__action:focus {
+
+  outline: none !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+
+/* Sticky + Shadow */
+
+.header--sticky {
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.7) !important;
+
+}
+
+
+
+/* Desktop Nav Links */
+
+.header__menu-item {
+
+  color: var(--s-white) !important;
+
+  font-weight: 700 !important;
+
+  transition: 0.25s ease;
+
+}
+
+
+
+.header__menu-item:hover {
+
+  color: var(--s-orange) !important;
+
+  filter: drop-shadow(0 0 6px var(--s-orange-glow));
+
+}
+
+
+
+/* Mobile drawer */
+
+.drawer--right {
+
+  background: var(--s-black) !important;
+
+}
+
+
+
+.drawer__menu-item {
+
+  color: var(--s-white) !important;
+
+  font-weight: 600 !important;
+
+}
+
+
+
+.drawer__menu-item:hover {
+
+  color: var(--s-orange) !important;
+
+  filter: drop-shadow(0 0 6px var(--s-orange-glow));
+
+}
+
+
+
+/* Mobile CTA button */
+
+.schnappix-mobile-cta {
+
+  background-color: var(--s-orange) !important;
+
+  color: var(--s-white) !important;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  text-align: center;
+
+  font-weight: 700;
+
+  position: absolute;
+
+  bottom: 20px;
+
+  width: 88%;
+
+  left: 6%;
+
+}
+
+
 
 
 
