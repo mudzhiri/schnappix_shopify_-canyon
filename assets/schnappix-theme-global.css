@@ -8,6 +8,8 @@
 
 :root {
 
+  /* Primary Colors */
+
   --s-orange: #F15A29;
 
   --s-orange-glow: #FF6A3E;
@@ -16,15 +18,45 @@
 
   --s-white: #FFFFFF;
 
-  --s-grey-dark: #121212;
+  
 
-  --s-grey-mid: #1E1E1E;
+  /* Secondary Colors */
 
-  --s-grey-border: #2F2F2F;
+  --s-grey-dark: #121212; /* Urban Night Grey */
 
-  --s-yellow: #FFBD2E;
+  --s-grey-mid: #1E1E1E; /* Soft Asphalt */
 
-  --s-mint: #3CFFDD;
+  --s-grey-border: #2F2F2F; /* Concrete Grey */
+
+  --s-grey-steel: #9D9D9D; /* Steel Grey - Disabled states, secondary text */
+
+  --s-yellow: #FFBD2E; /* Energy Yellow */
+
+  --s-mint: #3CFFDD; /* Mint Signal */
+
+  
+
+  /* Typography */
+
+  --font-headline: 'Montserrat Alternates', 'Helvetica Neue', Arial, sans-serif;
+
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  
+
+  /* Spacing & Layout */
+
+  --border-radius-button: 10px;
+
+  --border-radius-badge: 9999px; /* Pill shape */
+
+  
+
+  /* Shadows & Effects */
+
+  --glow-orange: 0 0 20px rgba(241, 90, 41, 0.4);
+
+  --glow-orange-hover: 0 0 30px rgba(255, 106, 62, 0.5);
 
 }
 
@@ -82,19 +114,87 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 
-  font-size: 3.4rem !important;
+  font-family: var(--font-headline) !important;
+
+  font-size: 64px !important;
+
+  line-height: 72px !important;
+
+  font-weight: 800 !important;
+
+  letter-spacing: -0.01em !important;
 
 }
 
 h2 {
 
-  font-size: 2.5rem !important;
+  font-family: var(--font-headline) !important;
+
+  font-size: 48px !important;
+
+  line-height: 56px !important;
+
+  font-weight: 700 !important;
 
 }
 
 h3 {
 
-  font-size: 1.9rem !important;
+  font-family: var(--font-headline) !important;
+
+  font-size: 32px !important;
+
+  line-height: 40px !important;
+
+  font-weight: 600 !important;
+
+}
+
+h4 {
+
+  font-family: var(--font-headline) !important;
+
+  font-size: 24px !important;
+
+  line-height: 32px !important;
+
+  font-weight: 600 !important;
+
+}
+
+
+
+/* Body Typography */
+
+body, p {
+
+  font-family: var(--font-body) !important;
+
+  font-size: 16px !important;
+
+  line-height: 24px !important;
+
+  font-weight: 400 !important;
+
+}
+
+
+
+.body-large {
+
+  font-size: 18px !important;
+
+  line-height: 28px !important;
+
+}
+
+
+
+.body-small {
+
+  font-size: 14px !important;
+
+  line-height: 20px !important;
 
 }
 
@@ -144,15 +244,19 @@ button, .button, .btn, .shopify-payment-button__button {
 
   color: var(--s-white) !important;
 
-  border-radius: 10px !important;
+  border-radius: var(--border-radius-button) !important;
 
   border: 2px solid var(--s-orange) !important;
 
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+
+  font-family: var(--font-body) !important;
 
   letter-spacing: 0.5px;
 
-  transition: 0.25s ease;
+  padding: 12px 24px !important;
+
+  transition: all 0.25s ease;
 
 }
 
@@ -168,7 +272,43 @@ button:hover,
 
   border-color: var(--s-orange-glow) !important;
 
-  filter: drop-shadow(0 0 8px var(--s-orange-glow));
+  box-shadow: var(--glow-orange-hover) !important;
+
+  transform: translateY(-1px);
+
+}
+
+
+
+button:active,
+
+.button:active,
+
+.btn:active {
+
+  background-color: #D94D1F !important;
+
+  transform: translateY(0);
+
+}
+
+
+
+button:disabled,
+
+.button:disabled,
+
+.btn:disabled {
+
+  background-color: var(--s-grey-steel) !important;
+
+  border-color: var(--s-grey-steel) !important;
+
+  color: var(--s-grey-dark) !important;
+
+  cursor: not-allowed;
+
+  opacity: 0.5;
 
 }
 
@@ -294,21 +434,99 @@ input:hover, textarea:hover, select:hover {
 
 
 
-/* Tag Badges */
+/* -------------------------------------------------------
 
-.badge--new {
+   BADGE SYSTEM
+
+------------------------------------------------------- */
+
+
+
+/* NEU Badge - New products, launches */
+
+.badge--new,
+
+.badge--neu,
+
+.badge-neu {
 
   background-color: var(--s-orange) !important;
 
   color: var(--s-white) !important;
 
+  border-radius: var(--border-radius-badge) !important;
+
+  padding: 4px 12px !important;
+
+  font-size: 12px !important;
+
+  font-weight: 600 !important;
+
+  text-transform: uppercase !important;
+
+  letter-spacing: 0.5px !important;
+
+  display: inline-block !important;
+
 }
 
-.badge--sale {
+
+
+/* TOP DEAL Badge - Special offers, discounts */
+
+.badge--sale,
+
+.badge--top-deal,
+
+.badge-top-deal {
 
   background-color: var(--s-yellow) !important;
 
   color: var(--s-black) !important;
+
+  border-radius: var(--border-radius-badge) !important;
+
+  padding: 4px 12px !important;
+
+  font-size: 12px !important;
+
+  font-weight: 600 !important;
+
+  text-transform: uppercase !important;
+
+  letter-spacing: 0.5px !important;
+
+  display: inline-block !important;
+
+}
+
+
+
+/* SNACK DROP Badge - Limited releases, exclusives */
+
+.badge--snack-drop,
+
+.badge-snack-drop {
+
+  background-color: transparent !important;
+
+  border: 2px solid var(--s-orange) !important;
+
+  color: var(--s-orange) !important;
+
+  border-radius: var(--border-radius-badge) !important;
+
+  padding: 4px 12px !important;
+
+  font-size: 12px !important;
+
+  font-weight: 600 !important;
+
+  text-transform: uppercase !important;
+
+  letter-spacing: 0.5px !important;
+
+  display: inline-block !important;
 
 }
 
@@ -629,6 +847,168 @@ button.button-unstyled:focus,
   outline: none !important;
 
   box-shadow: none !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   ICON SYSTEM SPECIFICATIONS
+
+------------------------------------------------------- */
+
+
+
+/* Icon Base Styles */
+
+.icon,
+
+.icon svg,
+
+svg.icon {
+
+  stroke-width: 2px !important;
+
+  stroke-linecap: round !important;
+
+  stroke-linejoin: round !important;
+
+  transition: all 0.25s ease !important;
+
+}
+
+
+
+/* Icon Sizes */
+
+.icon--xs,
+
+.icon-xs {
+
+  width: 16px !important;
+
+  height: 16px !important;
+
+}
+
+
+
+.icon--sm,
+
+.icon-sm {
+
+  width: 20px !important;
+
+  height: 20px !important;
+
+}
+
+
+
+.icon--md,
+
+.icon-md {
+
+  width: 24px !important;
+
+  height: 24px !important;
+
+}
+
+
+
+.icon--lg,
+
+.icon-lg {
+
+  width: 32px !important;
+
+  height: 32px !important;
+
+}
+
+
+
+.icon--xl,
+
+.icon-xl {
+
+  width: 48px !important;
+
+  height: 48px !important;
+
+}
+
+
+
+/* Icon Colors */
+
+.icon--white,
+
+.icon-white {
+
+  color: var(--s-white) !important;
+
+  stroke: var(--s-white) !important;
+
+}
+
+
+
+.icon--orange,
+
+.icon-orange {
+
+  color: var(--s-orange) !important;
+
+  stroke: var(--s-orange) !important;
+
+}
+
+
+
+.icon--yellow,
+
+.icon-yellow {
+
+  color: var(--s-yellow) !important;
+
+  stroke: var(--s-yellow) !important;
+
+}
+
+
+
+/* Icon Hover States */
+
+.icon:hover,
+
+.icon--orange:hover {
+
+  color: var(--s-orange-glow) !important;
+
+  stroke: var(--s-orange-glow) !important;
+
+  opacity: 0.8;
+
+}
+
+
+
+/* Disabled State */
+
+.icon--disabled,
+
+.icon:disabled {
+
+  color: var(--s-grey-steel) !important;
+
+  stroke: var(--s-grey-steel) !important;
+
+  opacity: 0.5;
+
+  cursor: not-allowed;
 
 }
 
