@@ -376,6 +376,52 @@ input:hover, textarea:hover, select:hover {
 
 
 
+/* Remove borders/outlines from header icons */
+
+.header-actions__action,
+
+.header-actions__action svg,
+
+.header-actions__action .svg-wrapper,
+
+.header-actions__cart-icon,
+
+.header-actions__cart-icon svg,
+
+button.header-actions__action,
+
+.header__icon,
+
+.header__icon svg {
+
+  border: none !important;
+
+  outline: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+
+.header-actions__action:focus-visible,
+
+.header-actions__action:focus,
+
+button.header-actions__action:focus-visible,
+
+button.header-actions__action:focus {
+
+  outline: none !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+
 /* Sticky + Shadow */
 
 .header--sticky {
@@ -497,6 +543,92 @@ input:hover, textarea:hover, select:hover {
 .footer a:hover {
 
   color: var(--s-orange-glow) !important;
+
+}
+
+
+
+/* -------------------------------------------------------
+
+   ICONS — Remove borders/outlines globally
+
+------------------------------------------------------- */
+
+
+
+/* Remove borders and outlines from all icons */
+
+.icon,
+
+.icon svg,
+
+svg.icon,
+
+.button-unstyled,
+
+.button-unstyled svg,
+
+button.button-unstyled,
+
+.header-actions button,
+
+.header-actions a,
+
+.header-actions .button-unstyled {
+
+  border: none !important;
+
+  outline: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+
+/* Remove focus outlines from icons */
+
+.icon:focus-visible,
+
+.icon:focus,
+
+.button-unstyled:focus-visible,
+
+.button-unstyled:focus,
+
+button.button-unstyled:focus-visible,
+
+button.button-unstyled:focus,
+
+.header-actions button:focus-visible,
+
+.header-actions button:focus,
+
+.header-actions a:focus-visible,
+
+.header-actions a:focus {
+
+  outline: none !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+
+/* Remove borders from icon wrappers */
+
+.svg-wrapper,
+
+.icon-wrapper {
+
+  border: none !important;
+
+  outline: none !important;
+
+  box-shadow: none !important;
 
 }
 
