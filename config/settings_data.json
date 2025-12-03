@@ -113,8 +113,6 @@
     }
   },
   "platform_customizations": {
-    "custom_css": [
-      "body {background-color: #000000 !important;}"
-    ]
+    "custom_css": []
   }
 }

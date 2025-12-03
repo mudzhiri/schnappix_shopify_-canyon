@@ -222,6 +222,7 @@
       ],
       "name": "SCHNAPPIX Parallax Products",
       "settings": {
+        "bg": "shopify://shop_images/black-background.png",
         "headline": "<h2>Trending Snacks & Drinks</h2>",
         "section_width": "full-width",
         "min_card_width": 250,
