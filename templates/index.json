@@ -173,18 +173,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<div class=\"counter-box\">\n  <div class=\"number\" data-target=\"247\">10</div>\n  <p>Standorte in Planung</p>\n</div>\n\n<style>\n.counter-box {\n  text-align:center;\n  color:white;\n}\n.counter-box .number {\n  font-size:60px;\n  font-weight:900;\n  background: linear-gradient(90deg,#F15A29,#FF6A3E);\n  -webkit-background-clip: text;\n  color: transparent;\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const nums = document.querySelectorAll('.number');\n  nums.forEach(num => {\n    const target = +num.dataset.target;\n    let val = 0;\n    const inc = target / 120; \n    function update(){\n      val += inc;\n      if(val < target){\n        num.textContent = Math.floor(val);\n        requestAnimationFrame(update);\n      } else {\n        num.textContent = target;\n      }\n    }\n    update();\n  });\n});\n</script>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_N3EJHH": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div id=\"schnappix-loader\">\n  <div class=\"loader-content\">\n    <img src=\"{{ 'schnappix_white.svg' | asset_url }}\" class=\"loader-logo\" alt=\"SCHNAPPIX Logo\">\n    <div class=\"loader-glow\"></div>\n  </div>\n</div>\n\n<style>\n#schnappix-loader {\n  position: fixed;\n  inset: 0;\n  background: #000000;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 999999;\n  opacity: 1;\n  transition: opacity 0.8s ease-out;\n}\n\n#schnappix-loader.hidden {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.loader-content {\n  text-align: center;\n  position: relative;\n}\n\n.loader-logo {\n  width: 160px;\n  height: auto;\n  animation: logoFade 2s ease-in-out infinite;\n  z-index: 10;\n  position: relative;\n}\n\n@keyframes logoFade {\n  0% { opacity: .7; filter: drop-shadow(0 0 8px #f15a2980); }\n  50% { opacity: 1; filter: drop-shadow(0 0 20px #FF6A3E); }\n 100% { opacity: .7; filter: drop-shadow(0 0 8px #f15a2980); }\n}\n\n.loader-glow {\n  position: absolute;\n  width: 220px;\n  height: 220px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background: radial-gradient(circle, rgba(241,90,41,0.45) 0%, rgba(0,0,0,0) 70%);\n  animation: glowPulse 2s infinite ease-in-out;\n  z-index: 1;\n}\n\n@keyframes glowPulse {\n  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.5; }\n  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }\n 100% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.5; }\n}\n\n@media(max-width: 768px){\n  .loader-logo { width: 120px; }\n  .loader-glow { width: 180px; height: 180px; }\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // Show loader only on first visit\n  if (!sessionStorage.getItem(\"schnappixLoaderShown\")) {\n    sessionStorage.setItem(\"schnappixLoaderShown\", \"true\");\n\n    setTimeout(() => {\n      const loader = document.getElementById(\"schnappix-loader\");\n      loader.classList.add(\"hidden\");\n      setTimeout(() => loader.remove(), 900);\n    }, 2000); // Duration loader shows\n  } else {\n    document.getElementById(\"schnappix-loader\").remove();\n  }\n});\n</script>",
+        "custom_liquid": "<div class=\"counter-box\">\n  <div class=\"number\" data-target=\"10\">0</div>\n  <p>Standorte in Planung</p>\n</div>\n\n<style>\n.counter-box {\n  text-align:center;\n  color:white;\n}\n.counter-box .number {\n  font-size:60px;\n  font-weight:900;\n  background: linear-gradient(90deg,#F15A29,#FF6A3E);\n  -webkit-background-clip: text;\n  color: transparent;\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const nums = document.querySelectorAll('.number');\n  nums.forEach(num => {\n    const target = +num.dataset.target;\n    let val = 0;\n    const inc = target / 120; \n    function update(){\n      val += inc;\n      if(val < target){\n        num.textContent = Math.floor(val);\n        requestAnimationFrame(update);\n      } else {\n        num.textContent = target;\n      }\n    }\n    update();\n  });\n});\n</script>",
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -442,7 +431,6 @@
     "custom_liquid_HKqjax",
     "custom_liquid_WDxzND",
     "custom_liquid_nDrCbj",
-    "custom_liquid_N3EJHH",
     "schnappix_floating_parallax_cards_hkjUFr",
     "schnappix_parallax_hero_HTfanA",
     "divider_MHDDca",
