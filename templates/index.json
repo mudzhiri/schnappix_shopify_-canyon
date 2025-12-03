@@ -12,6 +12,15 @@
     "hero_XWzqaj": {
       "type": "hero",
       "blocks": {
+        "custom_liquid_gcx6Uq": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>"
+          },
+          "blocks": {}
+        },
         "variant_picker_TAPAU4": {
           "type": "variant-picker",
           "name": "t:names.product_variant_picker",
@@ -28,6 +37,7 @@
         }
       },
       "block_order": [
+        "custom_liquid_gcx6Uq",
         "variant_picker_TAPAU4"
       ],
       "name": "t:names.hero",
@@ -112,7 +122,18 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "This code has errors. Correct the syntax to save your custom Liquid.",
+        "custom_liquid": "",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_97UWtw": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>",
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -364,6 +385,7 @@
     "custom_liquid_6NFUmW",
     "custom_liquid_6bfaK3",
     "custom_liquid_qgB8gL",
+    "custom_liquid_97UWtw",
     "schnappix_floating_parallax_cards_hkjUFr",
     "schnappix_parallax_hero_HTfanA",
     "divider_MHDDca",
