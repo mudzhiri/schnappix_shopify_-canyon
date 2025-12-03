@@ -180,6 +180,17 @@
         "padding-block-end": 0
       }
     },
+    "custom_liquid_47f7mr": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"sx-loader\">\n  <div class=\"sx-loader-inner\">\n    \n    <!-- Background FX -->\n    <div class=\"sx-bg-fog\"></div>\n    <div class=\"sx-bg-noise\"></div>\n    <div class=\"sx-bg-glow\"></div>\n\n    <!-- Main Logo -->\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0727/8926/2532/files/schnappix_black.svg?v=1764583437\"\n      alt=\"SCHNAPPIX Logo\"\n      class=\"sx-logo\"\n    >\n  </div>\n</div>\n\n<style>\n/* ------- WRAPPER ------- */\n#sx-loader {\n  position: fixed;\n  inset: 0;\n  background: #000;\n  z-index: 99999999;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  opacity: 1;\n  transition: opacity .9s ease-out;\n}\n\n#sx-loader.hidden {\n  opacity: 0;\n  pointer-events: none;\n}\n\n/* ------- CONTENT ------- */\n.sx-loader-inner {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n\n/* ------- BACKGROUND FOG ------- */\n.sx-bg-fog {\n  position: absolute;\n  inset: 0;\n  background: radial-gradient(circle at center,\n    rgba(241, 90, 41, 0.35) 0%, \n    rgba(0, 0, 0, 0.9) 70%\n  );\n  filter: blur(60px);\n  animation: fogMove 6s ease-in-out infinite alternate;\n}\n\n@keyframes fogMove {\n  0% { transform: scale(1); opacity: 0.4; }\n  100% { transform: scale(1.2); opacity: 0.7; }\n}\n\n/* ------- FILM NOISE ------- */\n.sx-bg-noise {\n  pointer-events: none;\n  position: absolute;\n  inset: 0;\n  background-image: url(\"https://i.imgur.com/8aJjYpF.png\");\n  opacity: 0.08;\n  animation: noise 0.3s steps(2) infinite;\n}\n\n@keyframes noise {\n  0% { transform: translate(0,0); }\n  25% { transform: translate(-1px, 1px); }\n  50% { transform: translate(1px,-1px); }\n  75% { transform: translate(-1px,-1px); }\n  100% { transform: translate(0,0); }\n}\n\n/* ------- CENTER LOGO ------- */\n.sx-logo {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 260px;\n  transform: translate(-50%, -50%);\n  opacity: 0;\n  animation: sxFadeIn 1.8s cubic-bezier(.4, 0, .2, 1) forwards,\n             sxPulse 3.5s infinite ease-in-out;\n  filter: drop-shadow(0 0 20px #f15a29);\n}\n\n@keyframes sxFadeIn {\n  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }\n  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }\n}\n\n@keyframes sxPulse {\n  0% { filter: drop-shadow(0 0 10px #f15a2988); }\n  50% { filter: drop-shadow(0 0 35px #ff6a3e); }\n  100% { filter: drop-shadow(0 0 10px #f15a2988); }\n}\n\n/* ------- RESPONSIVE ------- */\n@media (max-width: 768px) {\n  .sx-logo { width: 170px; }\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const loader = document.getElementById(\"sx-loader\");\n\n  if (!sessionStorage.getItem(\"sxLoaderShown\")) {\n    sessionStorage.setItem(\"sxLoaderShown\", \"true\");\n\n    setTimeout(() => {\n      loader.classList.add(\"hidden\");\n      setTimeout(() => loader.remove(), 900);\n    }, 2100);\n\n  } else {\n    loader.remove();\n  }\n});\n</script>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "schnappix_floating_parallax_cards_hkjUFr": {
       "type": "schnappix-floating-parallax-cards",
       "blocks": {
@@ -431,6 +442,7 @@
     "custom_liquid_HKqjax",
     "custom_liquid_WDxzND",
     "custom_liquid_nDrCbj",
+    "custom_liquid_47f7mr",
     "schnappix_floating_parallax_cards_hkjUFr",
     "schnappix_parallax_hero_HTfanA",
     "divider_MHDDca",
