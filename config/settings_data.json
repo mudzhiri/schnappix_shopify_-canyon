@@ -378,6 +378,47 @@
           "selected_variant_hover_text_color": "#ffffff",
           "selected_variant_hover_border_color": "#ff6a3e"
         }
+      },
+      "scheme-0fc3d105-6c4d-451b-902c-5be12d63b3bc": {
+        "settings": {
+          "background": "#000000",
+          "foreground_heading": "#000000",
+          "foreground": "#170b02",
+          "primary": "#5d2b09",
+          "primary_hover": "#170b02",
+          "border": "#f7f1ed",
+          "shadow": "#000000",
+          "primary_button_background": "#5d2b09",
+          "primary_button_text": "#f7f1ed",
+          "primary_button_border": "#5d2b09",
+          "primary_button_hover_background": "#98591b",
+          "primary_button_hover_text": "#f7f1ed",
+          "primary_button_hover_border": "#98591b",
+          "secondary_button_background": "rgba(0,0,0,0)",
+          "secondary_button_text": "#170b02",
+          "secondary_button_border": "#170b02",
+          "secondary_button_hover_background": "#ffffff",
+          "secondary_button_hover_text": "#170b02",
+          "secondary_button_hover_border": "#ffffff",
+          "input_background": "#ffffff",
+          "input_text_color": "#000000",
+          "input_border_color": "#5d2b09",
+          "input_hover_background": "#f5f5f5",
+          "variant_background_color": "#ffffff",
+          "variant_text_color": "#000000",
+          "variant_border_color": "#e6e6e6",
+          "variant_hover_background_color": "#f5f5f5",
+          "variant_hover_text_color": "#000000",
+          "variant_hover_border_color": "#e6e6e6",
+          "selected_variant_background_color": "#000000",
+          "selected_variant_text_color": "#ffffff",
+          "selected_variant_border_color": "#000000",
+          "selected_variant_hover_background_color": "#1a1a1a",
+          "selected_variant_hover_text_color": "#ffffff",
+          "selected_variant_hover_border_color": "#1a1a1a"
+        }
+      },
+        }
       }
     }
   },
@@ -737,5 +778,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "body {background-color: #000000 !important;}"
+    ]
   }
 }
