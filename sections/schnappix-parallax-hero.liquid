@@ -1,0 +1,186 @@
+{%- comment -%}
+  SCHNAPPIX Parallax Hero Section
+  A customizable hero section with parallax background effect
+{%- endcomment -%}
+
+<section
+  id="SchnappixParallaxHero-{{ section.id }}"
+  class="sx-hero"
+  style="background-image: url({{ section.settings.hero_bg | image_url: width: 1920 }});"
+  data-section-id="{{ section.id }}"
+>
+  <div class="sx-hero__content">
+    {%- if section.settings.headline != blank -%}
+      <h1 class="sx-hero__headline">{{ section.settings.headline }}</h1>
+    {%- endif -%}
+    
+    {%- if section.settings.subline != blank -%}
+      <p class="sx-hero__subline">{{ section.settings.subline }}</p>
+    {%- endif -%}
+    
+    {%- if section.settings.cta_link != blank and section.settings.cta_label != blank -%}
+      <a
+        href="{{ section.settings.cta_link }}"
+        class="sx-hero__btn sx-btn"
+        {% if section.settings.cta_link contains 'http' %}
+          target="_blank"
+          rel="noopener noreferrer"
+        {% endif %}
+      >
+        {{ section.settings.cta_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .sx-hero {
+    height: 92vh;
+    min-height: 600px;
+    width: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-hero {
+      height: 80vh;
+      min-height: 500px;
+      background-attachment: scroll;
+      padding: 20px 16px;
+    }
+  }
+
+  .sx-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .sx-hero__headline {
+    font-family: 'Montserrat Alternates', var(--font-primary--family), sans-serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(241, 90, 41, 0.6);
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-hero__headline {
+      font-size: clamp(24px, 8vw, 48px);
+    }
+  }
+
+  .sx-hero__subline {
+    font-family: 'Inter', var(--font-primary--family), sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #fff;
+    margin: 10px 0 0;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-hero__subline {
+      font-size: clamp(14px, 4vw, 18px);
+    }
+  }
+
+  .sx-hero__btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 30px;
+    border-radius: 12px;
+    background-color: #F15A29;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #F15A29;
+    font-size: clamp(14px, 2vw, 16px);
+  }
+
+  .sx-hero__btn:hover,
+  .sx-hero__btn:focus {
+    background-color: #FF6A3E;
+    border-color: #FF6A3E;
+    box-shadow: 0 0 20px rgba(255, 106, 62, 0.4);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .sx-hero__btn:active {
+    transform: translateY(0);
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-hero__btn {
+      padding: 12px 24px;
+      margin-top: 20px;
+    }
+  }
+
+  /* Parallax effect optimization for performance */
+  @media (prefers-reduced-motion: reduce) {
+    .sx-hero {
+      background-attachment: scroll;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SCHNAPPIX Parallax Hero",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_bg",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x1080px or larger"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "ENERGY. NIGHT. SNACKS."
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subheadline",
+      "default": "Urban Snacks & Trend Produkte"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Label",
+      "default": "Jetzt shoppen"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SCHNAPPIX Parallax Hero",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
