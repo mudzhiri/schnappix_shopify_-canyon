@@ -109,22 +109,10 @@
         "enable_transparent_header_collection": true,
         "collection_color_scheme": "default"
       }
-    },
-    "custom_liquid_HBJrr4": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<a href=\"/collections/all\" class=\"cta-float\">Shop Now</a>\n\n<style>\n.cta-float {\n  display:inline-block;\n  padding:14px 28px;\n  background:#F15A29;\n  color:#fff;\n  border-radius:12px;\n  font-weight:700;\n  text-decoration:none;\n  transition:0.3s;\n}\n.cta-float:hover {\n  background:#FF6A3E;\n  box-shadow:0 0 14px #FF6A3E;\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
     }
   },
   "order": [
     "header_announcements_tDwcq9",
-    "header_section",
-    "custom_liquid_HBJrr4"
+    "header_section"
   ]
 }
