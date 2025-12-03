@@ -1,0 +1,423 @@
+{%- comment -%}
+  SCHNAPPIX Parallax Video Hero Section
+  A full-screen video hero with parallax animation effect
+  Optimized for performance, accessibility, and responsive design
+{%- endcomment -%}
+
+{%- liquid
+  assign section_id = 'SchnappixParallaxVideoHero-' | append: section.id
+  assign video_url = section.settings.video_url
+  assign has_video = false
+  assign poster_image = section.settings.poster_image
+  
+  if video_url != blank
+    assign has_video = true
+  endif
+  
+  assign headline = section.settings.headline | default: 'FEEL THE ENERGY'
+  assign subline = section.settings.subline | default: 'Urban Snacks • Trend Drinks • Neon Nights'
+-%}
+
+<section
+  id="{{ section_id }}"
+  class="sx-video-hero color-{{ section.settings.color_scheme }}"
+  data-section-id="{{ section.id }}"
+  {% if request.visual_preview_mode %}
+    data-shopify-visual-preview
+  {% endif %}
+>
+  {%- if has_video -%}
+    <div class="sx-video-hero__video-wrapper">
+      <video
+        class="sx-video-hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        {% if poster_image != blank %}
+          poster="{{ poster_image | image_url: width: 1920 }}"
+        {% endif %}
+        aria-label="{{ section.settings.video_aria_label | default: 'Background video' }}"
+      >
+        <source src="{{ video_url }}" type="video/mp4">
+        {%- comment -%} Fallback message for browsers that don't support video {%- endcomment -%}
+        <p>{{ section.settings.video_fallback_text | default: 'Your browser does not support the video tag.' }}</p>
+      </video>
+      {%- if section.settings.show_video_overlay -%}
+        <div class="sx-video-hero__overlay"></div>
+      {%- endif -%}
+    </div>
+  {%- elsif poster_image != blank -%}
+    <div class="sx-video-hero__image-wrapper">
+      {{
+        poster_image
+        | image_url: width: 1920
+        | image_tag:
+          loading: 'eager',
+          width: poster_image.width,
+          height: poster_image.height,
+          alt: poster_image.alt | default: headline | escape,
+          class: 'sx-video-hero__fallback-image',
+          sizes: '100vw'
+      }}
+      {%- if section.settings.show_video_overlay -%}
+        <div class="sx-video-hero__overlay"></div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="sx-video-hero__content">
+    {%- if headline != blank -%}
+      <h1 class="sx-video-hero__headline">{{ headline }}</h1>
+    {%- endif -%}
+    
+    {%- if subline != blank -%}
+      <p class="sx-video-hero__subline">{{ subline }}</p>
+    {%- endif -%}
+    
+    {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+      <a
+        href="{{ section.settings.cta_link }}"
+        class="sx-video-hero__cta"
+        {% if section.settings.cta_link contains 'http' %}
+          target="_blank"
+          rel="noopener noreferrer"
+        {% endif %}
+      >
+        {{ section.settings.cta_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .sx-video-hero {
+    position: relative;
+    height: 92vh;
+    min-height: 600px;
+    max-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-video-hero {
+      height: 85vh;
+      min-height: 500px;
+    }
+  }
+
+  .sx-video-hero__video-wrapper,
+  .sx-video-hero__image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .sx-video-hero__video {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.55) contrast(1.2);
+    transform: translateY(-8%);
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-video-hero__video {
+      animation: none;
+      transform: translateY(-8%);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sx-video-hero__video {
+      animation: sx-video-parallax 16s ease-in-out infinite alternate;
+    }
+  }
+
+  @keyframes sx-video-parallax {
+    0% {
+      transform: translateY(-8%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  .sx-video-hero__fallback-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .sx-video-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .sx-video-hero__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .sx-video-hero__headline {
+    font-family: 'Montserrat Alternates', var(--font-primary--family), sans-serif;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 
+      0 0 15px rgba(255, 106, 62, 0.7),
+      0 0 30px rgba(255, 106, 62, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.02em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-video-hero__headline {
+      font-size: clamp(24px, 8vw, 48px);
+    }
+  }
+
+  .sx-video-hero__subline {
+    margin-top: clamp(10px, 2vw, 14px);
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-family: 'Inter', var(--font-primary--family), sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    text-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.5),
+      0 0 10px rgba(255, 106, 62, 0.3);
+    opacity: 0.95;
+  }
+
+  .sx-video-hero__cta {
+    display: inline-block;
+    margin-top: clamp(20px, 3vw, 28px);
+    padding: clamp(12px, 2vw, 14px) clamp(24px, 4vw, 30px);
+    background: #F15A29;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: clamp(14px, 2vw, 16px);
+    border-radius: 12px;
+    border: 2px solid #F15A29;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: none;
+  }
+
+  .sx-video-hero__cta:hover,
+  .sx-video-hero__cta:focus {
+    background: #FF6A3E;
+    border-color: #FF6A3E;
+    box-shadow: 0 0 20px rgba(255, 106, 62, 0.4);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .sx-video-hero__cta:active {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-video-hero__cta {
+      transition: none;
+    }
+    
+    .sx-video-hero__cta:hover,
+    .sx-video-hero__cta:focus {
+      transform: none;
+    }
+  }
+
+  /* Pause video on hover (optional) */
+  .sx-video-hero:hover .sx-video-hero__video {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-video-hero:hover .sx-video-hero__video {
+      animation-play-state: running;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .sx-video-hero__headline,
+    .sx-video-hero__subline {
+      text-shadow: none;
+      color: #fff;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .sx-video-hero__video-wrapper {
+      display: none;
+    }
+    
+    .sx-video-hero {
+      background: #000;
+      color: #fff;
+    }
+  }
+
+  /* Loading state */
+  .sx-video-hero__video[loading] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .sx-video-hero__video[loaded] {
+    opacity: 1;
+  }
+
+  /* Focus visible for better accessibility */
+  .sx-video-hero__cta:focus-visible {
+    outline: 2px solid #FF6A3E;
+    outline-offset: 2px;
+  }
+
+  /* Ensure video doesn't cause layout shift */
+  .sx-video-hero__video-wrapper::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    visibility: hidden;
+  }
+
+  /* Mobile optimizations */
+  @media screen and (max-width: 749px) {
+    .sx-video-hero__video {
+      height: 110%;
+      filter: brightness(0.5) contrast(1.15);
+    }
+  }
+
+  /* Performance: GPU acceleration */
+  .sx-video-hero__video {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SCHNAPPIX Parallax Video Hero",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video File URL (MP4)",
+      "info": "Upload video to Files and paste the URL here. Recommended: MP4 format, max 10MB for best performance."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Poster Image",
+      "info": "Fallback image shown while video loads or if video fails. Recommended: 1920x1080px"
+    },
+    {
+      "type": "text",
+      "id": "video_aria_label",
+      "label": "Video Accessibility Label",
+      "default": "Background video",
+      "info": "Descriptive text for screen readers"
+    },
+    {
+      "type": "text",
+      "id": "video_fallback_text",
+      "label": "Video Fallback Text",
+      "default": "Your browser does not support the video tag.",
+      "info": "Text shown if video cannot be played"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_video_overlay",
+      "label": "Show Video Overlay",
+      "default": true,
+      "info": "Adds a subtle gradient overlay for better text readability"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "FEEL THE ENERGY"
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subline",
+      "default": "Urban Snacks • Trend Drinks • Neon Nights"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Label",
+      "info": "Optional call-to-action button"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link",
+      "info": "Required if CTA Label is set"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SCHNAPPIX Parallax Video Hero",
+      "category": "Custom"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
+
