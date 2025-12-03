@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "schnappix_parallax_hero_HTfanA": {
+      "type": "schnappix-parallax-hero",
+      "name": "SCHNAPPIX Parallax Hero",
+      "settings": {
+        "hero_bg": "shopify://shop_images/black-background.png",
+        "headline": "ENERGY. NIGHT. SNACKS.",
+        "subline": "",
+        "cta_label": "Jetzt shoppen",
+        "cta_link": ""
+      }
+    },
     "hero_XWzqaj": {
       "type": "hero",
       "blocks": {
@@ -763,6 +774,7 @@
     }
   },
   "order": [
+    "schnappix_parallax_hero_HTfanA",
     "hero_XWzqaj",
     "section_pdNTXq",
     "section_eH8N7z"
