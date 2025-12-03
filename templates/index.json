@@ -771,12 +771,178 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "schnappix_floating_parallax_cards_hkjUFr": {
+      "type": "schnappix-floating-parallax-cards",
+      "blocks": {
+        "card_9YYx6p": {
+          "type": "card",
+          "settings": {
+            "img": "shopify://shop_images/coca-cola.png",
+            "title": "Card 1",
+            "text": "Description for card 1"
+          }
+        },
+        "card_j4XmHU": {
+          "type": "card",
+          "settings": {
+            "title": "Card 2",
+            "text": "Description for card 2"
+          }
+        },
+        "card_JDRyYL": {
+          "type": "card",
+          "settings": {
+            "title": "Card 3",
+            "text": "Description for card 3"
+          }
+        }
+      },
+      "block_order": [
+        "card_9YYx6p",
+        "card_j4XmHU",
+        "card_JDRyYL"
+      ],
+      "name": "SCHNAPPIX Floating Parallax Cards",
+      "settings": {
+        "headline": "<h2>Discover the Future of Urban Snacking</h2>",
+        "section_width": "full-width",
+        "min_card_width": 280,
+        "grid_gap": 40,
+        "empty_message": "Add cards in section settings",
+        "color_scheme": ""
+      }
+    },
+    "schnappix_parallax_products_r48bW8": {
+      "type": "schnappix-parallax-products",
+      "blocks": {
+        "product_jqXyyM": {
+          "type": "product",
+          "settings": {
+            "product": "coca-cola"
+          }
+        },
+        "product_4wYT84": {
+          "type": "product",
+          "settings": {
+            "product": "other-example-product-1"
+          }
+        },
+        "product_VULnY3": {
+          "type": "product",
+          "settings": {
+            "product": "test-produkt-3"
+          }
+        },
+        "product_MA6PzY": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_jqXyyM",
+        "product_4wYT84",
+        "product_VULnY3",
+        "product_MA6PzY"
+      ],
+      "name": "SCHNAPPIX Parallax Products",
+      "settings": {
+        "bg": "shopify://shop_images/black-background.png",
+        "headline": "<h2>Trending Snacks & Drinks</h2>",
+        "section_width": "full-width",
+        "min_card_width": 250,
+        "grid_gap": 24,
+        "columns_desktop": "auto-fit",
+        "show_vendor": false,
+        "show_price": true,
+        "show_quick_add": false,
+        "empty_message": "No products available",
+        "color_scheme": "scheme-6"
+      }
+    },
+    "schnappix_parallax_split_QYNdgM": {
+      "type": "schnappix-parallax-split",
+      "name": "SCHNAPPIX Parallax Split",
+      "settings": {
+        "title": "Urban Snacks. Neon Energy.",
+        "text": "Erlebe die neue Generation von Trend-Produkten.",
+        "cta_label": "Mehr erfahren",
+        "cta_link": "",
+        "image": "shopify://shop_images/black-background.png",
+        "image_position": "right",
+        "section_width": "full-width",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "schnappix_parallax_usp_RPd6dk": {
+      "type": "schnappix-parallax-usp",
+      "blocks": {
+        "usp_Pxtree": {
+          "type": "usp",
+          "settings": {
+            "title": "Premium Quality",
+            "desc": "Only the finest ingredients and products."
+          }
+        },
+        "usp_dh6jXT": {
+          "type": "usp",
+          "settings": {
+            "title": "Fast Delivery",
+            "desc": "Quick shipping to your door."
+          }
+        },
+        "usp_DY47zz": {
+          "type": "usp",
+          "settings": {
+            "title": "24/7 Support",
+            "desc": "We're here whenever you need us."
+          }
+        }
+      },
+      "block_order": [
+        "usp_Pxtree",
+        "usp_dh6jXT",
+        "usp_DY47zz"
+      ],
+      "name": "SCHNAPPIX Parallax USP Section",
+      "settings": {
+        "show_overlay": true,
+        "headline": "WHY SCHNAPPIX?",
+        "section_width": "full-width",
+        "min_card_width": 260,
+        "grid_gap": 40,
+        "empty_message": "Add USP items in section settings",
+        "color_scheme": ""
+      }
+    },
+    "schnappix_parallax_video_hero_ywi8ca": {
+      "type": "schnappix-parallax-video-hero",
+      "name": "SCHNAPPIX Parallax Video Hero",
+      "settings": {
+        "video_url": "",
+        "poster_image": "shopify://shop_images/black-background.png",
+        "video_aria_label": "Background video",
+        "video_fallback_text": "Your browser does not support the video tag.",
+        "show_video_overlay": true,
+        "headline": "FEEL THE ENERGY",
+        "subline": "Urban Snacks • Trend Drinks • Neon Nights",
+        "cta_label": "test",
+        "cta_link": "shopify://collections/energy",
+        "color_scheme": "scheme-6"
+      }
     }
   },
   "order": [
     "schnappix_parallax_hero_HTfanA",
     "hero_XWzqaj",
     "section_pdNTXq",
-    "section_eH8N7z"
+    "section_eH8N7z",
+    "schnappix_floating_parallax_cards_hkjUFr",
+    "schnappix_parallax_products_r48bW8",
+    "schnappix_parallax_split_QYNdgM",
+    "schnappix_parallax_usp_RPd6dk",
+    "schnappix_parallax_video_hero_ywi8ca"
   ]
 }
