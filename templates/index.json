@@ -171,7 +171,7 @@
         "cta_label": "Mehr erfahren",
         "cta_link": "",
         "image_position": "right",
-        "section_width": "full-width",
+        "section_width": "page-width",
         "color_scheme": "scheme-2"
       }
     },
