@@ -9,94 +9,8 @@
  */
 {
   "sections": {
-    "schnappix_parallax_hero_HTfanA": {
-      "type": "schnappix-parallax-hero",
-      "custom_css": [
-        "body {background-color: #000000 !important;}"
-      ],
-      "name": "SCHNAPPIX Parallax Hero",
-      "settings": {
-        "headline": "ENERGY. NIGHT. SNACKS.",
-        "subline": "",
-        "cta_label": "Jetzt shoppen",
-        "cta_link": ""
-      }
-    },
     "hero_XWzqaj": {
       "type": "hero",
-      "blocks": {
-        "text_eynUrJ": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>New arrivals</h1>",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "balance",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_Ajp99g": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers.</p>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 32,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button_heKib6": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop now",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_eynUrJ",
-        "text_Ajp99g",
-        "button_heKib6"
-      ],
-      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "video",
@@ -129,20 +43,6 @@
         "reflection_opacity": 75,
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "divider_MHDDca": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-2",
-        "section_width": "full-width",
-        "thickness": 5,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 53,
-        "padding-block-end": 16
       }
     },
     "schnappix_floating_parallax_cards_hkjUFr": {
@@ -186,6 +86,34 @@
         "color_scheme": "scheme-2"
       }
     },
+    "schnappix_parallax_hero_HTfanA": {
+      "type": "schnappix-parallax-hero",
+      "custom_css": [
+        "body {background-color: #000000 !important;}"
+      ],
+      "name": "SCHNAPPIX Parallax Hero",
+      "settings": {
+        "hero_bg": "shopify://shop_images/city-lights-through-rain-window.jpg",
+        "headline": "ENERGY. NIGHT. SNACKS.",
+        "subline": "",
+        "cta_label": "Jetzt shoppen",
+        "cta_link": ""
+      }
+    },
+    "divider_MHDDca": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "thickness": 5,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 53,
+        "padding-block-end": 16
+      }
+    },
     "schnappix_parallax_products_r48bW8": {
       "type": "schnappix-parallax-products",
       "blocks": {
@@ -222,7 +150,6 @@
       ],
       "name": "SCHNAPPIX Parallax Products",
       "settings": {
-        "bg": "shopify://shop_images/black-background.png",
         "headline": "<h2>Trending Snacks & Drinks</h2>",
         "section_width": "full-width",
         "min_card_width": 250,
@@ -246,6 +173,56 @@
         "image_position": "right",
         "section_width": "full-width",
         "color_scheme": "scheme-2"
+      }
+    },
+    "schnappix_parallax_category_grid_xhjgJh": {
+      "type": "schnappix-parallax-category-grid",
+      "blocks": {
+        "category_YiBEJa": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/coca-cola.png",
+            "title": "Category 1",
+            "link": "shopify://collections/asia-us-trends-1"
+          }
+        },
+        "category_97TXHE": {
+          "type": "category",
+          "settings": {
+            "title": "Category 2",
+            "link": ""
+          }
+        },
+        "category_HyRJaY": {
+          "type": "category",
+          "settings": {
+            "title": "Category 3",
+            "link": ""
+          }
+        },
+        "category_ndQ9Wy": {
+          "type": "category",
+          "settings": {
+            "title": "Category 4",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_YiBEJa",
+        "category_97TXHE",
+        "category_HyRJaY",
+        "category_ndQ9Wy"
+      ],
+      "name": "Parallax Category Grid",
+      "settings": {
+        "show_overlay": true,
+        "headline": "DISCOVER SCHNAPPIX CATEGORIES",
+        "section_width": "page-width",
+        "min_card_width": 160,
+        "grid_gap": 28,
+        "empty_message": "Add categories in section settings",
+        "color_scheme": ""
       }
     },
     "schnappix_parallax_usp_RPd6dk": {
@@ -294,7 +271,6 @@
       "name": "SCHNAPPIX Parallax Video Hero",
       "settings": {
         "video_url": "",
-        "poster_image": "shopify://shop_images/black-background.png",
         "video_aria_label": "Background video",
         "video_fallback_text": "Your browser does not support the video tag.",
         "show_video_overlay": true,
@@ -307,12 +283,13 @@
     }
   },
   "order": [
-    "schnappix_parallax_hero_HTfanA",
     "hero_XWzqaj",
-    "divider_MHDDca",
     "schnappix_floating_parallax_cards_hkjUFr",
+    "schnappix_parallax_hero_HTfanA",
+    "divider_MHDDca",
     "schnappix_parallax_products_r48bW8",
     "schnappix_parallax_split_QYNdgM",
+    "schnappix_parallax_category_grid_xhjgJh",
     "schnappix_parallax_usp_RPd6dk",
     "schnappix_parallax_video_hero_ywi8ca"
   ]
