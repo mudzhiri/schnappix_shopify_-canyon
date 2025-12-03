@@ -11,6 +11,25 @@
   "sections": {
     "hero_XWzqaj": {
       "type": "hero",
+      "blocks": {
+        "variant_picker_TAPAU4": {
+          "type": "variant-picker",
+          "name": "t:names.product_variant_picker",
+          "settings": {
+            "variant_style": "dropdowns",
+            "show_swatches": true,
+            "alignment": "left",
+            "padding-block-start": 0,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "variant_picker_TAPAU4"
+      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "video",
@@ -41,6 +60,61 @@
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_JfzaBE": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"schnappix-divider\"></div>\n\n<style>\n.schnappix-divider {\n  width:100%;\n  height:2px;\n  background:linear-gradient(90deg, #F15A29, #FF6A3E);\n  margin:20px 0;\n  box-shadow:0 0 12px #F15A29;\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_4HGU6K": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"typewriter\">SCHNAPPIX — Automated Retail. Reinvented.</div>\n\n<style>\n.typewriter {\n  color:#fff;\n  font-size:22px;\n  font-weight:600;\n  font-family:monospace;\n  white-space:nowrap;\n  overflow:hidden;\n  border-right:3px solid #F15A29;\n  width:0;\n  animation:typing 3s steps(40, end) forwards, blink .7s infinite;\n}\n\n@keyframes typing {\n  from { width:0; }\n  to { width:100%; }\n}\n\n@keyframes blink {\n  0% { border-color:#F15A29; }\n  50% { border-color:transparent; }\n  100% { border-color:#F15A29; }\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_6NFUmW": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"light-bg\">Welcome to SCHNAPPIX</div>\n\n<style>\n.light-bg {\n  position:relative;\n  color:#fff;\n  font-size:32px;\n  font-weight:800;\n  text-align:center;\n  padding:40px 0;\n  overflow:hidden;\n}\n\n.light-bg::before {\n  content:\"\";\n  position:absolute;\n  top:0; left:-100%;\n  width:200%;\n  height:100%;\n  background:linear-gradient(120deg, transparent, rgba(255,106,62,0.3), transparent);\n  animation:slideLight 4s infinite linear;\n}\n\n@keyframes slideLight {\n  0% { left:-100%; }\n  100% { left:100%; }\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_6bfaK3": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"mouse-parallax\">SCHNAPPIX</div>\n\n<style>\n.mouse-parallax {\n  color:#fff;\n  font-size:40px;\n  font-weight:900;\n  letter-spacing:4px;\n  transition:transform 0.2s ease-out;\n}\n</style>\n\n<script>\ndocument.addEventListener('mousemove', e => {\n  const x = (window.innerWidth / 2 - e.clientX) / 40;\n  const y = (window.innerHeight / 2 - e.clientY) / 40;\n  document.querySelector('.mouse-parallax').style.transform = `translate(${x}px, ${y}px)`;\n});\n</script>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_qgB8gL": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "This code has errors. Correct the syntax to save your custom Liquid.",
+        "color_scheme": "",
+        "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -76,6 +150,7 @@
         "card_j4XmHU",
         "card_JDRyYL"
       ],
+      "custom_css": [],
       "name": "SCHNAPPIX Floating Parallax Cards",
       "settings": {
         "headline": "<h2>Discover the Future of Urban Snacking</h2>",
@@ -284,6 +359,11 @@
   },
   "order": [
     "hero_XWzqaj",
+    "custom_liquid_JfzaBE",
+    "custom_liquid_4HGU6K",
+    "custom_liquid_6NFUmW",
+    "custom_liquid_6bfaK3",
+    "custom_liquid_qgB8gL",
     "schnappix_floating_parallax_cards_hkjUFr",
     "schnappix_parallax_hero_HTfanA",
     "divider_MHDDca",
