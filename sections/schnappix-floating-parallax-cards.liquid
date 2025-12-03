@@ -1,0 +1,478 @@
+{%- comment -%}
+  SCHNAPPIX Floating Parallax Cards Section
+  A grid of floating cards with parallax hover effects
+  Optimized for performance, accessibility, and responsive design
+{%- endcomment -%}
+
+{%- liquid
+  assign section_id = 'SchnappixFloatingParallaxCards-' | append: section.id
+  assign blocks_count = section.blocks.size
+  assign has_blocks = false
+  
+  if blocks_count > 0
+    assign has_blocks = true
+  endif
+  
+  assign min_card_width = section.settings.min_card_width | default: 280
+  assign grid_gap = section.settings.grid_gap | default: 40
+-%}
+
+<section
+  id="{{ section_id }}"
+  class="sx-floating-parallax-cards color-{{ section.settings.color_scheme }}"
+  data-section-id="{{ section.id }}"
+  {% if request.visual_preview_mode %}
+    data-shopify-visual-preview
+  {% endif %}
+>
+  <div class="sx-floating-parallax-cards__container section section--{{ section.settings.section_width }}">
+    {%- if section.settings.headline != blank -%}
+      <div class="sx-floating-parallax-cards__headline">
+        <div class="sx-floating-parallax-cards__headline-content">
+          {{ section.settings.headline }}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if has_blocks -%}
+      <div
+        class="sx-floating-parallax-cards__grid"
+        style="
+          --sx-grid-min-width: {{ min_card_width }}px;
+          --sx-grid-gap: {{ grid_gap }}px;
+        "
+        data-cards-count="{{ blocks_count }}"
+      >
+        {%- for block in section.blocks -%}
+          <div
+            class="sx-floating-parallax-cards__card"
+            {{ block.shopify_attributes }}
+            data-block-id="{{ block.id }}"
+            data-card-index="{{ forloop.index }}"
+          >
+            {%- if block.settings.img != blank -%}
+              <div class="sx-floating-parallax-cards__card-image-wrapper">
+                {{
+                  block.settings.img
+                  | image_url: width: 600
+                  | image_tag:
+                    loading: 'lazy',
+                    width: block.settings.img.width,
+                    height: block.settings.img.height,
+                    alt: block.settings.img.alt | default: block.settings.title | escape,
+                    class: 'sx-floating-parallax-cards__card-image',
+                    sizes: '(min-width: 750px) 33vw, 50vw'
+                  }}
+              </div>
+            {%- endif -%}
+            
+            <div class="sx-floating-parallax-cards__card-content">
+              {%- if block.settings.title != blank -%}
+                <h3 class="sx-floating-parallax-cards__card-title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              
+              {%- if block.settings.text != blank -%}
+                <div class="sx-floating-parallax-cards__card-text">
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="sx-floating-parallax-cards__empty">
+        <p>{{ section.settings.empty_message | default: 'Add cards in section settings' }}</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .sx-floating-parallax-cards {
+    padding: clamp(60px, 10vw, 100px) 0;
+    position: relative;
+  }
+
+  .sx-floating-parallax-cards__container {
+    position: relative;
+  }
+
+  .sx-floating-parallax-cards__headline {
+    text-align: center;
+    color: rgb(var(--color-foreground));
+    margin-bottom: clamp(40px, 6vw, 60px);
+    padding: 0 20px;
+  }
+
+  .sx-floating-parallax-cards__headline-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sx-floating-parallax-cards__headline-content h2,
+  .sx-floating-parallax-cards__headline-content h3 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .sx-floating-parallax-cards__grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--sx-grid-min-width, 280px), 1fr));
+    gap: var(--sx-grid-gap, 40px);
+    width: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-floating-parallax-cards__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 16px;
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .sx-floating-parallax-cards__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+
+  .sx-floating-parallax-cards__card {
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(47, 47, 47, 0.8);
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 24px);
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    position: relative;
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .sx-floating-parallax-cards__card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 106, 62, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 16px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sx-floating-parallax-cards__card:hover,
+    .sx-floating-parallax-cards__card:focus-within {
+      transform: translateY(-18px) rotate3d(1, 1, 0, 8deg);
+      box-shadow: 0 12px 35px rgba(255, 106, 62, 0.5);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-floating-parallax-cards__card {
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .sx-floating-parallax-cards__card:hover,
+    .sx-floating-parallax-cards__card:focus-within {
+      transform: none;
+      box-shadow: 0 4px 20px rgba(255, 106, 62, 0.3);
+    }
+  }
+
+  .sx-floating-parallax-cards__card:hover::before,
+  .sx-floating-parallax-cards__card:focus-within::before {
+    opacity: 1;
+  }
+
+  .sx-floating-parallax-cards__card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+  }
+
+  .sx-floating-parallax-cards__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sx-floating-parallax-cards__card:hover .sx-floating-parallax-cards__card-image,
+    .sx-floating-parallax-cards__card:focus-within .sx-floating-parallax-cards__card-image {
+      transform: scale(1.05);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-floating-parallax-cards__card-image {
+      transition: none;
+    }
+    
+    .sx-floating-parallax-cards__card:hover .sx-floating-parallax-cards__card-image,
+    .sx-floating-parallax-cards__card:focus-within .sx-floating-parallax-cards__card-image {
+      transform: none;
+    }
+  }
+
+  .sx-floating-parallax-cards__card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sx-floating-parallax-cards__card-title {
+    margin: 0;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: rgb(var(--color-foreground));
+  }
+
+  .sx-floating-parallax-cards__card-text {
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    color: rgba(var(--color-foreground), 0.8);
+    flex: 1;
+  }
+
+  .sx-floating-parallax-cards__card-text p {
+    margin: 0;
+  }
+
+  .sx-floating-parallax-cards__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  .sx-floating-parallax-cards__empty p {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  /* Focus states for accessibility */
+  .sx-floating-parallax-cards__card:focus-visible {
+    outline: 2px solid #FF6A3E;
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .sx-floating-parallax-cards__card {
+      border-width: 2px;
+    }
+    
+    .sx-floating-parallax-cards__card::before {
+      display: none;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .sx-floating-parallax-cards__card {
+      transform: none !important;
+      box-shadow: none !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+
+  /* Performance: GPU acceleration */
+  .sx-floating-parallax-cards__card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Stagger animation on load (optional, subtle) */
+  @media (prefers-reduced-motion: no-preference) {
+    .sx-floating-parallax-cards__card {
+      animation: sx-card-fade-in 0.6s ease-out backwards;
+    }
+    
+    .sx-floating-parallax-cards__card:nth-child(1) { animation-delay: 0.1s; }
+    .sx-floating-parallax-cards__card:nth-child(2) { animation-delay: 0.2s; }
+    .sx-floating-parallax-cards__card:nth-child(3) { animation-delay: 0.3s; }
+    .sx-floating-parallax-cards__card:nth-child(4) { animation-delay: 0.4s; }
+    .sx-floating-parallax-cards__card:nth-child(5) { animation-delay: 0.5s; }
+    .sx-floating-parallax-cards__card:nth-child(6) { animation-delay: 0.6s; }
+  }
+
+  @keyframes sx-card-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-floating-parallax-cards__card {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SCHNAPPIX Floating Parallax Cards",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "headline",
+      "label": "Section Headline",
+      "default": "<h2>Discover the Future of Urban Snacking</h2>"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page Width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "range",
+      "id": "min_card_width",
+      "label": "Minimum Card Width",
+      "min": 250,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 280,
+      "info": "Minimum width for each card"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid Gap",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Empty State Message",
+      "default": "Add cards in section settings",
+      "info": "Message shown when no cards are added"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Floating Card",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Card Image",
+          "info": "Recommended size: 600x450px or larger"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Card description text goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SCHNAPPIX Floating Parallax Cards",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Card 1",
+            "text": "Description for card 1"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Card 2",
+            "text": "Description for card 2"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Card 3",
+            "text": "Description for card 3"
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
+
