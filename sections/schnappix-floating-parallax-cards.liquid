@@ -59,7 +59,7 @@
                     loading: 'lazy',
                     width: block.settings.img.width,
                     height: block.settings.img.height,
-                    alt: block.settings.img.alt | default: block.settings.title | escape,
+                    alt: block.settings.img.alt | default: block.settings.title,
                     class: 'sx-floating-parallax-cards__card-image',
                     sizes: '(min-width: 750px) 33vw, 50vw'
                   }}
@@ -341,7 +341,7 @@
 
 {% schema %}
 {
-  "name": "SCHNAPPIX Floating Parallax Cards",
+  "name": "Floating Parallax Cards",
   "tag": "section",
   "class": "section-wrapper",
   "settings": [

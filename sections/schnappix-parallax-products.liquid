@@ -71,7 +71,7 @@
                         loading: 'lazy',
                         width: product.featured_media.width,
                         height: product.featured_media.height,
-                        alt: product.featured_media.alt | default: product.title | escape
+                        alt: product.featured_media.alt | default: product.title,
                         class: 'sx-parallax-products__card-image',
                         sizes: '(min-width: 750px) 33vw, 50vw'
                     }}
