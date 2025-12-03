@@ -20,25 +20,10 @@
             "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>"
           },
           "blocks": {}
-        },
-        "variant_picker_TAPAU4": {
-          "type": "variant-picker",
-          "name": "t:names.product_variant_picker",
-          "settings": {
-            "variant_style": "dropdowns",
-            "show_swatches": true,
-            "alignment": "left",
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "custom_liquid_gcx6Uq",
-        "variant_picker_TAPAU4"
+        "custom_liquid_gcx6Uq"
       ],
       "name": "t:names.hero",
       "settings": {
@@ -134,6 +119,61 @@
       "name": "t:names.custom_liquid",
       "settings": {
         "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_MBLFhi": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<h2 class=\"neon-pulse-title\">SCHNAPPIX – NIGHT MODE</h2>\n\n<style>\n.neon-pulse-title {\n  font-size: 48px;\n  text-align: center;\n  color: #F15A29;\n  text-shadow:\n    0 0 10px #f15a2977,\n    0 0 20px #f15a2988,\n    0 0 40px #f15a29aa,\n    0 0 60px #f15a29;\n  animation: neonPulse 2.2s infinite ease-in-out;\n}\n\n@keyframes neonPulse {\n  0%,100% { opacity: 0.7; text-shadow: 0 0 10px #f15a2977; }\n  50% { opacity: 1; text-shadow: 0 0 25px #FF6A3E, 0 0 45px #FF6A3E; }\n}\n\n@media(max-width:768px){\n  .neon-pulse-title { font-size: 32px; }\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_ACmWXL": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"floating-cards\">\n  <div class=\"card\">🔥 Snacks</div>\n  <div class=\"card\">⚡ Energy Drinks</div>\n  <div class=\"card\">💨 Vapes</div>\n  <div class=\"card\">🧼 Hygiene</div>\n</div>\n\n<style>\n.floating-cards {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));\n  gap: 20px;\n  margin-top: 40px;\n}\n\n.floating-cards .card {\n  padding: 24px;\n  border-radius: 16px;\n  background: #111;\n  border: 1px solid #2f2f2f;\n  color: #fff;\n  text-align: center;\n  font-size: 18px;\n  box-shadow: 0 0 20px rgba(241,90,41,0.2);\n  transform: translateY(0);\n  transition: .4s ease;\n}\n\n.floating-cards .card:hover {\n  transform: translateY(-10px);\n  box-shadow: 0 0 30px rgba(255,106,62,0.4);\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_HKqjax": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"neon-divider\"></div>\n\n<style>\n.neon-divider {\n  width: 100%;\n  height: 4px;\n  border-radius: 100px;\n  margin: 40px 0;\n  background: linear-gradient(90deg, #F15A29, #FF6A3E, #F15A29);\n  box-shadow: 0 0 15px #FF6A3E;\n  animation: gradientMove 3s linear infinite;\n}\n\n@keyframes gradientMove {\n  0% { background-position: 0%; }\n  100% { background-position: 200%; }\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_WDxzND": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"neon-grid\">\n  <a class=\"item\" href=\"/collections/snacks\">Snacks</a>\n  <a class=\"item\" href=\"/collections/drinks\">Drinks</a>\n  <a class=\"item\" href=\"/collections/vapes\">Vapes</a>\n  <a class=\"item\" href=\"/collections/hygiene\">Hygiene</a>\n</div>\n\n<style>\n.neon-grid {\n  display: grid;\n  gap: 25px;\n  grid-template-columns: repeat(auto-fit, minmax(140px,1fr));\n}\n\n.neon-grid .item {\n  padding: 24px;\n  border-radius: 14px;\n  background: #0a0a0a;\n  border: 1px solid #1f1f1f;\n  text-align: center;\n  font-size: 20px;\n  color: #ffffff;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  transition: .3s ease;\n}\n\n.neon-grid .item:hover {\n  border-color: #F15A29;\n  box-shadow: 0 0 20px rgba(241,90,41,0.4);\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_nDrCbj": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"counter-box\">\n  <div class=\"number\" data-target=\"247\">10</div>\n  <p>Standorte in Planung</p>\n</div>\n\n<style>\n.counter-box {\n  text-align:center;\n  color:white;\n}\n.counter-box .number {\n  font-size:60px;\n  font-weight:900;\n  background: linear-gradient(90deg,#F15A29,#FF6A3E);\n  -webkit-background-clip: text;\n  color: transparent;\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const nums = document.querySelectorAll('.number');\n  nums.forEach(num => {\n    const target = +num.dataset.target;\n    let val = 0;\n    const inc = target / 120; \n    function update(){\n      val += inc;\n      if(val < target){\n        num.textContent = Math.floor(val);\n        requestAnimationFrame(update);\n      } else {\n        num.textContent = target;\n      }\n    }\n    update();\n  });\n});\n</script>",
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -386,6 +426,11 @@
     "custom_liquid_6bfaK3",
     "custom_liquid_qgB8gL",
     "custom_liquid_97UWtw",
+    "custom_liquid_MBLFhi",
+    "custom_liquid_ACmWXL",
+    "custom_liquid_HKqjax",
+    "custom_liquid_WDxzND",
+    "custom_liquid_nDrCbj",
     "schnappix_floating_parallax_cards_hkjUFr",
     "schnappix_parallax_hero_HTfanA",
     "divider_MHDDca",
