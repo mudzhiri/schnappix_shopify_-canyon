@@ -1,0 +1,394 @@
+{%- comment -%}
+  SCHNAPPIX Parallax Split Section
+  A split layout section with parallax image effect
+  Optimized for performance, accessibility, and responsive design
+{%- endcomment -%}
+
+{%- liquid
+  assign section_id = 'SchnappixParallaxSplit-' | append: section.id
+  assign image_url = section.settings.image | image_url: width: 1200
+  assign image_position = section.settings.image_position | default: 'right'
+  assign has_image = false
+  
+  if section.settings.image != blank
+    assign has_image = true
+  endif
+-%}
+
+<section
+  id="{{ section_id }}"
+  class="sx-parallax-split color-{{ section.settings.color_scheme }} sx-parallax-split--image-{{ image_position }}"
+  data-section-id="{{ section.id }}"
+  {% if request.visual_preview_mode %}
+    data-shopify-visual-preview
+  {% endif %}
+>
+  <div class="sx-parallax-split__container section section--{{ section.settings.section_width }}">
+    <div class="sx-parallax-split__content">
+      {%- if section.settings.title != blank -%}
+        <h2 class="sx-parallax-split__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.text != blank -%}
+        <div class="sx-parallax-split__text">
+          <p>{{ section.settings.text }}</p>
+        </div>
+      {%- endif -%}
+      
+      {%- if section.settings.cta_link != blank and section.settings.cta_label != blank -%}
+        <a
+          href="{{ section.settings.cta_link }}"
+          class="sx-parallax-split__cta"
+          {% if section.settings.cta_link contains 'http' %}
+            target="_blank"
+            rel="noopener noreferrer"
+          {% endif %}
+        >
+          {{ section.settings.cta_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if has_image -%}
+      <div
+        class="sx-parallax-split__image-wrapper"
+        style="background-image: url({{ image_url }});"
+      >
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            width: section.settings.image.width,
+            height: section.settings.image.height,
+            alt: section.settings.image.alt | default: section.settings.title | escape,
+            class: 'sx-parallax-split__image',
+            sizes: '(min-width: 750px) 50vw, 100vw'
+        }}
+      </div>
+    {%- else -%}
+      <div class="sx-parallax-split__image-placeholder">
+        {{ 'image' | placeholder_svg_tag: 'sx-parallax-split__placeholder' }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .sx-parallax-split {
+    position: relative;
+    padding: clamp(40px, 8vw, 80px) 0;
+    overflow: hidden;
+  }
+
+  .sx-parallax-split__container {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 4vw, 40px);
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 989px) {
+    .sx-parallax-split__container {
+      flex-direction: column;
+    }
+    
+    .sx-parallax-split--image-right .sx-parallax-split__container {
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .sx-parallax-split--image-left .sx-parallax-split__container {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .sx-parallax-split__content {
+    flex: 1;
+    min-width: 0;
+    color: rgb(var(--color-foreground));
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2vw, 16px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .sx-parallax-split__content {
+      width: 48%;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-parallax-split__content {
+      width: 100%;
+      padding: 0 20px;
+    }
+  }
+
+  .sx-parallax-split__title {
+    font-family: 'Montserrat Alternates', var(--font-primary--family), sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 clamp(12px, 2vw, 16px);
+    color: rgb(var(--color-foreground));
+  }
+
+  .sx-parallax-split__text {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.6;
+    opacity: 0.9;
+    color: rgb(var(--color-foreground));
+  }
+
+  .sx-parallax-split__text p {
+    margin: 0;
+  }
+
+  .sx-parallax-split__cta {
+    margin-top: clamp(16px, 3vw, 24px);
+    display: inline-block;
+    background: #F15A29;
+    padding: clamp(12px, 2vw, 14px) clamp(20px, 4vw, 26px);
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #F15A29;
+    align-self: flex-start;
+    text-align: center;
+  }
+
+  .sx-parallax-split__cta:hover,
+  .sx-parallax-split__cta:focus {
+    background: #FF6A3E;
+    border-color: #FF6A3E;
+    box-shadow: 0 0 20px rgba(255, 106, 62, 0.4);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .sx-parallax-split__cta:active {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-parallax-split__cta {
+      transition: none;
+    }
+    
+    .sx-parallax-split__cta:hover,
+    .sx-parallax-split__cta:focus {
+      transform: none;
+    }
+  }
+
+  .sx-parallax-split__image-wrapper {
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 50vw, 480px);
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sx-parallax-split__image-wrapper {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .sx-parallax-split__image-wrapper {
+      width: 100%;
+      margin: 0 20px;
+      background-attachment: scroll;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .sx-parallax-split__image-wrapper {
+      background-attachment: scroll;
+    }
+  }
+
+  .sx-parallax-split__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sx-parallax-split__image-wrapper:hover .sx-parallax-split__image {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sx-parallax-split__image {
+      transition: none;
+    }
+    
+    .sx-parallax-split__image-wrapper:hover .sx-parallax-split__image {
+      transform: none;
+    }
+  }
+
+  .sx-parallax-split__image-placeholder {
+    width: 100%;
+    height: clamp(300px, 50vw, 480px);
+    min-height: 300px;
+    border-radius: 20px;
+    background: rgba(var(--color-foreground), 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sx-parallax-split__image-placeholder {
+      width: 50%;
+    }
+  }
+
+  .sx-parallax-split__placeholder {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+  }
+
+  /* Focus states for accessibility */
+  .sx-parallax-split__cta:focus-visible {
+    outline: 2px solid #FF6A3E;
+    outline-offset: 2px;
+  }
+
+  /* Print styles */
+  @media print {
+    .sx-parallax-split__image-wrapper {
+      background-attachment: scroll;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .sx-parallax-split__cta {
+      border-width: 3px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SCHNAPPIX Parallax Split",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Urban Snacks. Neon Energy."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Erlebe die neue Generation von Trend-Produkten."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Label",
+      "default": "Mehr erfahren"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Parallax Image",
+      "info": "Recommended size: 1200x800px or larger. For best performance, use optimized images."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "right",
+      "info": "Image position on desktop (mobile: always below text)"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page Width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SCHNAPPIX Parallax Split",
+      "category": "Custom"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
+
