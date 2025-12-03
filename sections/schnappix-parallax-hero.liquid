@@ -35,7 +35,7 @@
 
 {% stylesheet %}
   .sx-hero {
-    height: 92vh;
+    height: 95vh;
     min-height: 600px;
     width: 100%;
     position: relative;
@@ -45,76 +45,89 @@
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
-    padding: 40px 20px;
+    padding: 0;
     overflow: hidden;
   }
 
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 768px) {
     .sx-hero {
       height: 80vh;
       min-height: 500px;
       background-attachment: scroll;
-      padding: 20px 16px;
     }
   }
 
   .sx-hero__content {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     max-width: 1200px;
     width: 100%;
+    padding-top: 35vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sx-hero__content {
+      padding-top: 25vh;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 
   .sx-hero__headline {
     font-family: 'Montserrat Alternates', var(--font-primary--family), sans-serif;
-    font-size: clamp(32px, 5vw, 64px);
+    font-size: 64px;
     font-weight: 800;
-    color: #fff;
+    letter-spacing: -1px;
+    color: #FFFFFF;
     text-shadow: 0 0 20px rgba(241, 90, 41, 0.6);
-    margin: 0 0 10px;
+    margin: 0 0 16px;
     line-height: 1.2;
   }
 
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 768px) {
     .sx-hero__headline {
-      font-size: clamp(24px, 8vw, 48px);
+      font-size: 42px;
+      letter-spacing: -0.5px;
     }
   }
 
   .sx-hero__subline {
     font-family: 'Inter', var(--font-primary--family), sans-serif;
-    font-size: clamp(16px, 2vw, 20px);
-    color: #fff;
-    margin: 10px 0 0;
+    font-size: 20px;
+    color: #FFFFFF;
+    opacity: 0.8;
+    margin: 16px 0 0;
     line-height: 1.5;
   }
 
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 768px) {
     .sx-hero__subline {
-      font-size: clamp(14px, 4vw, 18px);
+      font-size: 16px;
     }
   }
 
   .sx-hero__btn {
     display: inline-block;
-    margin-top: 28px;
-    padding: 14px 30px;
-    border-radius: 12px;
+    margin-top: 30px;
+    padding: 14px 32px;
+    border-radius: 10px;
     background-color: #F15A29;
-    color: white;
+    color: #FFFFFF;
     font-weight: 700;
     text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid #F15A29;
-    font-size: clamp(14px, 2vw, 16px);
+    transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
+    border: none;
+    font-size: 16px;
   }
 
   .sx-hero__btn:hover,
   .sx-hero__btn:focus {
     background-color: #FF6A3E;
-    border-color: #FF6A3E;
     box-shadow: 0 0 20px rgba(255, 106, 62, 0.4);
     transform: translateY(-2px);
     outline: none;
@@ -124,10 +137,11 @@
     transform: translateY(0);
   }
 
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 768px) {
     .sx-hero__btn {
-      padding: 12px 24px;
-      margin-top: 20px;
+      padding: 12px 28px;
+      margin-top: 24px;
+      font-size: 14px;
     }
   }
 
@@ -155,19 +169,19 @@
       "type": "text",
       "id": "headline",
       "label": "Headline",
-      "default": "ENERGY. NIGHT. SNACKS."
+      "default": "SCHNAPPIX 24/7"
     },
     {
       "type": "text",
       "id": "subline",
       "label": "Subheadline",
-      "default": "Urban Snacks & Trend Produkte"
+      "default": "Snacks • Drinks • Vapes • Convenience"
     },
     {
       "type": "text",
       "id": "cta_label",
       "label": "CTA Label",
-      "default": "Jetzt shoppen"
+      "default": "Shop Now"
     },
     {
       "type": "url",

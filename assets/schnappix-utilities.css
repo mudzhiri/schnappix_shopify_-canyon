@@ -216,6 +216,7 @@
 /* Drawer Styles */
 .schnappix-drawer {
   background-color: var(--schnappix-background);
+  -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out);
 }
@@ -234,5 +235,120 @@
 /* Swatch Glow Ring */
 .schnappix-swatch-selected {
   box-shadow: 0 0 0 2px var(--schnappix-primary), 0 0 10px var(--schnappix-glow-orange);
+}
+
+/* ========================================
+   TRANSPARENT HEADER FOR SCHNAPPIX
+   ======================================== */
+
+/* Transparent Header Background */
+header-component[transparent="always"] .header__row,
+header-component[transparent="not-sticky"] .header__row {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Logo Switching: White when transparent, Orange/Black when sticky */
+header-component[transparent="always"] .header__logo img,
+header-component[transparent="not-sticky"] .header__logo img {
+  filter: brightness(0) invert(1);
+  transition: filter var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+/* Logo container white filter for transparent state */
+header-component[transparent="always"] .header__logo,
+header-component[transparent="not-sticky"] .header__logo {
+  opacity: 1;
+}
+
+/* On Scroll: Header switches back to black */
+header-component[data-sticky-state="active"] .header__row {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #2F2F2F !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
+  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+/* Logo back to normal when sticky */
+header-component[data-sticky-state="active"] .header__logo img {
+  filter: none !important;
+}
+
+/* Menu Links White while transparent */
+header-component[transparent="always"] .header__menu-item,
+header-component[transparent="not-sticky"] .header__menu-item {
+  color: #FFFFFF !important;
+  transition: color var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+header-component[transparent="always"] .header__menu-item:hover,
+header-component[transparent="not-sticky"] .header__menu-item:hover {
+  color: #F15A29 !important;
+  filter: drop-shadow(0 0 6px #FF6A3E);
+}
+
+/* Menu Links during scroll (sticky state) */
+header-component[data-sticky-state="active"] .header__menu-item {
+  color: #FFFFFF !important;
+}
+
+header-component[data-sticky-state="active"] .header__menu-item:hover {
+  color: #F15A29 !important;
+  filter: drop-shadow(0 0 6px #FF6A3E);
+}
+
+/* Search icon and actions white when transparent */
+header-component[transparent="always"] .header__action-item svg,
+header-component[transparent="not-sticky"] .header__action-item svg,
+header-component[transparent="always"] .header__search-button svg,
+header-component[transparent="not-sticky"] .header__search-button svg {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+header-component[transparent="always"] .header__action-item:hover svg,
+header-component[transparent="not-sticky"] .header__action-item:hover svg {
+  color: #F15A29 !important;
+  fill: #F15A29 !important;
+  stroke: #F15A29 !important;
+}
+
+/* Localization selector white when transparent */
+header-component[transparent="always"] .localization-selector,
+header-component[transparent="not-sticky"] .localization-selector {
+  color: #FFFFFF !important;
+}
+
+/* Mobile menu button white when transparent */
+header-component[transparent="always"] .header__mobile-menu-button,
+header-component[transparent="not-sticky"] .header__mobile-menu-button {
+  color: #FFFFFF !important;
+}
+
+header-component[transparent="always"] .header__mobile-menu-button svg,
+header-component[transparent="not-sticky"] .header__mobile-menu-button svg {
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Ensure smooth transitions */
+header-component .header__row {
+  transition: background-color var(--schnappix-animation-normal) var(--schnappix-ease-out),
+              border-bottom var(--schnappix-animation-normal) var(--schnappix-ease-out),
+              box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+/* Additional selector variations for Canyon/Dawn theme */
+.header[transparent="always"],
+.header[transparent="not-sticky"] {
+  background: transparent !important;
+}
+
+.header[data-sticky-state="active"] {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #2F2F2F !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
 }
 
