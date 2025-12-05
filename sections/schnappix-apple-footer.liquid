@@ -1,0 +1,266 @@
+<style>
+  .schnappix-apple-footer {
+    background: #000000;
+    color: #ffffff;
+    padding: 60px 20px 40px;
+    font-family: var(--font-body--family), Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .schnappix-apple-footer .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 60px 40px;
+  }
+
+  .schnappix-apple-footer h4 {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .schnappix-apple-footer a {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.5;
+  }
+
+  .schnappix-apple-footer a:hover {
+    color: #F15A29;
+  }
+
+  .schnappix-apple-footer .divider {
+    height: 1px;
+    background: #2F2F2F;
+    margin: 50px auto 30px;
+    max-width: 1200px;
+  }
+
+  .schnappix-apple-footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 13px;
+    opacity: 0.6;
+    text-align: center;
+    color: #999999;
+  }
+
+  /* Mobile Optimization */
+  @media screen and (max-width: 749px) {
+    .schnappix-apple-footer {
+      padding: 50px 20px 30px;
+    }
+
+    .schnappix-apple-footer .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 40px 0;
+    }
+
+    .schnappix-apple-footer h4 {
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    .schnappix-apple-footer a {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .schnappix-apple-footer .divider {
+      margin: 40px auto 25px;
+    }
+
+    .schnappix-apple-footer-bottom {
+      font-size: 12px;
+    }
+  }
+
+  /* Tablet Optimization */
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .schnappix-apple-footer .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px 30px;
+    }
+  }
+</style>
+
+<div class="schnappix-apple-footer">
+  <div class="footer-grid">
+    
+    <!-- Column 1: SCHNAPPIX -->
+    <div>
+      <h4>{{ section.settings.column_1_heading | default: "SCHNAPPIX" }}</h4>
+      {% if section.settings.column_1_menu != blank %}
+        {% assign menu_1 = linklists[section.settings.column_1_menu] %}
+        {% for link in menu_1.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="/pages/uber-schnappix">Über SCHNAPPIX</a>
+        <a href="/pages/mission-vision">Mission & Vision</a>
+        <a href="/pages/geschaftsfelder">Geschäftsfelder</a>
+        <a href="/pages/kontakt">Kontakt</a>
+      {% endif %}
+    </div>
+
+    <!-- Column 2: Geschäftsfelder -->
+    <div>
+      <h4>{{ section.settings.column_2_heading | default: "Geschäftsfelder" }}</h4>
+      {% if section.settings.column_2_menu != blank %}
+        {% assign menu_2 = linklists[section.settings.column_2_menu] %}
+        {% for link in menu_2.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="/pages/schnappix-247">SCHNAPPIX 24/7</a>
+        <a href="/pages/schnappix-store">SCHNAPPIX Store</a>
+        <a href="/pages/schnappix-vending">SCHNAPPIX Vending Machines</a>
+        <a href="/pages/schnappix-b2b">SCHNAPPIX B2B</a>
+      {% endif %}
+    </div>
+
+    <!-- Column 3: Rechtliches -->
+    <div>
+      <h4>{{ section.settings.column_3_heading | default: "Rechtliches" }}</h4>
+      {% if section.settings.column_3_menu != blank %}
+        {% assign menu_3 = linklists[section.settings.column_3_menu] %}
+        {% for link in menu_3.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="/pages/datenschutz">Datenschutz</a>
+        <a href="/pages/impressum">Impressum</a>
+        <a href="/pages/agb">AGB</a>
+      {% endif %}
+    </div>
+
+    <!-- Column 4: Optional - Custom Column -->
+    {% if section.settings.show_column_4 %}
+      <div>
+        <h4>{{ section.settings.column_4_heading }}</h4>
+        {% if section.settings.column_4_menu != blank %}
+          {% assign menu_4 = linklists[section.settings.column_4_menu] %}
+          {% for link in menu_4.links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="schnappix-apple-footer-bottom">
+    {{ section.settings.copyright_text | default: "© 2025 SCHNAPPIX – All rights reserved." }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SCHNAPPIX Apple Footer",
+  "tag": "footer",
+  "class": "section-wrapper",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Column 1 Settings"
+    },
+    {
+      "type": "text",
+      "id": "column_1_heading",
+      "label": "Column 1 Heading",
+      "default": "SCHNAPPIX"
+    },
+    {
+      "type": "link_list",
+      "id": "column_1_menu",
+      "label": "Column 1 Menu",
+      "info": "Optional: Select a menu to display links dynamically"
+    },
+    {
+      "type": "header",
+      "content": "Column 2 Settings"
+    },
+    {
+      "type": "text",
+      "id": "column_2_heading",
+      "label": "Column 2 Heading",
+      "default": "Geschäftsfelder"
+    },
+    {
+      "type": "link_list",
+      "id": "column_2_menu",
+      "label": "Column 2 Menu",
+      "info": "Optional: Select a menu to display links dynamically"
+    },
+    {
+      "type": "header",
+      "content": "Column 3 Settings"
+    },
+    {
+      "type": "text",
+      "id": "column_3_heading",
+      "label": "Column 3 Heading",
+      "default": "Rechtliches"
+    },
+    {
+      "type": "link_list",
+      "id": "column_3_menu",
+      "label": "Column 3 Menu",
+      "info": "Optional: Select a menu to display links dynamically"
+    },
+    {
+      "type": "header",
+      "content": "Column 4 Settings (Optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_column_4",
+      "label": "Show Column 4",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "column_4_heading",
+      "label": "Column 4 Heading",
+      "visible_if": "{{ section.settings.show_column_4 }}"
+    },
+    {
+      "type": "link_list",
+      "id": "column_4_menu",
+      "label": "Column 4 Menu",
+      "visible_if": "{{ section.settings.show_column_4 }}",
+      "info": "Optional: Select a menu to display links dynamically"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2025 SCHNAPPIX – All rights reserved."
+    }
+  ],
+  "presets": [
+    {
+      "name": "SCHNAPPIX Apple Footer"
+    }
+  ]
+}
+{% endschema %}
+
