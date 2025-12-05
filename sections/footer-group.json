@@ -81,16 +81,16 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
+            "content_direction": "column",
+            "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 0,
-            "width": "custom",
-            "custom_width": 56,
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 59,
+            "width": "fit-content",
+            "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -111,12 +111,38 @@
             "link": "",
             "open_in_new_tab": false,
             "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
+            "padding-block-start": 100,
+            "padding-block-end": 54,
+            "padding-inline-start": 100,
             "padding-inline-end": 100
           },
           "blocks": {
+            "text_Cbjj3U": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Join our community</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "email_signup_8DHcBC": {
               "type": "email-signup",
               "name": "t:names.email_signup",
@@ -125,7 +151,7 @@
                 "custom_width": 100,
                 "inherit_color_scheme": true,
                 "color_scheme": "",
-                "heading": "Join our community",
+                "heading": "",
                 "heading_preset": "h3",
                 "border_style": "all",
                 "border_width": 0.5,
@@ -138,8 +164,8 @@
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 100,
+                "padding-inline-end": 100
               },
               "blocks": {}
             },
@@ -244,6 +270,7 @@
             }
           },
           "block_order": [
+            "text_Cbjj3U",
             "email_signup_8DHcBC",
             "group_mrT86p"
           ]
@@ -323,7 +350,7 @@
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-end": 0
       }
     },
     "section_H6C7eR": {
