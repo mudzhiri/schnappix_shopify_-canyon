@@ -166,7 +166,18 @@
 
   .email-signup__input,
   .email-signup__button--text {
-    padding: var(--padding-lg) var(--padding-3xl);
+    padding: 18px 24px;
+    min-height: 56px;
+    font-size: 16px;
+  }
+  
+  @media screen and (max-width: 749px) {
+    .email-signup__input,
+    .email-signup__button--text {
+      padding: 16px 20px;
+      min-height: 52px;
+      font-size: 16px;
+    }
   }
 
   .email-signup__input-group .email-signup__input--underline {
@@ -175,7 +186,9 @@
 
     color: var(--color-input-text);
     background-color: transparent;
-    padding: 12px 0;
+    padding: 18px 0;
+    min-height: 56px;
+    font-size: 16px;
     border: none;
     border-radius: 0;
     box-shadow: 0 calc(var(--border-width) * var(--box-shadow-multiplier)) 0 var(--box-shadow-color);
@@ -186,6 +199,13 @@
       --box-shadow-color: var(--color-input-text);
 
       outline: none;
+    }
+  }
+  
+  @media screen and (max-width: 749px) {
+    .email-signup__input-group .email-signup__input--underline {
+      padding: 16px 0;
+      min-height: 52px;
     }
   }
 
