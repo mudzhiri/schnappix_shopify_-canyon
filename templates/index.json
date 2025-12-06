@@ -59,6 +59,370 @@
         "padding-block-end": 0
       }
     },
+    "custom_liquid_MBLFhi": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<h2 class=\"neon-pulse-title\">SCHNAPPIX – NIGHT MODE</h2>\n\n<style>\n.neon-pulse-title {\n  font-size: 48px;\n  text-align: center;\n  color: #F15A29;\n  text-shadow:\n    0 0 10px #f15a2977,\n    0 0 20px #f15a2988,\n    0 0 40px #f15a29aa,\n    0 0 60px #f15a29;\n  animation: neonPulse 2.2s infinite ease-in-out;\n}\n\n@keyframes neonPulse {\n  0%,100% { opacity: 0.7; text-shadow: 0 0 10px #f15a2977; }\n  50% { opacity: 1; text-shadow: 0 0 25px #FF6A3E, 0 0 45px #FF6A3E; }\n}\n\n@media(max-width:768px){\n  .neon-pulse-title { font-size: 32px; }\n}\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "slideshow_CiHgBG": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_cK6LpG": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "video",
+            "video_1": "shopify://files/videos/Cinematic_Neon_Logo_Animation_Generated.mp4",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_7yrWJm": {
+              "type": "group",
+              "disabled": true,
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "custom",
+                "custom_width": 50,
+                "width_mobile": "custom",
+                "custom_width_mobile": 85,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-6",
+                "background_media": "video",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 48,
+                "padding-block-end": 48,
+                "padding-inline-start": 48,
+                "padding-inline-end": 48
+              },
+              "blocks": {
+                "text_XW7yET": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h2>Neu eingetroffen</h2>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_RmqVwt": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Wir stellen unsere neuesten Produkte vor, die speziell für diese Saison hergestellt wurden. Shoppe deine Favoriten, bevor sie vergriffen sind!</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 20,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_gemLQQ": {
+                  "type": "button",
+                  "settings": {
+                    "label": "Jetzt shoppen",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_TXHKzK": {
+                  "type": "button",
+                  "settings": {
+                    "label": "Jetzt shoppen",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_XW7yET",
+                "text_RmqVwt",
+                "button_gemLQQ",
+                "button_TXHKzK"
+              ]
+            }
+          },
+          "block_order": [
+            "group_7yrWJm"
+          ]
+        },
+        "slide_rnmaYi": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/0_1.png",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_tm9qCL": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fit-content",
+                "custom_width": 50,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 85,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-6",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 12,
+                "toggle_overlay": true,
+                "overlay_color": "#00000019",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "shopify://pages/247",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 48,
+                "padding-block-end": 48,
+                "padding-inline-start": 48,
+                "padding-inline-end": 48
+              },
+              "blocks": {
+                "logo_mH4dPm": {
+                  "type": "logo",
+                  "name": "t:names.logo",
+                  "settings": {
+                    "inverse": false,
+                    "font": "heading",
+                    "unit": "pixel",
+                    "percent_width": 100,
+                    "pixel_height": 48,
+                    "custom_mobile_size": false,
+                    "unit_mobile": "percent",
+                    "percent_width_mobile": 100,
+                    "pixel_height_mobile": 120,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_zUxQ4M": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h4>Snacks, Drinks & Trends – immer dort, wo du bist.</h4>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_M6GQ69": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>SCHNAPPIX entwickelt smarte 24/7-Konzepte für Snacks, Drinks, Vapes und Trendprodukte – von Automaten-Standorten bis hin zu digitalen Vertriebskanälen.</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 20,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_DyTRmf": {
+                  "type": "button",
+                  "settings": {
+                    "label": "SCHNAPPIX 24/7 entdecken",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "custom",
+                    "custom_width": 50,
+                    "width_mobile": "custom",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                },
+                "button_aT3U4x": {
+                  "type": "button",
+                  "settings": {
+                    "label": "Standort vorschlagen",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "width": "custom",
+                    "custom_width": 50,
+                    "width_mobile": "custom",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "logo_mH4dPm",
+                "text_zUxQ4M",
+                "text_M6GQ69",
+                "button_DyTRmf",
+                "button_aT3U4x"
+              ]
+            }
+          },
+          "block_order": [
+            "group_tm9qCL"
+          ]
+        }
+      },
+      "block_order": [
+        "slide_cK6LpG",
+        "slide_rnmaYi"
+      ],
+      "name": "t:names.slideshow",
+      "settings": {
+        "icons_style": "arrows_large",
+        "slideshow_controls_style": "dots",
+        "color_scheme": "",
+        "autoplay": false,
+        "autoplay_speed": 4,
+        "section_width": "full-width",
+        "slide_height": "medium",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "custom_liquid_JfzaBE": {
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
@@ -108,17 +472,6 @@
       "name": "t:names.custom_liquid",
       "settings": {
         "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_MBLFhi": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<h2 class=\"neon-pulse-title\">SCHNAPPIX – NIGHT MODE</h2>\n\n<style>\n.neon-pulse-title {\n  font-size: 48px;\n  text-align: center;\n  color: #F15A29;\n  text-shadow:\n    0 0 10px #f15a2977,\n    0 0 20px #f15a2988,\n    0 0 40px #f15a29aa,\n    0 0 60px #f15a29;\n  animation: neonPulse 2.2s infinite ease-in-out;\n}\n\n@keyframes neonPulse {\n  0%,100% { opacity: 0.7; text-shadow: 0 0 10px #f15a2977; }\n  50% { opacity: 1; text-shadow: 0 0 25px #FF6A3E, 0 0 45px #FF6A3E; }\n}\n\n@media(max-width:768px){\n  .neon-pulse-title { font-size: 32px; }\n}\n</style>",
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -421,6 +774,7 @@
   "order": [
     "hero_XWzqaj",
     "custom_liquid_MBLFhi",
+    "slideshow_CiHgBG",
     "custom_liquid_JfzaBE",
     "custom_liquid_4HGU6K",
     "custom_liquid_6NFUmW",
