@@ -103,17 +103,6 @@
         "padding-block-end": 0
       }
     },
-    "custom_liquid_qgB8gL": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "custom_liquid_97UWtw": {
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
@@ -431,13 +420,12 @@
   },
   "order": [
     "hero_XWzqaj",
+    "custom_liquid_MBLFhi",
     "custom_liquid_JfzaBE",
     "custom_liquid_4HGU6K",
     "custom_liquid_6NFUmW",
     "custom_liquid_6bfaK3",
-    "custom_liquid_qgB8gL",
     "custom_liquid_97UWtw",
-    "custom_liquid_MBLFhi",
     "custom_liquid_ACmWXL",
     "custom_liquid_HKqjax",
     "custom_liquid_WDxzND",
