@@ -8,25 +8,6 @@
  * ------------------------------------------------------------
  */
 {
-  "blocks": {
-    "load_video": "Video laden: {{ description }}",
-    "sold_out": "Ausverkauft",
-    "email_signup": {
-      "label": "E-Mail",
-      "placeholder": "E-Mail-Adresse",
-      "success": "Danke für deine Anmeldung!"
-    },
-    "filter": "Filtern",
-    "payment_methods": "Zahlungsmethoden",
-    "contact_form": {
-      "name": "Name",
-      "email": "E-Mail-Adresse",
-      "phone": "Telefonnummer",
-      "comment": "Kommentar",
-      "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
-      "error_heading": "Bitte passe Folgendes an:"
-    }
-  },
   "accessibility": {
     "play_model": "3D-Modell abspielen",
     "play_video": "Video abspielen",
@@ -110,6 +91,45 @@
     "sort": "Sortieren",
     "show_all_options": "Alle Optionen anzeigen",
     "open": "Öffnen"
+  },
+  "blocks": {
+    "load_video": "Video laden: {{ description }}",
+    "sold_out": "Ausverkauft",
+    "email_signup": {
+      "label": "E-Mail",
+      "placeholder": "E-Mail-Adresse",
+      "success": "Danke für deine Anmeldung!"
+    },
+    "filter": "Filtern",
+    "payment_methods": "Zahlungsmethoden",
+    "contact_form": {
+      "name": "Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "comment": "Kommentar",
+      "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
+      "error_heading": "Bitte passe Folgendes an:"
+    }
+  },
+  "blogs": {
+    "article": {
+      "comment_author_separator": "•",
+      "comments_heading": {
+        "one": "{{ count }} Kommentar",
+        "other": "{{ count }} Kommentare"
+      }
+    },
+    "comment_form": {
+      "email": "E-Mail",
+      "error": "Kommentar konnte nicht gepostet werden. Bitte beachte Folgendes:",
+      "heading": "Hinterlasse einen Kommentar",
+      "message": "Nachricht",
+      "moderated": "Bitte beachte, dass Kommentare vor der Veröffentlichung freigegeben werden müssen.",
+      "name": "Name",
+      "post": "Kommentar posten",
+      "success_moderated": "Kommentar gepostet, Moderation ausstehend",
+      "success": "Kommentar gepostet"
+    }
   },
   "content": {
     "reviews": "Reviews",
@@ -244,6 +264,18 @@
       "page": "Seite {{ page }}"
     }
   },
+  "customer_accounts": {
+    "payment_methods": {
+      "pay_pal": {
+        "errors": {
+          "generic": "Es gab ein Problem mit PayPal. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode."
+        }
+      }
+    }
+  },
+  "fields": {
+    "separator": "bis"
+  },
   "gift_cards": {
     "issued": {
       "how_to_use_gift_card": "Verwende diesen Geschenkgutscheincode online oder verwende den QR-Code im Shop",
@@ -285,36 +317,50 @@
       "in_cart": "im Warenkorb"
     }
   },
-  "fields": {
-    "separator": "bis"
-  },
-  "blogs": {
-    "article": {
-      "comment_author_separator": "•",
-      "comments_heading": {
-        "one": "{{ count }} Kommentar",
-        "other": "{{ count }} Kommentare"
-      }
+  "gempages": {
+    "Carousel": {
+      "no_slider": "No Slider"
     },
-    "comment_form": {
-      "email": "E-Mail",
-      "error": "Kommentar konnte nicht gepostet werden. Bitte beachte Folgendes:",
-      "heading": "Hinterlasse einen Kommentar",
-      "message": "Nachricht",
-      "moderated": "Bitte beachte, dass Kommentare vor der Veröffentlichung freigegeben werden müssen.",
-      "name": "Name",
-      "post": "Kommentar posten",
-      "success_moderated": "Kommentar gepostet, Moderation ausstehend",
-      "success": "Kommentar gepostet"
-    }
-  },
-  "customer_accounts": {
-    "payment_methods": {
-      "pay_pal": {
-        "errors": {
-          "generic": "Es gab ein Problem mit PayPal. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode."
-        }
-      }
+    "CarouselV3": {
+      "no_slider": "No Slider"
+    },
+    "Newsletter": {
+      "err_msg_default": "Can’t send email. Please try again later.",
+      "success_msg_default": "Thanks for subscribing"
+    },
+    "IconListV2": {
+      "icons_not_found": "Icons not found"
+    },
+    "IconList": {
+      "icons_not_found": "Icons not found"
+    },
+    "IconListHoz": {
+      "icons_not_found": "Icons not found"
+    },
+    "Product": {
+      "product_not_found": "Product not found"
+    },
+    "ProductList": {
+      "product_not_found": "Product Not Found!",
+      "no_products_found": "No products found!",
+      "no_related_products": "No related products!"
+    },
+    "ProductListV3": {
+      "product_not_found": "Product Not Found!",
+      "no_products_found": "No products found!",
+      "no_related_products": "No related products!"
+    },
+    "ProductTitle": {
+      "product_not_found": "Product Not Found"
+    },
+    "ProductVariants": {
+      "please_select": "Please select an option"
+    },
+    "StockCounter": {
+      "let_buy_now": "<mark>HURRY!</mark> LET BUY NOW"
+    },
+    "Breadcrumb": {
+      "home": "Home"
     }
   }
 }
