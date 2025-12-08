@@ -9,224 +9,17 @@
  */
 {
   "sections": {
-    "hero_XWzqaj": {
-      "type": "hero",
-      "blocks": {
-        "custom_liquid_gcx6Uq": {
-          "type": "custom-liquid",
-          "name": "t:names.custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "custom_liquid_gcx6Uq"
-      ],
-      "disabled": true,
-      "name": "t:names.hero",
-      "settings": {
-        "media_type_1": "video",
-        "video_1": "shopify://files/videos/Cinematic_Neon_Logo_Animation_Generated.mp4",
-        "media_type_2": "image",
-        "stack_media_on_mobile": true,
-        "custom_mobile_media": true,
-        "media_type_1_mobile": "video",
-        "video_1_mobile": "shopify://files/videos/Neon_Logo_Reveal_Video_Generated.mp4",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-start",
-        "gap": 0,
-        "section_width": "full-width",
-        "section_height": "full-screen",
-        "section_height_custom": 40,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "slideshow_CiHgBG": {
       "type": "slideshow",
       "blocks": {
-        "slide_cK6LpG": {
-          "type": "_slide",
-          "settings": {
-            "media_type_1": "video",
-            "video_1": "shopify://files/videos/Cinematic_Neon_Logo_Animation_Generated.mp4",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "group_7yrWJm": {
-              "type": "group",
-              "disabled": true,
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "center",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "custom",
-                "custom_width": 50,
-                "width_mobile": "custom",
-                "custom_width_mobile": 85,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": false,
-                "color_scheme": "scheme-6",
-                "background_media": "video",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 48,
-                "padding-block-end": 48,
-                "padding-inline-start": 48,
-                "padding-inline-end": 48
-              },
-              "blocks": {
-                "text_XW7yET": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h2>Neu eingetroffen</h2>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "text_RmqVwt": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Wir stellen unsere neuesten Produkte vor, die speziell für diese Saison hergestellt wurden. Shoppe deine Favoriten, bevor sie vergriffen sind!</p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 20,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "button_gemLQQ": {
-                  "type": "button",
-                  "settings": {
-                    "label": "Jetzt shoppen",
-                    "link": "shopify://collections/all",
-                    "open_in_new_tab": false,
-                    "style_class": "button",
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
-                },
-                "button_TXHKzK": {
-                  "type": "button",
-                  "settings": {
-                    "label": "Jetzt shoppen",
-                    "link": "shopify://collections/all",
-                    "open_in_new_tab": false,
-                    "style_class": "button",
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_XW7yET",
-                "text_RmqVwt",
-                "button_gemLQQ",
-                "button_TXHKzK"
-              ]
-            }
-          },
-          "block_order": [
-            "group_7yrWJm"
-          ]
-        },
         "slide_rnmaYi": {
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/0_1.png",
-            "content_direction": "column",
+            "content_direction": "row",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
+            "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
@@ -254,9 +47,9 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "center",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
+                "gap": 11,
                 "width": "fit-content",
-                "custom_width": 50,
+                "custom_width": 63,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 85,
                 "height": "fit",
@@ -266,16 +59,16 @@
                 "background_media": "none",
                 "video_position": "cover",
                 "background_image_position": "cover",
-                "border": "none",
+                "border": "solid",
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_radius": 12,
                 "toggle_overlay": true,
-                "overlay_color": "#0000001a",
+                "overlay_color": "#ff630000",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
                 "link": "shopify://pages/247",
-                "open_in_new_tab": false,
+                "open_in_new_tab": true,
                 "placeholder": "",
                 "padding-block-start": 48,
                 "padding-block-end": 48,
@@ -286,6 +79,7 @@
                 "logo_mH4dPm": {
                   "type": "logo",
                   "name": "t:names.logo",
+                  "disabled": true,
                   "settings": {
                     "inverse": false,
                     "font": "heading",
@@ -397,13 +191,12 @@
         }
       },
       "block_order": [
-        "slide_cK6LpG",
         "slide_rnmaYi"
       ],
       "name": "t:names.slideshow",
       "settings": {
-        "icons_style": "chevron",
-        "slideshow_controls_style": "dots",
+        "icons_style": "arrows_large",
+        "slideshow_controls_style": "counter",
         "color_scheme": "",
         "autoplay": true,
         "autoplay_speed": 4,
@@ -412,375 +205,9 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
-    },
-    "custom_liquid_JfzaBE": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"schnappix-divider\"></div>\n\n<style>\n.schnappix-divider {\n  width:100%;\n  height:2px;\n  background:linear-gradient(90deg, #F15A29, #FF6A3E);\n  margin:20px 0;\n  box-shadow:0 0 12px #F15A29;\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_4HGU6K": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"typewriter\">SCHNAPPIX — Automated Retail. Reinvented.</div>\n\n<style>\n.typewriter {\n  color:#fff;\n  font-size:22px;\n  font-weight:600;\n  font-family:monospace;\n  white-space:nowrap;\n  overflow:hidden;\n  border-right:3px solid #F15A29;\n  width:0;\n  animation:typing 3s steps(40, end) forwards, blink .7s infinite;\n}\n\n@keyframes typing {\n  from { width:0; }\n  to { width:100%; }\n}\n\n@keyframes blink {\n  0% { border-color:#F15A29; }\n  50% { border-color:transparent; }\n  100% { border-color:#F15A29; }\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_6NFUmW": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"light-bg\">Welcome to SCHNAPPIX</div>\n\n<style>\n.light-bg {\n  position:relative;\n  color:#fff;\n  font-size:32px;\n  font-weight:800;\n  text-align:center;\n  padding:40px 0;\n  overflow:hidden;\n}\n\n.light-bg::before {\n  content:\"\";\n  position:absolute;\n  top:0; left:-100%;\n  width:200%;\n  height:100%;\n  background:linear-gradient(120deg, transparent, rgba(255,106,62,0.3), transparent);\n  animation:slideLight 4s infinite linear;\n}\n\n@keyframes slideLight {\n  0% { left:-100%; }\n  100% { left:100%; }\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_6bfaK3": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"mouse-parallax\">SCHNAPPIX</div>\n\n<style>\n.mouse-parallax {\n  color:#fff;\n  font-size:40px;\n  font-weight:900;\n  letter-spacing:4px;\n  transition:transform 0.2s ease-out;\n}\n</style>\n\n<script>\ndocument.addEventListener('mousemove', e => {\n  const x = (window.innerWidth / 2 - e.clientX) / 40;\n  const y = (window.innerHeight / 2 - e.clientY) / 40;\n  document.querySelector('.mouse-parallax').style.transform = `translate(${x}px, ${y}px)`;\n});\n</script>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_97UWtw": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<section id=\"schnappix-hero-custom\" class=\"schnappix-hero-wrapper\">\n  <div class=\"hero-parallax-layer\" data-speed=\"0.25\"></div>\n\n  <div class=\"hero-inner\">\n    <h1 class=\"hero-title\">\n      <span class=\"typing\">SCHNAPPIX 24/7</span>\n    </h1>\n\n    <p class=\"hero-subtext scroll-fade\">\n      Urban Snacks. Neon Energy. Anytime. Anywhere.\n    </p>\n\n    <a href=\"/collections/all\" class=\"hero-cta\">\n      Jetzt snacken\n    </a>\n  </div>\n</section>\n\n<style>\n  /* WRAPPER */\n  #schnappix-hero-custom.schnappix-hero-wrapper {\n    position: relative;\n    width: 100%;\n    height: 90vh;\n    background-image: url(\"{{ 'hero-bg.jpg' | asset_url }}\");\n    background-size: cover;\n    background-position: center;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 0 20px;\n  }\n\n  #schnappix-hero-custom .hero-parallax-layer {\n    position: absolute;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.55);\n    pointer-events: none;\n    transition: transform 0.2s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-inner {\n    position: relative;\n    z-index: 5;\n  }\n\n  /* TYPING HEADLINE */\n  #schnappix-hero-custom .typing {\n    display: inline-block;\n    font-size: 48px;\n    font-weight: 900;\n    color: #ffffff;\n    text-transform: uppercase;\n    white-space: nowrap;\n    overflow: hidden;\n    border-right: 3px solid #F15A29;\n    width: 0;\n    animation:\n      typing-custom 3.2s steps(40, end) forwards,\n      blinkCursor-custom .6s infinite;\n  }\n\n  @keyframes typing-custom {\n    to { width: 100%; }\n  }\n\n  @keyframes blinkCursor-custom {\n    0%, 100% { border-color:#F15A29; }\n    50% { border-color:transparent; }\n  }\n\n  #schnappix-hero-custom .hero-subtext {\n    margin-top: 20px;\n    font-size: 20px;\n    color: #ffffff;\n    text-shadow: 0 0 10px rgba(255,106,62,0.4);\n    opacity: 0;\n    transform: translateY(20px);\n    transition: all .8s ease-out;\n  }\n\n  #schnappix-hero-custom .hero-subtext.visible {\n    opacity: 1;\n    transform: translateY(0);\n  }\n\n  #schnappix-hero-custom .hero-cta {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 36px;\n    background: #F15A29;\n    border: 2px solid #F15A29;\n    border-radius: 12px;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: 700;\n    text-transform: uppercase;\n    transition: .3s;\n    box-shadow: 0 0 12px rgba(241,90,41,0.4);\n  }\n\n  #schnappix-hero-custom .hero-cta:hover {\n    background: #FF6A3E;\n    border-color: #FF6A3E;\n    box-shadow: 0 0 24px rgba(255,106,62,0.7);\n    transform: translateY(-3px);\n  }\n\n  /* RESPONSIVE */\n  @media (max-width: 768px) {\n    #schnappix-hero-custom .typing { font-size: 34px; }\n    #schnappix-hero-custom .hero-subtext { font-size: 16px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 16px;\n      padding: 14px 28px;\n    }\n  }\n\n  @media (max-width: 480px) {\n    #schnappix-hero-custom .typing { font-size: 28px; }\n    #schnappix-hero-custom .hero-cta {\n      font-size: 15px;\n      padding: 12px 24px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    var hero = document.getElementById('schnappix-hero-custom');\n    if (!hero) return;\n\n    var layer = hero.querySelector('.hero-parallax-layer');\n\n    // Parallax Layer\n    document.addEventListener('mousemove', function (e) {\n      if (!layer) return;\n      var speed = parseFloat(layer.getAttribute('data-speed') || '0.25');\n      var x = (window.innerWidth - e.pageX * speed) / 80;\n      var y = (window.innerHeight - e.pageY * speed) / 80;\n      layer.style.transform = 'translate(' + x + 'px,' + y + 'px)';\n    });\n\n    // Scroll-Fade Text\n    function onScroll() {\n      var sub = hero.querySelector('.scroll-fade');\n      if (!sub) return;\n      var rect = sub.getBoundingClientRect();\n      if (rect.top < window.innerHeight * 0.8) {\n        sub.classList.add('visible');\n        window.removeEventListener('scroll', onScroll);\n      }\n    }\n\n    window.addEventListener('scroll', onScroll);\n    onScroll();\n  });\n</script>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_ACmWXL": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"floating-cards\">\n  <div class=\"card\">🔥 Snacks</div>\n  <div class=\"card\">⚡ Energy Drinks</div>\n  <div class=\"card\">💨 Vapes</div>\n  <div class=\"card\">🧼 Hygiene</div>\n</div>\n\n<style>\n.floating-cards {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));\n  gap: 20px;\n  margin-top: 40px;\n}\n\n.floating-cards .card {\n  padding: 24px;\n  border-radius: 16px;\n  background: #111;\n  border: 1px solid #2f2f2f;\n  color: #fff;\n  text-align: center;\n  font-size: 18px;\n  box-shadow: 0 0 20px rgba(241,90,41,0.2);\n  transform: translateY(0);\n  transition: .4s ease;\n}\n\n.floating-cards .card:hover {\n  transform: translateY(-10px);\n  box-shadow: 0 0 30px rgba(255,106,62,0.4);\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_HKqjax": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"neon-divider\"></div>\n\n<style>\n.neon-divider {\n  width: 100%;\n  height: 4px;\n  border-radius: 100px;\n  margin: 40px 0;\n  background: linear-gradient(90deg, #F15A29, #FF6A3E, #F15A29);\n  box-shadow: 0 0 15px #FF6A3E;\n  animation: gradientMove 3s linear infinite;\n}\n\n@keyframes gradientMove {\n  0% { background-position: 0%; }\n  100% { background-position: 200%; }\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_WDxzND": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"neon-grid\">\n  <a class=\"item\" href=\"/collections/snacks\">Snacks</a>\n  <a class=\"item\" href=\"/collections/drinks\">Drinks</a>\n  <a class=\"item\" href=\"/collections/vapes\">Vapes</a>\n  <a class=\"item\" href=\"/collections/hygiene\">Hygiene</a>\n</div>\n\n<style>\n.neon-grid {\n  display: grid;\n  gap: 25px;\n  grid-template-columns: repeat(auto-fit, minmax(140px,1fr));\n}\n\n.neon-grid .item {\n  padding: 24px;\n  border-radius: 14px;\n  background: #0a0a0a;\n  border: 1px solid #1f1f1f;\n  text-align: center;\n  font-size: 20px;\n  color: #ffffff;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  transition: .3s ease;\n}\n\n.neon-grid .item:hover {\n  border-color: #F15A29;\n  box-shadow: 0 0 20px rgba(241,90,41,0.4);\n}\n</style>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_nDrCbj": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"counter-box\">\n  <div class=\"number\" data-target=\"247\">10</div>\n  <p>Standorte in Planung</p>\n</div>\n\n<style>\n.counter-box {\n  text-align:center;\n  color:white;\n}\n.counter-box .number {\n  font-size:60px;\n  font-weight:900;\n  background: linear-gradient(90deg,#F15A29,#FF6A3E);\n  -webkit-background-clip: text;\n  color: transparent;\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const nums = document.querySelectorAll('.number');\n  nums.forEach(num => {\n    const target = +num.dataset.target;\n    let val = 0;\n    const inc = target / 120; \n    function update(){\n      val += inc;\n      if(val < target){\n        num.textContent = Math.floor(val);\n        requestAnimationFrame(update);\n      } else {\n        num.textContent = target;\n      }\n    }\n    update();\n  });\n});\n</script>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "custom_liquid_47f7mr": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div id=\"sx-loader\">\n  <div class=\"sx-loader-inner\">\n    \n    <!-- Background FX -->\n    <div class=\"sx-bg-fog\"></div>\n    <div class=\"sx-bg-noise\"></div>\n    <div class=\"sx-bg-glow\"></div>\n\n    <!-- Main Logo -->\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0727/8926/2532/files/schnappix_black.svg?v=1764583437\"\n      alt=\"SCHNAPPIX Logo\"\n      class=\"sx-logo\"\n    >\n  </div>\n</div>\n\n<style>\n/* ------- WRAPPER ------- */\n#sx-loader {\n  position: fixed;\n  inset: 0;\n  background: #000;\n  z-index: 99999999;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  opacity: 1;\n  transition: opacity .9s ease-out;\n}\n\n#sx-loader.hidden {\n  opacity: 0;\n  pointer-events: none;\n}\n\n/* ------- CONTENT ------- */\n.sx-loader-inner {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n\n/* ------- BACKGROUND FOG ------- */\n.sx-bg-fog {\n  position: absolute;\n  inset: 0;\n  background: radial-gradient(circle at center,\n    rgba(241, 90, 41, 0.35) 0%, \n    rgba(0, 0, 0, 0.9) 70%\n  );\n  filter: blur(60px);\n  animation: fogMove 6s ease-in-out infinite alternate;\n}\n\n@keyframes fogMove {\n  0% { transform: scale(1); opacity: 0.4; }\n  100% { transform: scale(1.2); opacity: 0.7; }\n}\n\n/* ------- FILM NOISE ------- */\n.sx-bg-noise {\n  pointer-events: none;\n  position: absolute;\n  inset: 0;\n  background-image: url(\"https://i.imgur.com/8aJjYpF.png\");\n  opacity: 0.08;\n  animation: noise 0.3s steps(2) infinite;\n}\n\n@keyframes noise {\n  0% { transform: translate(0,0); }\n  25% { transform: translate(-1px, 1px); }\n  50% { transform: translate(1px,-1px); }\n  75% { transform: translate(-1px,-1px); }\n  100% { transform: translate(0,0); }\n}\n\n/* ------- CENTER LOGO ------- */\n.sx-logo {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 260px;\n  transform: translate(-50%, -50%);\n  opacity: 0;\n  animation: sxFadeIn 1.8s cubic-bezier(.4, 0, .2, 1) forwards,\n             sxPulse 3.5s infinite ease-in-out;\n  filter: drop-shadow(0 0 20px #f15a29);\n}\n\n@keyframes sxFadeIn {\n  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }\n  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }\n}\n\n@keyframes sxPulse {\n  0% { filter: drop-shadow(0 0 10px #f15a2988); }\n  50% { filter: drop-shadow(0 0 35px #ff6a3e); }\n  100% { filter: drop-shadow(0 0 10px #f15a2988); }\n}\n\n/* ------- RESPONSIVE ------- */\n@media (max-width: 768px) {\n  .sx-logo { width: 170px; }\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const loader = document.getElementById(\"sx-loader\");\n\n  if (!sessionStorage.getItem(\"sxLoaderShown\")) {\n    sessionStorage.setItem(\"sxLoaderShown\", \"true\");\n\n    setTimeout(() => {\n      loader.classList.add(\"hidden\");\n      setTimeout(() => loader.remove(), 900);\n    }, 2100);\n\n  } else {\n    loader.remove();\n  }\n});\n</script>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "schnappix_floating_parallax_cards_hkjUFr": {
-      "type": "schnappix-floating-parallax-cards",
-      "blocks": {
-        "card_9YYx6p": {
-          "type": "card",
-          "settings": {
-            "img": "shopify://shop_images/coca-cola.png",
-            "title": "Card 1",
-            "text": "Description for card 1"
-          }
-        },
-        "card_j4XmHU": {
-          "type": "card",
-          "settings": {
-            "title": "Card 2",
-            "text": "Description for card 2"
-          }
-        },
-        "card_JDRyYL": {
-          "type": "card",
-          "settings": {
-            "title": "Card 3",
-            "text": "Description for card 3"
-          }
-        }
-      },
-      "block_order": [
-        "card_9YYx6p",
-        "card_j4XmHU",
-        "card_JDRyYL"
-      ],
-      "custom_css": [],
-      "name": "SCHNAPPIX Floating Parallax Cards",
-      "settings": {
-        "headline": "<h2>Discover the Future of Urban Snacking</h2>",
-        "section_width": "full-width",
-        "min_card_width": 280,
-        "grid_gap": 40,
-        "empty_message": "Add cards in section settings",
-        "color_scheme": "scheme-2"
-      }
-    },
-    "schnappix_parallax_hero_HTfanA": {
-      "type": "schnappix-parallax-hero",
-      "custom_css": [
-        "body {background-color: #000000 !important;}"
-      ],
-      "name": "SCHNAPPIX Parallax Hero",
-      "settings": {
-        "hero_bg": "shopify://shop_images/city-lights-through-rain-window.jpg",
-        "headline": "ENERGY. NIGHT. SNACKS.",
-        "subline": "",
-        "cta_label": "Jetzt shoppen",
-        "cta_link": ""
-      }
-    },
-    "divider_MHDDca": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-2",
-        "section_width": "full-width",
-        "thickness": 5,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 53,
-        "padding-block-end": 16
-      }
-    },
-    "schnappix_parallax_products_r48bW8": {
-      "type": "schnappix-parallax-products",
-      "blocks": {
-        "product_jqXyyM": {
-          "type": "product",
-          "settings": {
-            "product": "coca-cola"
-          }
-        },
-        "product_4wYT84": {
-          "type": "product",
-          "settings": {
-            "product": "other-example-product-1"
-          }
-        },
-        "product_VULnY3": {
-          "type": "product",
-          "settings": {
-            "product": "test-produkt-3"
-          }
-        },
-        "product_MA6PzY": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_jqXyyM",
-        "product_4wYT84",
-        "product_VULnY3",
-        "product_MA6PzY"
-      ],
-      "name": "SCHNAPPIX Parallax Products",
-      "settings": {
-        "headline": "<h2>Trending Snacks & Drinks</h2>",
-        "section_width": "full-width",
-        "min_card_width": 250,
-        "grid_gap": 24,
-        "columns_desktop": "auto-fit",
-        "show_vendor": false,
-        "show_price": true,
-        "show_quick_add": true,
-        "empty_message": "No products available",
-        "color_scheme": "scheme-6"
-      }
-    },
-    "schnappix_parallax_split_QYNdgM": {
-      "type": "schnappix-parallax-split",
-      "name": "SCHNAPPIX Parallax Split",
-      "settings": {
-        "title": "Urban Snacks. Neon Energy.",
-        "text": "Erlebe die neue Generation von Trend-Produkten.",
-        "cta_label": "Mehr erfahren",
-        "cta_link": "",
-        "image_position": "right",
-        "section_width": "page-width",
-        "color_scheme": "scheme-2"
-      }
-    },
-    "schnappix_parallax_category_grid_xhjgJh": {
-      "type": "schnappix-parallax-category-grid",
-      "blocks": {
-        "category_YiBEJa": {
-          "type": "category",
-          "settings": {
-            "image": "shopify://shop_images/coca-cola.png",
-            "title": "Category 1",
-            "link": "shopify://collections/asia-us-trends-1"
-          }
-        },
-        "category_97TXHE": {
-          "type": "category",
-          "settings": {
-            "title": "Category 2",
-            "link": ""
-          }
-        },
-        "category_HyRJaY": {
-          "type": "category",
-          "settings": {
-            "title": "Category 3",
-            "link": ""
-          }
-        },
-        "category_ndQ9Wy": {
-          "type": "category",
-          "settings": {
-            "title": "Category 4",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "category_YiBEJa",
-        "category_97TXHE",
-        "category_HyRJaY",
-        "category_ndQ9Wy"
-      ],
-      "name": "Parallax Category Grid",
-      "settings": {
-        "show_overlay": true,
-        "headline": "DISCOVER SCHNAPPIX CATEGORIES",
-        "section_width": "page-width",
-        "min_card_width": 160,
-        "grid_gap": 28,
-        "empty_message": "Add categories in section settings",
-        "color_scheme": ""
-      }
-    },
-    "schnappix_parallax_usp_RPd6dk": {
-      "type": "schnappix-parallax-usp",
-      "blocks": {
-        "usp_Pxtree": {
-          "type": "usp",
-          "settings": {
-            "title": "Premium Quality",
-            "desc": "Only the finest ingredients and products."
-          }
-        },
-        "usp_dh6jXT": {
-          "type": "usp",
-          "settings": {
-            "title": "Fast Delivery",
-            "desc": "Quick shipping to your door."
-          }
-        },
-        "usp_DY47zz": {
-          "type": "usp",
-          "settings": {
-            "title": "24/7 Support",
-            "desc": "We're here whenever you need us."
-          }
-        }
-      },
-      "block_order": [
-        "usp_Pxtree",
-        "usp_dh6jXT",
-        "usp_DY47zz"
-      ],
-      "name": "SCHNAPPIX Parallax USP Section",
-      "settings": {
-        "show_overlay": true,
-        "headline": "WHY SCHNAPPIX?",
-        "section_width": "full-width",
-        "min_card_width": 260,
-        "grid_gap": 40,
-        "empty_message": "Add USP items in section settings",
-        "color_scheme": ""
-      }
-    },
-    "schnappix_parallax_video_hero_ywi8ca": {
-      "type": "schnappix-parallax-video-hero",
-      "name": "SCHNAPPIX Parallax Video Hero",
-      "settings": {
-        "video_url": "",
-        "video_aria_label": "Background video",
-        "video_fallback_text": "Your browser does not support the video tag.",
-        "show_video_overlay": true,
-        "headline": "FEEL THE ENERGY",
-        "subline": "Urban Snacks • Trend Drinks • Neon Nights",
-        "cta_label": "test",
-        "cta_link": "shopify://collections/drinks",
-        "color_scheme": "scheme-6"
-      }
     }
   },
   "order": [
-    "hero_XWzqaj",
-    "slideshow_CiHgBG",
-    "custom_liquid_JfzaBE",
-    "custom_liquid_4HGU6K",
-    "custom_liquid_6NFUmW",
-    "custom_liquid_6bfaK3",
-    "custom_liquid_97UWtw",
-    "custom_liquid_ACmWXL",
-    "custom_liquid_HKqjax",
-    "custom_liquid_WDxzND",
-    "custom_liquid_nDrCbj",
-    "custom_liquid_47f7mr",
-    "schnappix_floating_parallax_cards_hkjUFr",
-    "schnappix_parallax_hero_HTfanA",
-    "divider_MHDDca",
-    "schnappix_parallax_products_r48bW8",
-    "schnappix_parallax_split_QYNdgM",
-    "schnappix_parallax_category_grid_xhjgJh",
-    "schnappix_parallax_usp_RPd6dk",
-    "schnappix_parallax_video_hero_ywi8ca"
+    "slideshow_CiHgBG"
   ]
 }
