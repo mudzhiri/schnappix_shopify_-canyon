@@ -247,6 +247,35 @@
   defer="defer"
 ></script>
 
+{% comment %} Impact Theme Scripts {% endcomment %}
+{% if template.name == 'product' %}
+  <script
+    src="{{ 'impact-sticky-cart.js' | asset_url }}"
+    type="module"
+    fetchpriority="low"
+  ></script>
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const stickyCart = document.createElement('impact-sticky-cart');
+      document.body.appendChild(stickyCart);
+    });
+  </script>
+{% endif %}
+
+{% if template.name == 'collection' or template.name == 'search' %}
+  <script
+    src="{{ 'impact-quick-buy.js' | asset_url }}"
+    type="module"
+    fetchpriority="low"
+  ></script>
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const quickBuy = document.createElement('impact-quick-buy');
+      document.body.appendChild(quickBuy);
+    });
+  </script>
+{% endif %}
+
 <script>
   const basePath = 'https://cdn.shopify.com/static/themes/horizon/placeholders';
   const Theme = {

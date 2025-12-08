@@ -111,6 +111,86 @@
           "settings": {}
         }
       }
+    },
+    "Impact - Sound": {
+      "type_heading_font": "anonymous_pro_n4",
+      "type_body_font": "work_sans_n4",
+      "type_size_h1": "120",
+      "type_size_h2": "88",
+      "type_size_h3": "56",
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "background": "#0a0a0a",
+            "foreground_heading": "#ffffff",
+            "foreground": "#e0e0e0",
+            "primary": "#ffffff",
+            "primary_hover": "#f5f5f5",
+            "border": "#2a2a2a",
+            "shadow": "#000000",
+            "primary_button_background": "#ffffff",
+            "primary_button_text": "#000000",
+            "primary_button_border": "#ffffff",
+            "primary_button_hover_background": "#f5f5f5",
+            "primary_button_hover_text": "#000000",
+            "primary_button_hover_border": "#f5f5f5"
+          }
+        }
+      }
+    },
+    "Impact - Home": {
+      "type_heading_font": "work_sans_n5",
+      "type_body_font": "work_sans_n4",
+      "type_size_h1": "88",
+      "type_size_h2": "72",
+      "type_size_h3": "48",
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "background": "#faf9f6",
+            "foreground_heading": "#2c2c2c",
+            "foreground": "#4a4a4a",
+            "primary": "#d4a574",
+            "primary_hover": "#c49564",
+            "border": "#e8e8e8",
+            "shadow": "#000000",
+            "primary_button_background": "#d4a574",
+            "primary_button_text": "#ffffff",
+            "primary_button_border": "#d4a574",
+            "primary_button_hover_background": "#c49564",
+            "primary_button_hover_text": "#ffffff",
+            "primary_button_hover_border": "#c49564"
+          }
+        }
+      }
+    },
+    "Impact - Shape": {
+      "type_heading_font": "anonymous_pro_n4",
+      "type_body_font": "work_sans_n4",
+      "type_size_h1": "152",
+      "type_size_h2": "120",
+      "type_size_h3": "72",
+      "type_case_h1": "uppercase",
+      "type_case_h2": "uppercase",
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "background": "#ffffff",
+            "foreground_heading": "#000000",
+            "foreground": "#333333",
+            "primary": "#ff6b9d",
+            "primary_hover": "#ff5a8a",
+            "border": "#e0e0e0",
+            "shadow": "#000000",
+            "primary_button_background": "#ff6b9d",
+            "primary_button_text": "#ffffff",
+            "primary_button_border": "#ff6b9d",
+            "primary_button_hover_background": "#ff5a8a",
+            "primary_button_hover_text": "#ffffff",
+            "primary_button_hover_border": "#ff5a8a"
+          }
+        }
+      }
     }
   },
   "platform_customizations": {
