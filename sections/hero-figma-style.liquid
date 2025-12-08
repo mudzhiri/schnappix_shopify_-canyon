@@ -1,0 +1,402 @@
+{%- style -%}
+  .hero-figma-style-{{ section.id }} {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(to right, #000000 0%, #1a0a00 50%, #2d1400 100%);
+    overflow: hidden;
+  }
+
+  .hero-figma-style-{{ section.id }}__content {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero-figma-style-{{ section.id }}__headline {
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-figma-style-{{ section.id }}__subheadline-1 {
+    font-size: 64px;
+    font-weight: 700;
+    color: #f15a29;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-figma-style-{{ section.id }}__subheadline-2 {
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 32px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-figma-style-{{ section.id }}__icon {
+    width: 48px;
+    height: 48px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+  }
+
+  .hero-figma-style-{{ section.id }}__description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0 0 48px 0;
+    max-width: 600px;
+  }
+
+  .hero-figma-style-{{ section.id }}__buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-figma-style-{{ section.id }}__button-primary {
+    background-color: #f15a29;
+    color: #ffffff;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .hero-figma-style-{{ section.id }}__button-primary:hover {
+    background-color: #ff6a3e;
+  }
+
+  .hero-figma-style-{{ section.id }}__button-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 16px 32px;
+    border: 2px solid #f15a29;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .hero-figma-style-{{ section.id }}__button-secondary:hover {
+    background-color: rgba(241, 90, 41, 0.1);
+    border-color: #ff6a3e;
+  }
+
+  .hero-figma-style-{{ section.id }}__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-figma-style-{{ section.id }}__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-figma-style-{{ section.id }}__decorative-shapes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-figma-style-{{ section.id }}__shape {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f15a29 0%, #ff6a3e 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    opacity: 0.3;
+  }
+
+  .hero-figma-style-{{ section.id }}__shape--top-right {
+    top: 40px;
+    right: 40px;
+  }
+
+  .hero-figma-style-{{ section.id }}__shape--bottom-right {
+    bottom: 40px;
+    right: 40px;
+    transform: rotate(180deg);
+  }
+
+  .hero-figma-style-{{ section.id }}__abstract-icon {
+    position: absolute;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    opacity: 0.05;
+    z-index: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .hero-figma-style-{{ section.id }} {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-figma-style-{{ section.id }}__content {
+      padding: 60px 40px;
+      order: 2;
+    }
+
+    .hero-figma-style-{{ section.id }}__image-wrapper {
+      order: 1;
+      min-height: 400px;
+    }
+
+    .hero-figma-style-{{ section.id }}__headline {
+      font-size: 48px;
+    }
+
+    .hero-figma-style-{{ section.id }}__subheadline-1,
+    .hero-figma-style-{{ section.id }}__subheadline-2 {
+      font-size: 40px;
+    }
+
+    .hero-figma-style-{{ section.id }}__description {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-figma-style-{{ section.id }}__content {
+      padding: 40px 24px;
+    }
+
+    .hero-figma-style-{{ section.id }}__headline {
+      font-size: 36px;
+    }
+
+    .hero-figma-style-{{ section.id }}__subheadline-1,
+    .hero-figma-style-{{ section.id }}__subheadline-2 {
+      font-size: 32px;
+    }
+
+    .hero-figma-style-{{ section.id }}__buttons {
+      flex-direction: column;
+    }
+
+    .hero-figma-style-{{ section.id }}__button-primary,
+    .hero-figma-style-{{ section.id }}__button-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+{%- endstyle -%}
+
+<div class="hero-figma-style-{{ section.id }} color-{{ section.settings.color_scheme }}">
+  <div class="hero-figma-style-{{ section.id }}__content">
+    {%- if section.settings.headline != blank -%}
+      <h1 class="hero-figma-style-{{ section.id }}__headline">
+        {{ section.settings.headline }}
+      </h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheadline_1 != blank -%}
+      <h2 class="hero-figma-style-{{ section.id }}__subheadline-1">
+        {{ section.settings.subheadline_1 }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.subheadline_2 != blank -%}
+      <h2 class="hero-figma-style-{{ section.id }}__subheadline-2">
+        {%- if section.settings.show_icon -%}
+          <svg class="hero-figma-style-{{ section.id }}__icon" viewBox="0 0 24 24">
+            <path d="M8 4h8c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <path d="M10 8h4M10 12h4M10 16h4"/>
+          </svg>
+        {%- endif -%}
+        {{ section.settings.subheadline_2 }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <div class="hero-figma-style-{{ section.id }}__description">
+        {{ section.settings.description }}
+      </div>
+    {%- endif -%}
+
+    <div class="hero-figma-style-{{ section.id }}__buttons">
+      {%- if section.settings.button_1_label != blank -%}
+        <a
+          href="{{ section.settings.button_1_link }}"
+          class="hero-figma-style-{{ section.id }}__button-primary"
+        >
+          {{ section.settings.button_1_label }}
+          {%- if section.settings.button_1_show_icon -%}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.button_2_label != blank -%}
+        <a
+          href="{{ section.settings.button_2_link }}"
+          class="hero-figma-style-{{ section.id }}__button-secondary"
+        >
+          {{ section.settings.button_2_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="hero-figma-style-{{ section.id }}__image-wrapper">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2000
+        | image_tag:
+          loading: 'eager',
+          width: section.settings.image.width,
+          height: section.settings.image.height,
+          alt: section.settings.image.alt,
+          class: 'hero-figma-style-' | append: section.id | append: '__image'
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg hero-figma-style-' | append: section.id | append: '__image' }}
+    {%- endif -%}
+  </div>
+
+  <div class="hero-figma-style-{{ section.id }}__decorative-shapes">
+    <div class="hero-figma-style-{{ section.id }}__shape hero-figma-style-{{ section.id }}__shape--top-right"></div>
+    <div class="hero-figma-style-{{ section.id }}__shape hero-figma-style-{{ section.id }}__shape--bottom-right"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Figma Style",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "SCHNAPPIX"
+    },
+    {
+      "type": "text",
+      "id": "subheadline_1",
+      "label": "Subheadline 1",
+      "default": "Next Level"
+    },
+    {
+      "type": "text",
+      "id": "subheadline_2",
+      "label": "Subheadline 2",
+      "default": "24/7 Automaten"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon next to subheadline 2",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Moderne Snack- und Getränkeautomaten mit Kartenzahlung, Telemetrie und Altersverifikation. Maximale Performance für deinen Standort.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_1_label",
+      "label": "Button 1 Label",
+      "default": "Automaten ansehen"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_1_show_icon",
+      "label": "Show icon on button 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Button 2 Label",
+      "default": "Angebot anfordern"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Figma Style"
+    }
+  ]
+}
+{% endschema %}
+
