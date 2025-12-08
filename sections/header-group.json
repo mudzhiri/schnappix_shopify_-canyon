@@ -13,6 +13,7 @@
   "sections": {
     "custom_liquid_WGHym9": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:names.custom_liquid",
       "settings": {
         "custom_liquid": "<div class=\"light-bg\">Welcome to SCHNAPPIX</div>\n\n<style>\n.light-bg {\n  position:relative;\n  color:#fffff;\n  font-size:25px;\n  font-weight:500;\n  text-align:center;\n  padding:2\n+0px 0;\n  overflow:hidden;\n}\n\n.light-bg::before {\n  content:\"\";\n  position:absolute;\n  top:0; left:-100%;\n  width:200%;\n  height:100%;\n  background:linear-gradient(120deg, transparent, rgba(255,106,62,0.3), transparent);\n  animation:slideLight 4s infinite linear;\n}\n\n@keyframes slideLight {\n  0% { left:-100%; }\n  100% { left:100%; }\n}\n</style>",

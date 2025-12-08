@@ -62,6 +62,7 @@
     },
     "custom_liquid_MBLFhi": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:names.custom_liquid",
       "settings": {
         "custom_liquid": "<h2 class=\"neon-pulse-title\">SCHNAPPIX – NIGHT MODE</h2>\n\n<style>\n.neon-pulse-title {\n  font-size: 48px;\n  text-align: center;\n  color: #F15A29;\n  text-shadow:\n    0 0 10px #f15a2977,\n    0 0 20px #f15a2988,\n    0 0 40px #f15a29aa,\n    0 0 60px #f15a29;\n  animation: neonPulse 2.2s infinite ease-in-out;\n}\n\n@keyframes neonPulse {\n  0%,100% { opacity: 0.7; text-shadow: 0 0 10px #f15a2977; }\n  50% { opacity: 1; text-shadow: 0 0 25px #FF6A3E, 0 0 45px #FF6A3E; }\n}\n\n@media(max-width:768px){\n  .neon-pulse-title { font-size: 32px; }\n}\n</style>",
