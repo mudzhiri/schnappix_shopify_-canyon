@@ -6,6 +6,8 @@ This file can be re-written at any time.
 {% include 'shogun-content-handler' %}
 <html class="no-js{% if request.design_mode %} shopify-design-mode{% endif %}" lang="{{ request.locale.iso_code }}">
   <head>
+    {% render 'shogun-optimizer' %}
+
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
