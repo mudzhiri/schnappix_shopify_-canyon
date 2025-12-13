@@ -1,3 +1,4 @@
+{% include 'shogun-content-handler' %}
 {% comment %}
 	GEMPAGES BUILDER (https://apps.shopify.com/gempages)
 
@@ -41,7 +42,9 @@
     {% endif %}
 
     {{ content_for_header }}
-  </head>
+  
+  {% render 'shogun-head' %}
+</head>
 
   <body>
 <div class="gem-container">
