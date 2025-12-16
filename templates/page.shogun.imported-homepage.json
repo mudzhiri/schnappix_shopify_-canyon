@@ -17,7 +17,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify:\/\/shop_images\/0_1_345f9a9f-84a4-43f0-8b0b-43c1c51cd26e.png",
+            "image": "shopify://shop_images/0_1_345f9a9f-84a4-43f0-8b0b-43c1c51cd26e.png",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -40,7 +40,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1><strong>Elevate your experience<\/strong><\/h1>",
+                "text": "<h1><strong>Elevate your experience</strong></h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -122,7 +122,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>Featured products<\/h3>",
+                "text": "<h3>Featured products</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -226,7 +226,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<h5><strong>{{ closest.product.title }}<\/strong><\/h5>",
+                    "text": "<h5><strong>{{ closest.product.title }}</strong></h5>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -344,7 +344,7 @@
             "color_scheme": "scheme-2",
             "background_media": "image",
             "video_position": "cover",
-            "background_image": "shopify:\/\/shop_images\/other-natural-9.jpg",
+            "background_image": "shopify://shop_images/other-natural-9.jpg",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
@@ -366,7 +366,7 @@
             "text_B96CeQ": {
               "type": "text",
               "settings": {
-                "text": "<h2>Timeless design<\/h2>",
+                "text": "<h2>Timeless design</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -392,7 +392,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop now",
-                "link": "shopify:\/\/collections\/all",
+                "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -429,7 +429,7 @@
             "color_scheme": "scheme-2",
             "background_media": "image",
             "video_position": "cover",
-            "background_image": "shopify:\/\/shop_images\/other-natural-1.jpg",
+            "background_image": "shopify://shop_images/other-natural-1.jpg",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
@@ -451,7 +451,7 @@
             "text_NHBb9V": {
               "type": "text",
               "settings": {
-                "text": "<h2>Sustainable materials<\/h2>",
+                "text": "<h2>Sustainable materials</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -477,7 +477,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop now",
-                "link": "shopify:\/\/collections\/all",
+                "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -535,7 +535,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify:\/\/shop_images\/other-natural-13.jpg",
+            "image": "shopify://shop_images/other-natural-13.jpg",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -557,7 +557,7 @@
               "type": "text",
               "name": "t:names.caption",
               "settings": {
-                "text": "<p>Bestseller<\/p>",
+                "text": "<p>Bestseller</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -654,7 +654,7 @@
                     "text_xRqqrX": {
                       "type": "text",
                       "settings": {
-                        "text": "<h4><strong>{{ closest.product.title }}<\/strong><\/h4>",
+                        "text": "<h4><strong>{{ closest.product.title }}</strong></h4>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -714,7 +714,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop now",
-                "link": "shopify:\/\/collections\/all",
+                "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -772,7 +772,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/other-natural-5.jpg",
+            "image": "shopify://shop_images/other-natural-5.jpg",
             "link": "",
             "image_ratio": "adapt",
             "width": "custom",
@@ -794,7 +794,7 @@
         "text_eFMntb": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>We believe in the beauty of simplicity, where thoughtful design meets everyday utility.<\/strong><\/p>",
+            "text": "<p><strong>We believe in the beauty of simplicity, where thoughtful design meets everyday utility.</strong></p>",
             "width": "100%",
             "max_width": "narrow",
             "alignment": "center",
@@ -820,7 +820,7 @@
           "type": "button",
           "settings": {
             "label": "Shop now →",
-            "link": "shopify:\/\/collections\/all",
+            "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "link",
             "width": "fit-content",
@@ -872,7 +872,7 @@
         "text_XhFiHW": {
           "type": "text",
           "settings": {
-            "text": "<h1>New arrivals<\/h1>",
+            "text": "<h1>New arrivals</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -897,7 +897,7 @@
         "text_aVR3xi": {
           "type": "text",
           "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers.<\/p>",
+            "text": "<p>Made with care and unconditionally loved by our customers.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -924,7 +924,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop now",
-            "link": "shopify:\/\/collections\/all",
+            "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
@@ -943,7 +943,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify:\/\/shop_images\/0_1.png",
+        "image_1": "shopify://shop_images/0_1.png",
         "media_type_2": "image",
         "stack_media_on_mobile": true,
         "custom_mobile_media": false,
@@ -979,7 +979,7 @@
         "text_bHn4Qi": {
           "type": "text",
           "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.<\/p>",
+            "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -1053,15 +1053,25 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
     }
   },
   "order": [
+    "shogun-helper",
     "media_with_content_RVymQU",
     "product_list_themegen",
     "section_UpjyCL",
     "individual_product_card_theme_install",
     "section_x8mrnx",
     "hero_UjMfV6",
-    "section_LNJknk"
+    "section_LNJknk",
+    "shogun-optimizer"
   ]
 }
