@@ -15,7 +15,7 @@
         "text_bHn4Qi": {
           "type": "text",
           "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.<\/p>",
+            "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -90,9 +90,15 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "shogun_custom_69416b0aac99ecb492cb82e9_4TjQC9": {
+      "type": "shogun-custom-69416b0aac99ecb492cb82e9",
+      "name": "hero",
+      "settings": {}
     }
   },
   "order": [
-    "section_LNJknk"
+    "section_LNJknk",
+    "shogun_custom_69416b0aac99ecb492cb82e9_4TjQC9"
   ]
 }
