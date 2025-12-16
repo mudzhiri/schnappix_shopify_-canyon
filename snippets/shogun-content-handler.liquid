@@ -14,13 +14,6 @@ This file can be re-written at any time.
 {% elsif collection %}
   {% assign content = collection %}
 
-{% elsif template == 'index' or template | starts_with: 'index.shogun-693d5abab981667326b1ffb7' %}
-  {% assign content = pages['schnappix'] %}
-
-  {% if template == 'index' %}
-    {% assign template_suffix = 'shogun-693d5abab981667326b1ffb7' %}
-  {% endif %}
-
 {% endif %}
 
 {% capture content_for_header %}
