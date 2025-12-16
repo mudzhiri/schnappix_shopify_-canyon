@@ -161,7 +161,7 @@
                       "name": "t:names.menu",
                       "settings": {
                         "menu": "footer-menus-marke",
-                        "heading": "",
+                        "heading": "Über Schnappix",
                         "menu_spacing": 8,
                         "show_as_accordion": true,
                         "accordion_icon": "plus",
@@ -227,7 +227,7 @@
                       "name": "t:names.menu",
                       "settings": {
                         "menu": "footer-spalte-2-gesch-ftsfelder",
-                        "heading": "",
+                        "heading": "Schnappix 24/7",
                         "menu_spacing": 8,
                         "show_as_accordion": true,
                         "accordion_icon": "plus",
@@ -239,7 +239,7 @@
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
-                        "padding-inline-end": 21
+                        "padding-inline-end": 0
                       },
                       "blocks": {}
                     }
@@ -293,7 +293,7 @@
                       "name": "t:names.menu",
                       "settings": {
                         "menu": "schnappix-com-footer-spalte-3-rechtliches",
-                        "heading": "",
+                        "heading": "Rechtlich",
                         "menu_spacing": 8,
                         "show_as_accordion": true,
                         "accordion_icon": "plus",
