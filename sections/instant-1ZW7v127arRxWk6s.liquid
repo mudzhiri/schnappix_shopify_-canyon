@@ -9,7 +9,7 @@
     endif
   -%}
   {{ 'instant-1ZW7v127arRxWk6s.css' | asset_url | stylesheet_tag: preload: preload -}}
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet">
   {%- liquid
     assign product_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
     assign product_default_selling_plan_id = null
@@ -284,7 +284,94 @@
                 "
                 ><div data-instant-type="text" class="instant-rich-text iywSRnsncFZptvloM"><p>🫐</p></div></div
               ></div
-            ><div class="imxkC3KiPv3CCElqY" data-instant-type="container"
+            >
+            <!--  -->
+            {%- liquid
+              assign selected_options = product.selected_or_first_available_variant.options
+              assign variants_option1 = product.variants | map: 'option1'
+              assign variants_option2 = product.variants | map: 'option2'
+              assign variants_option3 = product.variants | map: 'option3'
+              assign selected_option = product.options_with_values | where: 'name', 'Title' | first
+
+              if selected_option == null
+                assign selected_option = product.options_with_values[0]
+              endif
+
+              assign selected_option_index = selected_option.position | minus: 1
+
+              assign hide_variant_picker = false
+
+              if product.has_only_default_variant or selected_option == null
+                assign hide_variant_picker = true
+              endif
+            -%}
+            {%- unless hide_variant_picker -%}
+              <!--  -->
+              <fieldset class="instant-variant-picker iFGQGkf84TtaY1SLv" data-instant-type="VARIANT_PICKER">
+                <legend class="instant-visually-hidden">{{ option.name }}</legend>
+
+                {%- for value in selected_option.values -%}
+                  {%- liquid
+                    assign option_disabled = true
+                    assign selected_variant = ''
+
+                    for option1_name in variants_option1
+                      if selected_option.position == 1 and option1_name == value and variants_option2[forloop.index0] == selected_options[1] and variants_option3[forloop.index0] == selected_options[2]
+                        assign option_disabled = false
+                      elsif selected_option.position == 2 and option1_name == selected_options[0] and variants_option2[forloop.index0] == value and variants_option3[forloop.index0] == selected_options[2]
+                        assign option_disabled = false
+                      elsif selected_option.position == 3 and option1_name == selected_options[0] and variants_option2[forloop.index0] == selected_options[1] and variants_option3[forloop.index0] == value
+                        assign option_disabled = false
+                      endif
+                    endfor
+
+                    for variant in product.variants
+                      if selected_option.position == 1 and variant.option1 == value and variant.option2 == selected_options[1] and variant.option3 == selected_options[2]
+                        assign selected_variant = variant
+                      elsif selected_option.position == 2 and variant.option1 == selected_options[0] and variant.option2 == value and variant.option3 == selected_options[2]
+                        assign selected_variant = variant
+                      elsif selected_option.position == 3 and variant.option1 == selected_options[0] and variant.option2 == selected_options[1] and variant.option3 == value
+                        assign selected_variant = variant
+                      endif
+                    endfor
+
+                    if selected_variant.available == false
+                      assign option_disabled = true
+                    endif
+
+                    assign title = value
+                    if option_disabled
+                      assign title = title | append: ' - Unavailable'
+                    endif
+                  -%}
+                  <input
+                    id="FGQGkf84TtaY1SLv-{{ selected_option.position }}-{{ forloop.index0 }}"
+                    value="{{ value | escape }}"
+                    name="cD2DB65j0erGnGPP_FGQGkf84TtaY1SLv__{{ selected_option.name | url_param_escape }}"
+                    type="radio"
+                    {%- if selected_options[selected_option_index] == value -%}
+                      checked
+                    {% endif -%}
+                    {%- if option_disabled -%}
+                      data-instant-disabled="true"
+                    {%- endif -%}
+                  >
+                  <label
+                    for="FGQGkf84TtaY1SLv-{{ selected_option.position }}-{{ forloop.index0 }}"
+                    class="igUGAdYRY8ZcK19GV"
+                    title="{{ title }}"
+                    {%- if selected_options[selected_option_index] == value -%}
+                      aria-checked="true"
+                    {%- endif -%}
+                  >
+                    {{ value }}
+                  </label>
+                {%- endfor -%}
+              </fieldset>
+              <!--  -->
+            {%- endunless -%}
+            <!--  -->
+            <div class="imxkC3KiPv3CCElqY" data-instant-type="container"
               ><div class="instant-selling-plan-selector iSDbSCQqyjBKA4cM5" data-instant-type="container" data-instant-action-type="select-selling-plan" data-instant-selling-plan-id="one-time-purchase" data-instant-selling-plan-name="One%20time%20purchase" data-instant-state="inactive"
                 ><div class="i9LjymxOt7iRn332H" data-instant-type="container"><div class="iR3RsfCpuzXUh9eIr" data-instant-type="container"></div></div
                 ><div class="iL71tKlccWIt59gX4" data-instant-type="container"
@@ -380,7 +467,7 @@
                     <title>plus</title><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
                   </svg></div></button
               ><div class="iignfve9NzFfuyFfo" data-instant-type="accordion-content" style="--instant-accordion-content-height:auto;--instant-accordion-content-width:auto"
-                ><div data-instant-type="text" class="instant-rich-text iTbH04zJG6PsFfHaS"><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</h3></div></div
+                ><div data-instant-type="text" class="instant-rich-text iTbH04zJG6PsFfHaS"><h3>test lieferun </h3></div></div
               ></div
             ></div
           ></div
@@ -526,14 +613,47 @@
     ><div class="iRiihKfWTkcRlbs3H" data-instant-type="container" id="iRiihKfWTkcRlbs3H"
       ><div class="iK8erLSjh99k2zoOr" data-instant-type="container"
         ><div data-instant-type="text" class="instant-rich-text iu7MUxGMZEMF4dtlm"><p>Save 20% — Get the subscription — One jar / month</p></div></div
-      ><div class="i940R3QyFYJNMtcgg" data-instant-type="container" data-instant-form-product-url="/products/whey-protein"
+      >
+      {%- liquid
+        assign product_940R3QyFYJNMtcgg_handle = 'coca-cola'
+        assign product_940R3QyFYJNMtcgg = section.settings.product_940R3QyFYJNMtcgg | default: all_products[product_940R3QyFYJNMtcgg_handle]
+        assign product_940R3QyFYJNMtcgg_variant = product_940R3QyFYJNMtcgg.selected_or_first_available_variant
+
+        if product_940R3QyFYJNMtcgg.selected_variant
+          assign product_940R3QyFYJNMtcgg_variant = product_940R3QyFYJNMtcgg.selected_variant
+        endif
+
+        assign product_940R3QyFYJNMtcgg_image = product_940R3QyFYJNMtcgg_variant.featured_image | default: product_940R3QyFYJNMtcgg.featured_image
+      -%}
+      <div class="i940R3QyFYJNMtcgg" data-instant-type="container" data-instant-form-product-url="{{ product_940R3QyFYJNMtcgg.url }}" data-instant-form-variant-id="{{ product_940R3QyFYJNMtcgg_variant.id }}" data-instant-form-product-id="{{ product_940R3QyFYJNMtcgg.id }}"
         ><div class="iSdjHwHRwuvjgwfbc" data-instant-type="container"
-          ><p data-instant-dynamic-content-source="TITLE" data-instant-type="text" class="iGoisgM8o29aRdito"></p
+          ><p data-instant-dynamic-content-source="TITLE" data-instant-type="text" class="iGoisgM8o29aRdito">{{ product_940R3QyFYJNMtcgg.title }}</p
           ><div class="iDjFDMO2SzQ1KLXZe" data-instant-type="container"
-            ><p data-instant-dynamic-content-source="PRICE" data-instant-type="text" class="iC7cuvAwIZzMTVfwu"></p><div data-instant-type="text" class="instant-rich-text iA0fuvGRicr9m80DV"><p>One jar</p></div></div
+            ><p data-instant-dynamic-content-source="PRICE" data-instant-type="text" class="iC7cuvAwIZzMTVfwu">
+              {%- liquid
+                assign variant_price = product_940R3QyFYJNMtcgg_variant.price
+
+                if product_940R3QyFYJNMtcgg_variant.selected_selling_plan_allocation
+                  assign variant_price = product_940R3QyFYJNMtcgg_variant.selected_selling_plan_allocation.price
+                endif
+              -%}
+              {{- variant_price | money -}}</p
+            ><p data-instant-dynamic-content-source="TITLE" data-instant-type="text" class="iA0fuvGRicr9m80DV">{{ product_940R3QyFYJNMtcgg.title }}</p></div
           ></div
-        ><div class="iP3ov5IBukdiLeVnA" data-instant-type="container"
-          ><div data-instant-type="text" class="instant-rich-text iwcgCTFKpyLa7IIpC"><p>Add to bag</p></div></div
+        ><a
+          class="iP3ov5IBukdiLeVnA"
+          data-instant-type="container"
+          href="{{ routes.cart_url }}/{{ product_940R3QyFYJNMtcgg_variant.id }}:1?storefront=true"
+          rel="noopener noreferrer"
+          data-instant-action-type="redirect-to-cart"
+          data-instant-action-id="{{ product_940R3QyFYJNMtcgg.id }}"
+          data-instant-action-variant-id="{{ product_940R3QyFYJNMtcgg_variant.id }}"
+          data-instant-disabled="
+            {%- if product_940R3QyFYJNMtcgg_variant.available == false -%}
+            	true
+            {%-	endif -%}
+          "
+          ><div data-instant-type="text" class="instant-rich-text iwcgCTFKpyLa7IIpC"><p>Add to bag</p></div></a
         ></div
       ></div
     >
