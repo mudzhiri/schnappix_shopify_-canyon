@@ -154,6 +154,8 @@ body {
 
 /* Mobile — match Webflow: logo LEFT, hamburger RIGHT, nothing else */
 @media (max-width: 767px) {
+
+  /* Keep desktop row visible but simplified */
   #header-group .header .header__row--top {
     margin: 0.5rem 1rem !important;
     padding: 0.5rem 1rem !important;
@@ -161,46 +163,64 @@ body {
     border-radius: 6.25rem !important;
   }
 
-  /* Simple 2-column: logo left, hamburger right */
-  #header-group .header .header__columns {
-    grid-template-columns: 1fr auto !important;
-    gap: 0.5rem !important;
-  }
-
-  /* Hide the center column (nav menu) on mobile */
-  #header-group .header .header__column--center {
-    display: none !important;
-  }
-
-  /* Hide all right-side items EXCEPT the hamburger drawer */
-  #header-group .header .header__column--right {
-    display: none !important;
-  }
-
-  /* Logo on left — show it properly */
-  #header-group .header .header__column--left {
-    display: flex !important;
-    align-items: center;
-    gap: 0.75rem;
-    order: 1;
-  }
-
-  /* Show the mobile drawer (hamburger) — it's in the left column */
-  #header-group .header .header__drawer {
-    display: flex !important;
-    order: 2;
-    position: absolute;
-    right: 1rem;
-  }
-
-  /* Hide the mobile row (navigation bar below header) */
+  /* Hide the mobile nav bar (horizontal menu links below header) */
   #header-group .header .header__row--mobile {
     display: none !important;
   }
 
-  /* Logo sizing on mobile */
+  /* 2-column grid: logo left, hamburger right */
+  #header-group .header .header__columns {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* LEFT column: logo + hamburger — hide everything else inside */
+  #header-group .header .header__column--left {
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  /* Logo stays visible */
   #header-group .header .header-logo {
-    max-width: 10rem;
+    display: block !important;
+    order: 1;
+  }
+
+  /* Hamburger drawer stays visible, push to far right */
+  #header-group .header .header__drawer {
+    display: block !important;
+    order: 3;
+    margin-left: auto;
+  }
+
+  /* Hide search button on mobile */
+  #header-group .header .search-modal__button,
+  #header-group .header [class*="search"] {
+    display: none !important;
+  }
+
+  /* Hide account button on mobile */
+  #header-group .header .account-button,
+  #header-group .header .account-popover {
+    display: none !important;
+  }
+
+  /* HIDE center column (desktop nav) */
+  #header-group .header .header__column--center {
+    display: none !important;
+  }
+
+  /* HIDE right column (search, account, cart, EUR/DE) */
+  #header-group .header .header__column--right {
+    display: none !important;
+  }
+
+  /* Prevent horizontal scroll */
+  body, .snx-homepage {
+    overflow-x: hidden !important;
   }
 
   #header-group .header a,
@@ -212,13 +232,9 @@ body {
 /* Small mobile */
 @media (max-width: 479px) {
   #header-group .header .header__row--top {
-    margin: 0.4rem 0.75rem !important;
-    padding: 0.4rem 0.75rem !important;
-    max-width: calc(100% - 1.5rem);
-  }
-
-  #header-group .header .header-logo {
-    max-width: 8rem;
+    margin: 0.4rem 0.5rem !important;
+    padding: 0.4rem 0.5rem !important;
+    max-width: calc(100% - 1rem);
   }
 }
 
