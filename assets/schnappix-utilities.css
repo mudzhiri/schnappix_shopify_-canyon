@@ -1,35 +1,44 @@
 /**
- * Schnappix 24/7 - Webflow Design Matching Styles
- * Aligns the Shopify theme with the Webflow site at schnappix.com
+ * Schnappix 24/7 - Webflow Design System Match
+ * Exact port of schnappix.com Webflow styles to Shopify
  */
 
 :root {
-  /* Schnappix Brand Colors - Webflow palette */
-  --schnappix-lime: #D4E600;
-  --schnappix-lime-hover: #c2d400;
-  --schnappix-orange: #F15A29;
-  --schnappix-orange-hover: #D44E22;
-  --schnappix-pink: #FFB6C8;
-  --schnappix-black: #000000;
+  --schnappix-pink: #ffade6;
+  --schnappix-dark: #211509;
+  --schnappix-cream: #f6ede4;
+  --schnappix-yellow: #e1f532;
+  --schnappix-purple: #5541ba;
+  --schnappix-orange: #ff6316;
   --schnappix-white: #ffffff;
-  --schnappix-cream: #f0ead2;
 
-  /* Animation Timing */
-  --schnappix-animation-fast: 120ms;
-  --schnappix-animation-normal: 240ms;
-  --schnappix-animation-slow: 400ms;
-  --schnappix-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --schnappix-ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+  --schnappix-heading-font: 'Londrina Solid', sans-serif;
+  --schnappix-text-font: 'Inter', sans-serif;
 }
 
 /* ========================================
-   HEADER STYLING - Match Webflow navbar
+   GLOBAL TYPOGRAPHY - Londrina Solid
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+body {
+  font-family: var(--schnappix-text-font);
+}
+
+/* ========================================
+   HEADER / NAVBAR - Webflow exact match
    ======================================== */
 
 #header-group {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 99;
 }
 
 #header-group .header {
@@ -37,96 +46,84 @@
 }
 
 #header-group .header a,
-#header-group .header button {
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
-  font-weight: 700;
+#header-group .header button,
+#header-group .header nav a {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--schnappix-dark);
+}
+
+#header-group .header nav a:hover {
+  color: var(--schnappix-orange);
+  transform: scale(1.05);
+  transition: transform 0.2s, color 0.3s;
+}
+
+.header-announcements {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
 
-/* Nav links styling */
-#header-group .header nav a {
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  transition: opacity var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-#header-group .header nav a:hover {
-  opacity: 0.7;
-}
-
-/* Announcement bar with orange background */
-.header-announcements {
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
 /* ========================================
-   TYPOGRAPHY - Match Webflow fonts
-   ======================================== */
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
-  font-weight: 800;
-}
-
-/* ========================================
-   BUTTON STYLING - Match Webflow pill buttons
+   BUTTONS - Webflow exact match
    ======================================== */
 
 .button,
 button[type="submit"],
 .shopify-payment-button button,
-.cart-drawer button,
 input[type="submit"] {
   border-radius: 100px !important;
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
-  font-weight: 700;
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 1.25rem 2.5rem;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 /* ========================================
-   PRODUCT CARDS - Modern styling
+   PRODUCT CARDS - Webflow exact match
    ======================================== */
 
 .product-card {
-  transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out),
-    box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px rgba(33, 21, 9, 0.12);
 }
 
 /* ========================================
-   FOOTER STYLING - Match Webflow footer
+   FOOTER - Webflow exact match
+   Orange bg with lime green card inside
    ======================================== */
 
-#footer-group .section:first-child {
-  border-radius: 20px;
-  margin: 0 auto;
-  max-width: calc(100% - 40px);
-  padding: 40px;
+#footer-group {
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
 }
 
-/* Footer menus with accordion style matching Webflow */
 #footer-group details summary {
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
-  font-weight: 700;
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
+  font-size: 1.2rem;
 }
 
 /* ========================================
-   INPUT FIELDS - Match Webflow cream inputs
+   INPUT FIELDS - Webflow form_input style
    ======================================== */
 
 input[type="text"],
@@ -136,88 +133,69 @@ input[type="tel"],
 input[type="search"],
 input[type="number"],
 input[type="url"],
-textarea,
 select {
-  border-radius: 100px !important;
-  padding: 14px 24px;
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  border-radius: 32px !important;
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
 }
 
 textarea {
   border-radius: 20px !important;
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
 }
 
 /* ========================================
-   GENERAL LAYOUT
+   FAQ / ACCORDION STYLE
    ======================================== */
 
-.content-for-layout {
-  flex-grow: 1;
+details {
+  border-radius: 30px;
 }
 
-/* Rounded section containers */
-.section-group__container {
-  overflow: hidden;
-}
-
-/* ========================================
-   ANIMATION UTILITIES
-   ======================================== */
-
-.schnappix-fade-in {
-  animation: schnappix-fade-in var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.schnappix-slide-up {
-  animation: schnappix-slide-up var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+details summary {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.2rem;
 }
 
 /* ========================================
-   CART DRAWER - Modern styling
+   CART DRAWER
    ======================================== */
 
 .cart-drawer {
-  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  font-family: var(--schnappix-text-font);
+}
+
+.cart-drawer h2,
+.cart-drawer h3,
+.cart-drawer h4 {
+  font-family: var(--schnappix-heading-font) !important;
 }
 
 /* ========================================
-   RESPONSIVE HELPERS
+   LINK HOVER - Webflow scale effect
+   ======================================== */
+
+a {
+  transition: transform 0.2s, color 0.3s;
+}
+
+/* ========================================
+   RESPONSIVE
    ======================================== */
 
 @media (max-width: 768px) {
-  .schnappix-hide-mobile {
-    display: none !important;
-  }
-
-  #footer-group .section:first-child {
-    margin: 0 auto;
-    max-width: calc(100% - 20px);
-    padding: 24px;
-  }
-
   #header-group .header {
     border-radius: 0 0 14px 14px;
   }
-}
 
-@media (min-width: 769px) {
-  .schnappix-hide-desktop {
-    display: none !important;
+  .button,
+  button[type="submit"],
+  .shopify-payment-button button,
+  input[type="submit"] {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
   }
 }
