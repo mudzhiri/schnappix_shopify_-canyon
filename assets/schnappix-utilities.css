@@ -367,13 +367,96 @@ details summary {
    RESPONSIVE
    ======================================== */
 
-/* Footer responsive */
-@media (max-width: 479px) {
+/* ============ FOOTER MENU ACCORDION — pill button style ============ */
+
+/* Each accordion menu becomes a pill-shaped button */
+.shopify-section-group-footer-group .menu--accordion {
+  border: 2px solid var(--schnappix-dark) !important;
+  background-color: var(--schnappix-cream) !important;
+  border-radius: 30px !important;
+  overflow: hidden;
+}
+
+.shopify-section-group-footer-group .menu__heading {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--schnappix-dark);
+}
+
+.shopify-section-group-footer-group .menu__details summary {
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Hide dividers inside accordion */
+.shopify-section-group-footer-group .menu--dividers {
+  border: none !important;
+}
+
+/* ============ FOOTER MOBILE LAYOUT ============ */
+@media (max-width: 767px) {
+  /* Stack footer content vertically and center */
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  /* The group blocks inside footer — stack and center */
+  .shopify-section-group-footer-group .group-block {
+    width: 100% !important;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  /* Center the menu columns */
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Footer section responsive */
   .shopify-section-group-footer-group.section-wrapper .section {
     border-radius: 30px !important;
   }
   
   .shopify-section-group-footer-group.section-wrapper {
     padding: 1rem !important;
+  }
+
+  /* "Join our community" heading center */
+  .shopify-section-group-footer-group h2 {
+    text-align: center !important;
+  }
+
+  /* Email signup full width */
+  .shopify-section-group-footer-group .email-signup {
+    width: 100%;
+  }
+
+  /* Social media section — center and stack */
+  .shopify-section-group-footer-group.footer-utilities .footer-utilities__inner {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem;
+  }
+
+  /* JOIN US ON SOCIAL MEDIA text */
+  .shopify-section-group-footer-group .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .shopify-section-group-footer-group .menu__heading {
+    font-size: 1.1rem;
+  }
+
+  .shopify-section-group-footer-group .group-block {
+    max-width: 16rem;
   }
 }
