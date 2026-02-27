@@ -419,6 +419,41 @@ details summary {
    RESPONSIVE
    ======================================== */
 
+/* ============ FOOTER LAYOUT — menus row + email in one line ============ */
+
+/* Override inline --flex-direction: column to row on desktop */
+@media (min-width: 768px) {
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    --flex-direction: row !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  /* All top-level group blocks fill equally */
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper > .group-block {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+  }
+
+  /* The row inside first group — 3 equal menus side by side */
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  /* Each menu column — equal width, same height */
+  .shopify-section-group-footer-group .layout-panel-flex--row > .group-block {
+    flex: 1 !important;
+    width: 33.33% !important;
+  }
+}
+
 /* ============ FOOTER MENU ACCORDION — pill button style ============ */
 
 /* Each accordion menu becomes a pill-shaped button */
@@ -427,6 +462,7 @@ details summary {
   background-color: var(--schnappix-cream) !important;
   border-radius: 30px !important;
   overflow: hidden;
+  height: 100%;
 }
 
 .shopify-section-group-footer-group .menu__heading {
@@ -448,30 +484,56 @@ details summary {
   border: none !important;
 }
 
+/* The 3 menu group blocks should have equal height */
+.shopify-section-group-footer-group .group-block:has(.menu--accordion) {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* "Join our community" section takes its column */
+.shopify-section-group-footer-group .group-block:has(h2),
+.shopify-section-group-footer-group .group-block:has(.email-signup) {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* ============ FOOTER TABLET LAYOUT ============ */
+@media (min-width: 768px) and (max-width: 991px) {
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    --flex-direction: column !important;
+    flex-direction: column !important;
+  }
+
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+  }
+}
+
 /* ============ FOOTER MOBILE LAYOUT ============ */
 @media (max-width: 767px) {
-  /* Stack footer content vertically and center */
+  /* Stack to single column on mobile */
   .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
-    flex-direction: column !important;
-    align-items: center !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
     text-align: center;
   }
 
-  /* The group blocks inside footer — stack and center */
+  /* The inner row — stack vertically */
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
   .shopify-section-group-footer-group .group-block {
     width: 100% !important;
     max-width: 20rem;
     margin: 0 auto;
   }
 
-  /* Center the menu columns */
-  .shopify-section-group-footer-group .layout-panel-flex--row {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
-  }
-
-  /* Footer section responsive */
   .shopify-section-group-footer-group.section-wrapper .section {
     border-radius: 30px !important;
   }
@@ -480,26 +542,8 @@ details summary {
     padding: 1rem !important;
   }
 
-  /* "Join our community" heading center */
   .shopify-section-group-footer-group h2 {
     text-align: center !important;
-  }
-
-  /* Email signup full width */
-  .shopify-section-group-footer-group .email-signup {
-    width: 100%;
-  }
-
-  /* Social media section — center and stack */
-  .shopify-section-group-footer-group.footer-utilities .footer-utilities__inner {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem;
-  }
-
-  /* JOIN US ON SOCIAL MEDIA text */
-  .shopify-section-group-footer-group .social-links {
-    justify-content: center;
   }
 }
 
