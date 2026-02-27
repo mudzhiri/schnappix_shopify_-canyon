@@ -1,6 +1,6 @@
 /**
- * Schnappix 24/7 - Webflow Design System Match
- * Exact port of schnappix.com Webflow styles to Shopify
+ * Schnappix 24/7 - Webflow Design System Exact Match
+ * Port of schnappix.com Webflow styles to Shopify
  */
 
 :root {
@@ -32,7 +32,8 @@ body {
 }
 
 /* ========================================
-   HEADER / NAVBAR - Webflow exact match
+   HEADER - Webflow floating pill navbar
+   Exact match: .nav-wrapper from Webflow
    ======================================== */
 
 #header-group {
@@ -41,13 +42,31 @@ body {
   z-index: 99;
 }
 
-#header-group .header {
-  border-radius: 0 0 20px 20px;
+/* The main header bar — make it a floating pill */
+#header-group .header .header__row--top {
+  border: 3px solid #000 !important;
+  border-radius: 6.25rem !important;
+  margin: 0.75rem 2rem !important;
+  padding: 0.5rem 1.5rem !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #e1f532cc !important;
+  backdrop-filter: blur(4px);
+  max-width: calc(100% - 4rem);
 }
 
+/* Override the section full-width to allow the pill to float */
+#header-group .header .header__row--top.section--full-width-margin {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+#header-group .header .header__row--top.section--page-width {
+  max-width: none;
+}
+
+/* Header nav links */
 #header-group .header a,
-#header-group .header button,
-#header-group .header nav a {
+#header-group .header button {
   font-family: var(--schnappix-heading-font) !important;
   font-weight: 300;
   text-transform: uppercase;
@@ -58,16 +77,105 @@ body {
 }
 
 #header-group .header nav a:hover {
-  color: var(--schnappix-orange);
+  color: var(--schnappix-orange) !important;
   transform: scale(1.05);
   transition: transform 0.2s, color 0.3s;
 }
 
+/* Announcement bar */
 .header-announcements {
   font-family: var(--schnappix-heading-font) !important;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+}
+
+/* Remove the divider/border on the header row since the pill border handles it */
+#header-group .header .header__row--top {
+  --border-bottom-width: 0px !important;
+}
+
+/* ========================================
+   FOOTER - Webflow exact match
+   Orange bg with lime-green rounded card
+   ======================================== */
+
+/* The main footer section container should look like a card */
+#footer-group .section-wrapper:first-child {
+  background-color: var(--schnappix-orange) !important;
+  padding: 2rem !important;
+}
+
+#footer-group .section-wrapper:first-child .section {
+  border: 3px solid var(--schnappix-dark) !important;
+  border-radius: 42px !important;
+  padding: 2rem !important;
+  background-color: var(--schnappix-yellow) !important;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+#footer-group .section-wrapper:first-child .section-background {
+  border-radius: 42px !important;
+  background-color: var(--schnappix-yellow) !important;
+}
+
+/* Footer text styling */
+#footer-group {
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+}
+
+#footer-group a {
+  color: var(--schnappix-dark);
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+  text-transform: lowercase;
+  font-size: 1.1rem;
+}
+
+#footer-group a:hover {
+  color: var(--schnappix-orange);
+}
+
+#footer-group details summary {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+/* Footer utilities (copyright, social icons) — orange bg */
+#footer-group .shopify-section:last-child {
+  background-color: var(--schnappix-orange) !important;
+}
+
+/* Second footer section — also orange bg */
+#footer-group .section-wrapper:nth-child(2) {
+  background-color: var(--schnappix-orange) !important;
+}
+
+#footer-group .section-wrapper:nth-child(2) .section {
+  background-color: var(--schnappix-orange) !important;
+}
+
+#footer-group .section-wrapper:nth-child(2) .section-background {
+  background-color: var(--schnappix-orange) !important;
+}
+
+/* "Join our community" heading */
+#footer-group h2 {
+  font-family: var(--schnappix-heading-font) !important;
+  color: var(--schnappix-dark);
+}
+
+/* Email signup input in footer */
+#footer-group input[type="email"] {
+  border: 2px solid var(--schnappix-dark) !important;
+  background-color: var(--schnappix-cream) !important;
+  border-radius: 32px !important;
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
 }
 
 /* ========================================
@@ -85,12 +193,11 @@ input[type="submit"] {
   font-size: 1.4rem;
   letter-spacing: 0;
   line-height: 1;
-  padding: 1.25rem 2.5rem;
   transition: background-color 0.2s, transform 0.2s;
 }
 
 /* ========================================
-   PRODUCT CARDS - Webflow exact match
+   PRODUCT CARDS
    ======================================== */
 
 .product-card {
@@ -105,25 +212,7 @@ input[type="submit"] {
 }
 
 /* ========================================
-   FOOTER - Webflow exact match
-   Orange bg with lime green card inside
-   ======================================== */
-
-#footer-group {
-  font-family: var(--schnappix-heading-font);
-  font-weight: 300;
-}
-
-#footer-group details summary {
-  font-family: var(--schnappix-heading-font) !important;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  font-size: 1.2rem;
-}
-
-/* ========================================
-   INPUT FIELDS - Webflow form_input style
+   INPUT FIELDS
    ======================================== */
 
 input[type="text"],
@@ -146,7 +235,7 @@ textarea {
 }
 
 /* ========================================
-   FAQ / ACCORDION STYLE
+   FAQ / ACCORDION
    ======================================== */
 
 details {
@@ -175,20 +264,28 @@ details summary {
 }
 
 /* ========================================
-   LINK HOVER - Webflow scale effect
-   ======================================== */
-
-a {
-  transition: transform 0.2s, color 0.3s;
-}
-
-/* ========================================
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
-  #header-group .header {
-    border-radius: 0 0 14px 14px;
+@media (max-width: 991px) {
+  #header-group .header .header__row--top {
+    margin: 0.5rem 1rem !important;
+    padding: 0.5rem 1rem !important;
+    max-width: calc(100% - 2rem);
+    border-radius: 30px !important;
+  }
+}
+
+@media (max-width: 479px) {
+  #header-group .header .header__row--top {
+    margin: 0.5rem 0.5rem !important;
+    padding: 0.4rem 0.5rem !important;
+    max-width: calc(100% - 1rem);
+  }
+
+  #footer-group .section-wrapper:first-child .section {
+    border-radius: 30px !important;
+    padding: 1.5rem !important;
   }
 
   .button,
