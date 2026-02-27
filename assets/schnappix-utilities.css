@@ -175,13 +175,37 @@ body {
     justify-content: space-between;
   }
 
-  /* LEFT column: show logo + hamburger drawer */
+  /* LEFT column: logo + hamburger — hide everything else inside */
   #header-group .header .header__column--left {
     display: flex !important;
     align-items: center;
-    flex-direction: row-reverse;
-    gap: 0.5rem;
-    flex-shrink: 0;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  /* Logo stays visible */
+  #header-group .header .header-logo {
+    display: block !important;
+    order: 1;
+  }
+
+  /* Hamburger drawer stays visible, push to far right */
+  #header-group .header .header__drawer {
+    display: block !important;
+    order: 3;
+    margin-left: auto;
+  }
+
+  /* Hide search button on mobile */
+  #header-group .header .search-modal__button,
+  #header-group .header [class*="search"] {
+    display: none !important;
+  }
+
+  /* Hide account button on mobile */
+  #header-group .header .account-button,
+  #header-group .header .account-popover {
+    display: none !important;
   }
 
   /* HIDE center column (desktop nav) */
@@ -192,11 +216,6 @@ body {
   /* HIDE right column (search, account, cart, EUR/DE) */
   #header-group .header .header__column--right {
     display: none !important;
-  }
-
-  /* Make sure the hamburger drawer button is visible */
-  #header-group .header .header__drawer {
-    display: block !important;
   }
 
   /* Prevent horizontal scroll */
