@@ -152,69 +152,84 @@ body {
   }
 }
 
-/* Mobile — match Webflow: logo LEFT, hamburger RIGHT, nothing else */
+/* Mobile: hamburger LEFT, logo CENTER, icons RIGHT */
 @media (max-width: 767px) {
 
-  /* Keep desktop row visible but simplified */
+  /* Pill styling for the desktop row */
   #header-group .header .header__row--top {
     margin: 0.5rem 1rem !important;
     padding: 0.5rem 1rem !important;
     max-width: calc(100% - 2rem);
     border-radius: 6.25rem !important;
+    box-sizing: border-box !important;
   }
 
-  /* Hide the mobile nav bar (horizontal menu links below header) */
+  /* Hide the mobile nav bar below header */
   #header-group .header .header__row--mobile {
     display: none !important;
   }
 
-  /* 2-column grid: logo left, hamburger right */
+  /* 3-column grid: hamburger | logo | icons */
   #header-group .header .header__columns {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
   }
 
-  /* LEFT column: logo + hamburger — hide everything else inside */
+  /* LEFT column: hamburger on the left */
   #header-group .header .header__column--left {
     display: flex !important;
     align-items: center;
-    gap: 0.75rem;
-    flex: 1;
+    justify-self: start;
+    gap: 0.5rem;
   }
 
-  /* Logo stays visible */
-  #header-group .header .header-logo {
-    display: block !important;
-    order: 1;
+  /* Hide logo in left column — it will show centered in left column layout */
+  /* Actually: show hamburger first, then logo centered */
+  #header-group .header .header__column--left .header-logo {
+    display: none !important;
   }
 
-  /* Hamburger drawer stays visible, push to far right */
+  /* Hamburger visible */
   #header-group .header .header__drawer {
     display: block !important;
-    order: 3;
-    margin-left: auto;
   }
 
-  /* Hide search button on mobile */
-  #header-group .header .search-modal__button,
-  #header-group .header [class*="search"] {
+  /* Hide search in left column */
+  #header-group .header .header__column--left .search-modal__button,
+  #header-group .header .header__column--left [class*="search-modal"] {
     display: none !important;
   }
 
-  /* Hide account button on mobile */
-  #header-group .header .account-button,
-  #header-group .header .account-popover {
-    display: none !important;
-  }
-
-  /* HIDE center column (desktop nav) */
+  /* CENTER column: show logo here */
   #header-group .header .header__column--center {
+    display: flex !important;
+    justify-self: center !important;
+    align-items: center;
+  }
+
+  /* Hide the nav menu inside center column */
+  #header-group .header .header__column--center .header-menu {
     display: none !important;
   }
 
-  /* HIDE right column (search, account, cart, EUR/DE) */
+  /* RIGHT column: show cart + account icons only */
   #header-group .header .header__column--right {
+    display: flex !important;
+    justify-self: end;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Hide localization (EUR/DE) on mobile */
+  #header-group .header .dropdown-localization {
+    display: none !important;
+  }
+
+  /* Hide search on mobile (it's also in right sometimes) */
+  #header-group .header .header__column--right .search-modal__button {
     display: none !important;
   }
 
