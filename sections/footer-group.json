@@ -795,7 +795,7 @@
         "section_width": "page-width",
         "gap": 24,
         "divider_thickness": 1,
-        "color_scheme": "",
+        "color_scheme": "scheme-schnappix-orange",
         "padding-block-start": 20,
         "padding-block-end": 20
       }
