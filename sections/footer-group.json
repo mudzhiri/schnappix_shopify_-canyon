@@ -716,6 +716,7 @@
         "group_RJqrwj",
         "group_qKfdWX"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
