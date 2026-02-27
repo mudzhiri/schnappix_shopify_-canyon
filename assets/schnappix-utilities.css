@@ -42,7 +42,7 @@ body {
   z-index: 99;
 }
 
-/* The main header bar — make it a floating pill */
+/* The main header bar — floating pill matching Webflow .nav-wrapper */
 #header-group .header .header__row--top {
   border: 3px solid #000 !important;
   border-radius: 6.25rem !important;
@@ -53,6 +53,12 @@ body {
   backdrop-filter: blur(4px);
   max-width: calc(100% - 5rem);
   --border-bottom-width: 0px !important;
+}
+
+/* Ensure left margin on the pill is equal to right */
+#header-group .header .header__row--top.section--full-width-margin {
+  margin-left: 2.5rem !important;
+  margin-right: 2.5rem !important;
 }
 
 /* Override the section full-width to allow the pill to float */
@@ -86,19 +92,20 @@ body {
   justify-self: end;
 }
 
-/* Nav menu: centered, horizontal */
+/* Nav menu: centered with Webflow-exact spacing */
 #header-group .header-menu {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  gap: 1.75rem;
 }
 
-#header-group .header-menu__inner {
+#header-group .header-menu__inner,
+#header-group .header-menu .overflow-menu::part(list),
+#header-group .header-menu .menu-list__list {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.75rem !important;
 }
 
 /* Header nav links */
@@ -114,7 +121,7 @@ body {
 }
 
 #header-group .header nav a {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   white-space: nowrap;
 }
 
@@ -137,18 +144,28 @@ body {
 /* Tablet */
 @media (max-width: 991px) {
   #header-group .header .header__row--top {
-    margin: 0.5rem 1.25rem !important;
+    margin: 0.5rem 1.5rem !important;
     padding: 0.5rem 1rem !important;
-    max-width: calc(100% - 2.5rem);
+    max-width: calc(100% - 3rem);
     border-radius: 6.25rem !important;
+  }
+
+  #header-group .header .header__row--top.section--full-width-margin {
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
   }
 
   #header-group .header .header__columns {
     grid-template-columns: auto 1fr auto !important;
+    gap: 0.75rem !important;
   }
 
   #header-group .header nav a {
     font-size: 1rem;
+  }
+
+  #header-group .header-menu .menu-list__list {
+    gap: 1rem !important;
   }
 }
 
@@ -160,15 +177,20 @@ body {
   #header-group .header .header__row--top {
     border: 3px solid #000 !important;
     border-radius: 6.25rem !important;
-    margin: 0.5rem 0.75rem !important;
+    margin: 0.5rem 1rem !important;
     padding: 0.5rem 0 !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: #e1f532cc !important;
     backdrop-filter: blur(4px);
     --border-bottom-width: 0px !important;
     --border-bottom-width-mobile: 0px !important;
-    max-width: calc(100% - 1.5rem) !important;
+    max-width: calc(100% - 2rem) !important;
     box-sizing: border-box !important;
+  }
+
+  #header-group .header .header__row--top.section--full-width-margin {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
   }
 
   /* Columns become transparent — children flow into parent grid */
