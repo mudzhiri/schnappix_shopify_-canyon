@@ -79,6 +79,7 @@
           "blocks": {}
         }
       },
+      "custom_css": [],
       "settings": {
         "logo_position": "left",
         "menu_position": "center",
@@ -91,9 +92,9 @@
         "show_language": true,
         "localization_font": "heading",
         "localization_font_size": "1rem",
-        "localization_position": "right",
+        "localization_position": "left",
         "localization_row": "top",
-        "section_width": "page-width",
+        "section_width": "full-width",
         "section_height": "standard",
         "enable_sticky_header": "always",
         "divider_width": 0,
