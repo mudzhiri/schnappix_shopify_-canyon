@@ -9,17 +9,24 @@
  */
 {
   "sections": {
-    "section_LNJknk": {
-      "type": "section",
+    "shogun_custom_69416b0aac99ecb492cb82e9_WNKAnJ": {
+      "type": "shogun-custom-69416b0aac99ecb492cb82e9",
+      "disabled": true,
+      "custom_css": [],
+      "name": "hero",
+      "settings": {}
+    },
+    "hero_yrXNjY": {
+      "type": "hero",
       "blocks": {
-        "text_bHn4Qi": {
+        "text_YBP6Lw": {
           "type": "text",
           "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.</p>",
+            "text": "<h1>Neu eingetroffen</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "h1",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -37,68 +44,87 @@
           },
           "blocks": {}
         },
-        "logo_qwgHmf": {
-          "type": "logo",
+        "text_rKUiYD": {
+          "type": "text",
           "settings": {
-            "inverse": false,
-            "font": "heading",
-            "unit": "percent",
-            "percent_width": 100,
-            "pixel_height": 48,
-            "custom_mobile_size": false,
-            "unit_mobile": "percent",
-            "percent_width_mobile": 100,
-            "pixel_height_mobile": 120,
+            "text": "<p>Mit Sorgfalt hergestellt und von unseren Kunden bedingungslos geliebt.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 32,
             "padding-inline-start": 0,
             "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_mHfeFh": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Jetzt shoppen",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_bHn4Qi",
-        "logo_qwgHmf"
+        "text_YBP6Lw",
+        "text_rKUiYD",
+        "button_mHfeFh"
       ],
-      "disabled": true,
-      "name": "t:names.large_logo",
+      "name": "t:names.hero",
       "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "space-between",
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "medium",
+        "section_height": "large",
         "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
+        "color_scheme": "scheme-5",
+        "toggle_overlay": true,
         "overlay_color": "#00000026",
-        "overlay_style": "solid",
+        "overlay_style": "gradient",
         "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
         "padding-block-start": 40,
         "padding-block-end": 40
       }
-    },
-    "shogun_custom_69416b0aac99ecb492cb82e9_WNKAnJ": {
-      "type": "shogun-custom-69416b0aac99ecb492cb82e9",
-      "name": "hero",
-      "settings": {}
     }
   },
   "order": [
-    "section_LNJknk",
-    "shogun_custom_69416b0aac99ecb492cb82e9_WNKAnJ"
+    "shogun_custom_69416b0aac99ecb492cb82e9_WNKAnJ",
+    "hero_yrXNjY"
   ]
 }
