@@ -86,19 +86,20 @@ body {
   justify-self: end;
 }
 
-/* Nav menu: centered, horizontal */
+/* Nav menu: centered with Webflow-exact spacing */
 #header-group .header-menu {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  gap: 1.75rem;
 }
 
-#header-group .header-menu__inner {
+#header-group .header-menu__inner,
+#header-group .header-menu .overflow-menu::part(list),
+#header-group .header-menu .menu-list__list {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.75rem !important;
 }
 
 /* Header nav links */
