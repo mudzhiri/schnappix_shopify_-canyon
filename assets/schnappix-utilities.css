@@ -152,12 +152,11 @@ body {
   }
 }
 
-/* Mobile: let the theme's native 5-column grid handle layout
-   (leftA=drawer, leftB=search, center=logo, rightA=empty, rightB=actions)
-   We ONLY add pill styling — no layout overrides */
+/* Mobile: adopt the theme's 5-column grid layout
+   leftA=drawer, leftB=search, center=logo, rightA=empty, rightB=actions */
 @media (max-width: 749px) {
 
-  /* Pill styling only — no layout changes */
+  /* Pill styling */
   #header-group .header .header__row--top {
     border: 3px solid #000 !important;
     border-radius: 6.25rem !important;
@@ -167,6 +166,40 @@ body {
     background-color: #e1f532cc !important;
     backdrop-filter: blur(4px);
     --border-bottom-width: 0px !important;
+    --border-bottom-width-mobile: 0px !important;
+  }
+
+  /* Columns become transparent — children flow into parent grid */
+  #header-group .header .header__column {
+    display: contents !important;
+  }
+
+  /* 5-column mobile grid: drawer | search | logo | empty | actions */
+  #header-group .header .header__columns {
+    --header-mobile-bookend: 44px;
+    display: grid !important;
+    grid-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr var(--header-mobile-bookend) var(--header-mobile-bookend) !important;
+    grid-template-areas: 'leftA leftB center rightA rightB' !important;
+    column-gap: 0 !important;
+    align-items: center !important;
+    padding-block: 0 !important;
+    padding-inline: 0 var(--padding-3xs, 4px) !important;
+  }
+
+  /* Logo centered */
+  #header-group .header .header-logo {
+    grid-area: center !important;
+    justify-self: center;
+  }
+
+  /* Search action in leftB */
+  #header-group .header .search-action {
+    grid-area: leftB !important;
+  }
+
+  /* Cart/account actions in rightB */
+  #header-group .header header-actions {
+    grid-area: rightB !important;
   }
 
   /* Hide the mobile nav bar (horizontal scroll links) */
@@ -176,6 +209,11 @@ body {
 
   /* Hide localization on mobile */
   #header-group .header .dropdown-localization {
+    display: none !important;
+  }
+
+  /* Hide desktop-only nav menu */
+  #header-group .header .header-menu {
     display: none !important;
   }
 
