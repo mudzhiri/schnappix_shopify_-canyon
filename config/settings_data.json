@@ -58,8 +58,8 @@
     "variant_swatch_width": 24,
     "variant_swatch_height": 24,
     "variant_swatch_radius": 24,
-    "variant_button_border_width": 1,
-    "variant_button_radius": 16,
+    "variant_button_border_width": 2,
+    "variant_button_radius": 100,
     "variant_button_width": "equal-width-buttons",
     "content_for_index": [],
     "color_schemes": {
