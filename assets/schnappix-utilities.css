@@ -228,7 +228,13 @@ body {
 @media (max-width: 479px) {
   #header-group .header .header__row--top {
     margin: 0.4rem 0.5rem !important;
-    padding: 0.4rem 0.5rem !important;
+    padding: 0.4rem 0 !important;
+    max-width: calc(100% - 1rem) !important;
+  }
+
+  #header-group .header .header__columns {
+    --header-mobile-bookend: 36px !important;
+    padding-inline: 0.4rem !important;
   }
 }
 
