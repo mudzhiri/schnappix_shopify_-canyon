@@ -152,16 +152,19 @@ body {
   }
 }
 
-/* Mobile: hamburger LEFT, logo CENTER, icons RIGHT */
+/* Mobile: hamburger LEFT | logo CENTER | cart/account RIGHT */
 @media (max-width: 767px) {
 
-  /* Pill styling for the desktop row */
+  /* Pill centered properly */
   #header-group .header .header__row--top {
-    margin: 0.5rem 1rem !important;
+    margin: 0.5rem auto !important;
     padding: 0.5rem 1rem !important;
-    max-width: calc(100% - 2rem);
+    width: calc(100% - 2rem) !important;
+    max-width: calc(100% - 2rem) !important;
     border-radius: 6.25rem !important;
     box-sizing: border-box !important;
+    left: 0 !important;
+    right: 0 !important;
   }
 
   /* Hide the mobile nav bar below header */
@@ -169,27 +172,29 @@ body {
     display: none !important;
   }
 
-  /* 3-column grid: hamburger | logo | icons */
+  /* All 3 columns in a row with equal distribution */
   #header-group .header .header__columns {
     display: grid !important;
-    grid-template-columns: auto 1fr auto !important;
+    grid-template-columns: 1fr auto 1fr !important;
     align-items: center !important;
-    gap: 0.5rem !important;
+    gap: 0 !important;
     width: 100% !important;
   }
 
-  /* LEFT column: hamburger on the left */
+  /* LEFT column: only hamburger, aligned left */
   #header-group .header .header__column--left {
     display: flex !important;
     align-items: center;
-    justify-self: start;
-    gap: 0.5rem;
+    justify-content: flex-start !important;
+    justify-self: start !important;
   }
 
-  /* Hide logo in left column — it will show centered in left column layout */
-  /* Actually: show hamburger first, then logo centered */
+  /* Hide logo from left column (we show it from CSS in center) */
   #header-group .header .header__column--left .header-logo {
-    display: none !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 2;
   }
 
   /* Hamburger visible */
@@ -203,22 +208,16 @@ body {
     display: none !important;
   }
 
-  /* CENTER column: show logo here */
+  /* CENTER column: hide (nav menu) — logo is positioned absolutely from left */
   #header-group .header .header__column--center {
-    display: flex !important;
-    justify-self: center !important;
-    align-items: center;
-  }
-
-  /* Hide the nav menu inside center column */
-  #header-group .header .header__column--center .header-menu {
     display: none !important;
   }
 
-  /* RIGHT column: show cart + account icons only */
+  /* RIGHT column: show cart + account icons */
   #header-group .header .header__column--right {
     display: flex !important;
-    justify-self: end;
+    justify-self: end !important;
+    justify-content: flex-end !important;
     align-items: center;
     gap: 0.25rem;
   }
@@ -228,7 +227,7 @@ body {
     display: none !important;
   }
 
-  /* Hide search on mobile (it's also in right sometimes) */
+  /* Hide search icon on mobile */
   #header-group .header .header__column--right .search-modal__button {
     display: none !important;
   }
@@ -247,9 +246,10 @@ body {
 /* Small mobile */
 @media (max-width: 479px) {
   #header-group .header .header__row--top {
-    margin: 0.4rem 0.5rem !important;
+    margin: 0.4rem auto !important;
+    width: calc(100% - 1rem) !important;
+    max-width: calc(100% - 1rem) !important;
     padding: 0.4rem 0.5rem !important;
-    max-width: calc(100% - 1rem);
   }
 }
 
