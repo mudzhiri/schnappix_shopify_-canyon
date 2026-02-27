@@ -100,33 +100,51 @@ body {
    Orange bg with lime-green rounded card
    ======================================== */
 
-/* The main footer section container should look like a card */
-#footer-group .section-wrapper:first-child {
+/* ALL footer sections get orange background */
+.shopify-section-group-footer-group {
   background-color: var(--schnappix-orange) !important;
-  padding: 2rem !important;
 }
 
-#footer-group .section-wrapper:first-child .section {
-  border: 3px solid var(--schnappix-dark) !important;
-  border-radius: 42px !important;
-  padding: 2rem !important;
-  background-color: var(--schnappix-yellow) !important;
-  max-width: calc(100% - 2rem);
-  margin: 0 auto;
+/* The first footer section (main content card) — lime card inside orange */
+.shopify-section-group-footer-group.section-wrapper {
+  background-color: var(--schnappix-orange) !important;
+  padding: 2rem 2rem 0 !important;
 }
 
-#footer-group .section-wrapper:first-child .section-background {
-  border-radius: 42px !important;
+/* The section inside — this is the lime card */
+.shopify-section-group-footer-group.section-wrapper .section {
   background-color: var(--schnappix-yellow) !important;
+  border-radius: 42px !important;
+  overflow: hidden;
+}
+
+/* The section background div */
+.shopify-section-group-footer-group.section-wrapper .section-background {
+  background-color: var(--schnappix-yellow) !important;
+  border-radius: 42px !important;
+}
+
+/* The border-style div already has inline border from settings — ensure visibility */
+.shopify-section-group-footer-group.section-wrapper .border-style.custom-section-content {
+  border-color: var(--schnappix-dark) !important;
+}
+
+/* Footer utilities section (social icons, copyright) */
+.shopify-section-group-footer-group.footer-utilities {
+  background-color: var(--schnappix-orange) !important;
+}
+
+.shopify-section-group-footer-group.footer-utilities .section-background {
+  background-color: var(--schnappix-orange) !important;
 }
 
 /* Footer text styling */
-#footer-group {
+.shopify-section-group-footer-group {
   font-family: var(--schnappix-heading-font);
   font-weight: 300;
 }
 
-#footer-group a {
+.shopify-section-group-footer-group a {
   color: var(--schnappix-dark);
   font-family: var(--schnappix-heading-font);
   font-weight: 300;
@@ -134,48 +152,39 @@ body {
   font-size: 1.1rem;
 }
 
-#footer-group a:hover {
+.shopify-section-group-footer-group a:hover {
   color: var(--schnappix-orange);
 }
 
-#footer-group details summary {
+.shopify-section-group-footer-group details summary {
   font-family: var(--schnappix-heading-font) !important;
   font-weight: 300;
   text-transform: uppercase;
   font-size: 1.2rem;
 }
 
-/* Footer utilities (copyright, social icons) — orange bg */
-#footer-group .shopify-section:last-child {
-  background-color: var(--schnappix-orange) !important;
-}
-
-/* Second footer section — also orange bg */
-#footer-group .section-wrapper:nth-child(2) {
-  background-color: var(--schnappix-orange) !important;
-}
-
-#footer-group .section-wrapper:nth-child(2) .section {
-  background-color: var(--schnappix-orange) !important;
-}
-
-#footer-group .section-wrapper:nth-child(2) .section-background {
-  background-color: var(--schnappix-orange) !important;
-}
-
 /* "Join our community" heading */
-#footer-group h2 {
+.shopify-section-group-footer-group h2 {
   font-family: var(--schnappix-heading-font) !important;
   color: var(--schnappix-dark);
 }
 
-/* Email signup input in footer */
-#footer-group input[type="email"] {
+/* Email signup input */
+.shopify-section-group-footer-group input[type="email"] {
   border: 2px solid var(--schnappix-dark) !important;
   background-color: var(--schnappix-cream) !important;
   border-radius: 32px !important;
   font-family: var(--schnappix-heading-font);
   font-weight: 300;
+}
+
+/* Footer link color for social icons area */
+.shopify-section-group-footer-group.footer-utilities a {
+  color: var(--schnappix-cream) !important;
+}
+
+.shopify-section-group-footer-group.footer-utilities a:hover {
+  color: var(--schnappix-yellow) !important;
 }
 
 /* ========================================
@@ -283,9 +292,12 @@ details summary {
     max-width: calc(100% - 1rem);
   }
 
-  #footer-group .section-wrapper:first-child .section {
+  .shopify-section-group-footer-group.section-wrapper .section {
     border-radius: 30px !important;
-    padding: 1.5rem !important;
+  }
+  
+  .shopify-section-group-footer-group.section-wrapper {
+    padding: 1rem !important;
   }
 
   .button,
