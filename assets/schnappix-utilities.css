@@ -152,91 +152,68 @@ body {
   }
 }
 
-/* Mobile: hamburger LEFT | logo CENTER | cart/account RIGHT */
-@media (max-width: 767px) {
+/* Mobile: adopt the theme's 5-column grid layout
+   leftA=drawer, leftB=search, center=logo, rightA=empty, rightB=actions */
+@media (max-width: 749px) {
 
-  /* FORCE desktop row visible on mobile (theme hides it) */
+  /* Pill styling */
   #header-group .header .header__row--top {
-    display: grid !important;
-    margin: 0.5rem auto !important;
-    padding: 0.5rem 1rem !important;
-    width: calc(100% - 2rem) !important;
-    max-width: calc(100% - 2rem) !important;
+    border: 3px solid #000 !important;
     border-radius: 6.25rem !important;
-    box-sizing: border-box !important;
-    left: 0 !important;
-    right: 0 !important;
+    margin: 0.5rem 1rem !important;
+    padding: 0.5rem 0.75rem !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #e1f532cc !important;
+    backdrop-filter: blur(4px);
+    --border-bottom-width: 0px !important;
+    --border-bottom-width-mobile: 0px !important;
   }
 
-  /* Hide the mobile nav bar below header */
+  /* Columns become transparent — children flow into parent grid */
+  #header-group .header .header__column {
+    display: contents !important;
+  }
+
+  /* 5-column mobile grid: drawer | search | logo | empty | actions */
+  #header-group .header .header__columns {
+    --header-mobile-bookend: 44px;
+    display: grid !important;
+    grid-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr var(--header-mobile-bookend) var(--header-mobile-bookend) !important;
+    grid-template-areas: 'leftA leftB center rightA rightB' !important;
+    column-gap: 0 !important;
+    align-items: center !important;
+    padding-block: 0 !important;
+    padding-inline: 0 var(--padding-3xs, 4px) !important;
+  }
+
+  /* Logo centered */
+  #header-group .header .header-logo {
+    grid-area: center !important;
+    justify-self: center;
+  }
+
+  /* Search action in leftB */
+  #header-group .header .search-action {
+    grid-area: leftB !important;
+  }
+
+  /* Cart/account actions in rightB */
+  #header-group .header header-actions {
+    grid-area: rightB !important;
+  }
+
+  /* Hide the mobile nav bar (horizontal scroll links) */
   #header-group .header .header__row--mobile {
     display: none !important;
   }
 
-  /* Simple flex row for all header content */
-  #header-group .header .header__columns {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    position: relative !important;
-  }
-
-  /* LEFT column: hamburger + logo */
-  #header-group .header .header__column--left {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    order: 1 !important;
-    flex: 1 !important;
-  }
-
-  /* Force hamburger drawer visible */
-  #header-group .header .header__drawer,
-  #header-group .header [class*="header__drawer"] {
-    display: block !important;
-    visibility: visible !important;
-    order: -1 !important;
-  }
-
-  #header-group summary.header__icon--menu,
-  #header-group .header summary[class*="header__icon--menu"] {
-    display: flex !important;
-    visibility: visible !important;
-    cursor: pointer;
-  }
-
-  /* Logo sizing */
-  #header-group .header .header-logo {
-    max-width: 8rem;
-  }
-
-  /* Hide search from left column */
-  #header-group .header .header__column--left .search-modal__button,
-  #header-group .header .header__column--left [class*="search-modal"],
-  #header-group .header .header__column--left .account-popover {
+  /* Hide localization on mobile */
+  #header-group .header .dropdown-localization {
     display: none !important;
   }
 
-  /* HIDE center column (nav menu) */
-  #header-group .header .header__column--center {
-    display: none !important;
-    order: 2 !important;
-  }
-
-  /* RIGHT column: account + cart only */
-  #header-group .header .header__column--right {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 0.25rem !important;
-    order: 3 !important;
-    flex: 1 !important;
-  }
-
-  /* Hide localization + search from right */
-  #header-group .header .dropdown-localization,
-  #header-group .header .header__column--right .search-modal__button {
+  /* Hide desktop-only nav menu */
+  #header-group .header .header-menu {
     display: none !important;
   }
 
@@ -244,19 +221,11 @@ body {
   body, .snx-homepage {
     overflow-x: hidden !important;
   }
-
-  #header-group .header a,
-  #header-group .header button {
-    font-size: 0.9rem;
-  }
 }
 
-/* Small mobile */
 @media (max-width: 479px) {
   #header-group .header .header__row--top {
-    margin: 0.4rem auto !important;
-    width: calc(100% - 1rem) !important;
-    max-width: calc(100% - 1rem) !important;
+    margin: 0.4rem 0.5rem !important;
     padding: 0.4rem 0.5rem !important;
   }
 }
