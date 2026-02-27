@@ -484,30 +484,37 @@ details summary {
   justify-content: center !important;
 }
 
+/* ============ FOOTER TABLET LAYOUT ============ */
+@media (max-width: 991px) {
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
 /* ============ FOOTER MOBILE LAYOUT ============ */
 @media (max-width: 767px) {
-  /* Stack footer content vertically and center */
+  /* Stack to single column on mobile */
   .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
-    flex-direction: column !important;
-    align-items: center !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
     text-align: center;
   }
 
-  /* The group blocks inside footer — stack and center */
+  /* The inner row — stack vertically */
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
   .shopify-section-group-footer-group .group-block {
     width: 100% !important;
     max-width: 20rem;
     margin: 0 auto;
   }
 
-  /* Center the menu columns */
-  .shopify-section-group-footer-group .layout-panel-flex--row {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
-  }
-
-  /* Footer section responsive */
   .shopify-section-group-footer-group.section-wrapper .section {
     border-radius: 30px !important;
   }
@@ -516,26 +523,8 @@ details summary {
     padding: 1rem !important;
   }
 
-  /* "Join our community" heading center */
   .shopify-section-group-footer-group h2 {
     text-align: center !important;
-  }
-
-  /* Email signup full width */
-  .shopify-section-group-footer-group .email-signup {
-    width: 100%;
-  }
-
-  /* Social media section — center and stack */
-  .shopify-section-group-footer-group.footer-utilities .footer-utilities__inner {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem;
-  }
-
-  /* JOIN US ON SOCIAL MEDIA text */
-  .shopify-section-group-footer-group .social-links {
-    justify-content: center;
   }
 }
 
