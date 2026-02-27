@@ -156,17 +156,19 @@ body {
    leftA=drawer, leftB=search, center=logo, rightA=empty, rightB=actions */
 @media (max-width: 749px) {
 
-  /* Pill styling */
+  /* Pill styling — equal margins on both sides */
   #header-group .header .header__row--top {
     border: 3px solid #000 !important;
     border-radius: 6.25rem !important;
-    margin: 0.5rem 1rem !important;
-    padding: 0.5rem 0.75rem !important;
+    margin: 0.5rem 0.75rem !important;
+    padding: 0.5rem 0 !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: #e1f532cc !important;
     backdrop-filter: blur(4px);
     --border-bottom-width: 0px !important;
     --border-bottom-width-mobile: 0px !important;
+    max-width: calc(100% - 1.5rem) !important;
+    box-sizing: border-box !important;
   }
 
   /* Columns become transparent — children flow into parent grid */
@@ -176,14 +178,14 @@ body {
 
   /* 5-column mobile grid: drawer | search | logo | empty | actions */
   #header-group .header .header__columns {
-    --header-mobile-bookend: 44px;
+    --header-mobile-bookend: 40px;
     display: grid !important;
     grid-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr var(--header-mobile-bookend) var(--header-mobile-bookend) !important;
     grid-template-areas: 'leftA leftB center rightA rightB' !important;
     column-gap: 0 !important;
     align-items: center !important;
     padding-block: 0 !important;
-    padding-inline: 0 var(--padding-3xs, 4px) !important;
+    padding-inline: 0.5rem !important;
   }
 
   /* Logo centered */
@@ -226,7 +228,13 @@ body {
 @media (max-width: 479px) {
   #header-group .header .header__row--top {
     margin: 0.4rem 0.5rem !important;
-    padding: 0.4rem 0.5rem !important;
+    padding: 0.4rem 0 !important;
+    max-width: calc(100% - 1rem) !important;
+  }
+
+  #header-group .header .header__columns {
+    --header-mobile-bookend: 36px !important;
+    padding-inline: 0.4rem !important;
   }
 }
 
