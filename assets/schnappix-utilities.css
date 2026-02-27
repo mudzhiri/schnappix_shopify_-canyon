@@ -432,16 +432,10 @@ details summary {
     width: 100% !important;
   }
 
-  /* First group block (3 menus) takes 3/4 width */
-  .shopify-section-group-footer-group.section-wrapper > .border-style > .section-content-wrapper > .group-block:first-child {
-    flex: 3 !important;
-    width: 75% !important;
-  }
-
-  /* Second group block (email) takes 1/4 width */
-  .shopify-section-group-footer-group.section-wrapper > .border-style > .section-content-wrapper > .group-block:last-child {
-    flex: 1 !important;
-    width: 25% !important;
+  /* All top-level group blocks fill equally */
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper > .group-block {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
   }
 
   /* The row inside first group — 3 equal menus side by side */
