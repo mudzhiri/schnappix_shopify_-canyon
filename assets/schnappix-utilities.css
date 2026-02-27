@@ -140,7 +140,7 @@ body {
     margin: 0.5rem 1.25rem !important;
     padding: 0.5rem 1rem !important;
     max-width: calc(100% - 2.5rem);
-    border-radius: 2rem !important;
+    border-radius: 6.25rem !important;
   }
 
   #header-group .header .header__columns {
@@ -152,18 +152,55 @@ body {
   }
 }
 
-/* Mobile */
+/* Mobile — match Webflow: logo LEFT, hamburger RIGHT, nothing else */
 @media (max-width: 767px) {
   #header-group .header .header__row--top {
-    margin: 0.5rem 0.75rem !important;
-    padding: 0.5rem 0.75rem !important;
-    max-width: calc(100% - 1.5rem);
-    border-radius: 1.5rem !important;
+    margin: 0.5rem 1rem !important;
+    padding: 0.5rem 1rem !important;
+    max-width: calc(100% - 2rem);
+    border-radius: 6.25rem !important;
   }
 
+  /* Simple 2-column: logo left, hamburger right */
   #header-group .header .header__columns {
-    grid-template-columns: auto 1fr auto !important;
+    grid-template-columns: 1fr auto !important;
     gap: 0.5rem !important;
+  }
+
+  /* Hide the center column (nav menu) on mobile */
+  #header-group .header .header__column--center {
+    display: none !important;
+  }
+
+  /* Hide all right-side items EXCEPT the hamburger drawer */
+  #header-group .header .header__column--right {
+    display: none !important;
+  }
+
+  /* Logo on left — show it properly */
+  #header-group .header .header__column--left {
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    order: 1;
+  }
+
+  /* Show the mobile drawer (hamburger) — it's in the left column */
+  #header-group .header .header__drawer {
+    display: flex !important;
+    order: 2;
+    position: absolute;
+    right: 1rem;
+  }
+
+  /* Hide the mobile row (navigation bar below header) */
+  #header-group .header .header__row--mobile {
+    display: none !important;
+  }
+
+  /* Logo sizing on mobile */
+  #header-group .header .header-logo {
+    max-width: 10rem;
   }
 
   #header-group .header a,
@@ -175,14 +212,13 @@ body {
 /* Small mobile */
 @media (max-width: 479px) {
   #header-group .header .header__row--top {
-    margin: 0.4rem 0.5rem !important;
-    padding: 0.4rem 0.5rem !important;
-    max-width: calc(100% - 1rem);
+    margin: 0.4rem 0.75rem !important;
+    padding: 0.4rem 0.75rem !important;
+    max-width: calc(100% - 1.5rem);
   }
 
-  #header-group .header a,
-  #header-group .header button {
-    font-size: 0.8rem;
+  #header-group .header .header-logo {
+    max-width: 8rem;
   }
 }
 
