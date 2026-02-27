@@ -42,7 +42,7 @@
 .snx-text-orange { color: var(--snx-orange); }
 .snx-text-purple { color: var(--snx-purple); }
 
-/* ============ BUTTONS ============ */
+/* ============ BUTTONS — Webflow 3D shadow style ============ */
 .snx-btn {
   position: relative;
   display: inline-block;
@@ -56,41 +56,53 @@
   line-height: 1;
   cursor: pointer;
   border: 3px solid var(--snx-dark);
-  transition: transform 0.2s, background-color 0.2s;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease;
+  z-index: 1;
 }
 
 .snx-btn--primary {
   background: var(--snx-yellow);
   color: var(--snx-dark);
-  transform: translate(-3px, -4px);
+  box-shadow: 4px 4px 0 0 var(--snx-dark);
 }
 
 .snx-btn--primary:hover {
-  transform: translate(0, 0);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--snx-dark);
 }
 
+.snx-btn--primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 0 var(--snx-dark);
+}
+
+/* Remove the old shadow div — not needed with box-shadow */
 .snx-btn__shadow {
-  position: absolute;
-  inset: 0;
-  background: var(--snx-dark);
-  border-radius: 100px;
-  z-index: -1;
-  transform: translate(3px, 4px);
+  display: none;
 }
 
 .snx-btn--secondary {
   background: var(--snx-purple);
   color: var(--snx-cream);
   border-color: var(--snx-cream);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.3);
 }
 
 .snx-btn--secondary:hover {
   background: #331e9e;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
 }
 
 .snx-btn--large { font-size: 1.75rem; padding: 1.5rem 3rem; }
 
 .snx-btn__text { position: relative; z-index: 1; }
+
+@media (max-width: 767px) {
+  .snx-btn { font-size: 1.2rem; padding: 1rem 2rem; }
+  .snx-btn--large { font-size: 1.3rem; padding: 1.1rem 2.2rem; }
+}
 
 /* ============ HERO ============ */
 .snx-hero {
