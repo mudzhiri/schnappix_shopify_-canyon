@@ -367,35 +367,13 @@ details summary {
    RESPONSIVE
    ======================================== */
 
-@media (max-width: 991px) {
-  #header-group .header .header__row--top {
-    margin: 0.5rem 1rem !important;
-    padding: 0.5rem 1rem !important;
-    max-width: calc(100% - 2rem);
-    border-radius: 30px !important;
-  }
-}
-
+/* Footer responsive */
 @media (max-width: 479px) {
-  #header-group .header .header__row--top {
-    margin: 0.5rem 0.5rem !important;
-    padding: 0.4rem 0.5rem !important;
-    max-width: calc(100% - 1rem);
-  }
-
   .shopify-section-group-footer-group.section-wrapper .section {
     border-radius: 30px !important;
   }
   
   .shopify-section-group-footer-group.section-wrapper {
     padding: 1rem !important;
-  }
-
-  .button,
-  button[type="submit"],
-  .shopify-payment-button button,
-  input[type="submit"] {
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
   }
 }
