@@ -197,12 +197,28 @@ body {
     z-index: 2;
   }
 
-  /* Hamburger visible — override desktop:hidden */
+  /* Force hamburger drawer visible — override ALL hiding */
   #header-group .header .header__drawer,
-  #header-group .header .header__drawer.desktop\:hidden,
-  #header-group .header [class*="header__drawer"] {
+  .header__drawer,
+  .header__drawer.desktop\:hidden,
+  [class*="header__drawer"],
+  header-drawer,
+  .header-drawer,
+  .menu-drawer-container,
+  .header__icon--menu {
     display: block !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  
+  /* The hamburger summary button */
+  #header-group summary.header__icon--menu,
+  summary.header__icon--menu {
+    display: flex !important;
+    visibility: visible !important;
+    align-items: center;
+    cursor: pointer;
   }
 
   /* Hide search in left column */
