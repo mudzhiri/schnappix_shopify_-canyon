@@ -46,22 +46,59 @@ body {
 #header-group .header .header__row--top {
   border: 3px solid #000 !important;
   border-radius: 6.25rem !important;
-  margin: 0.75rem 2rem !important;
-  padding: 0.5rem 1.5rem !important;
+  margin: 0.75rem 2.5rem !important;
+  padding: 0.75rem 2rem !important;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   background-color: #e1f532cc !important;
   backdrop-filter: blur(4px);
-  max-width: calc(100% - 4rem);
+  max-width: calc(100% - 5rem);
+  --border-bottom-width: 0px !important;
 }
 
 /* Override the section full-width to allow the pill to float */
 #header-group .header .header__row--top.section--full-width-margin {
-  margin-left: 2rem !important;
-  margin-right: 2rem !important;
+  margin-left: 2.5rem !important;
+  margin-right: 2.5rem !important;
 }
 
 #header-group .header .header__row--top.section--page-width {
   max-width: none;
+}
+
+/* CENTER the nav menu: use CSS grid with 3 equal columns */
+#header-group .header .header__columns {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+#header-group .header .header__column--left {
+  justify-self: start;
+}
+
+#header-group .header .header__column--center {
+  justify-self: center;
+}
+
+#header-group .header .header__column--right {
+  justify-self: end;
+}
+
+/* Nav menu: centered, horizontal */
+#header-group .header-menu {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+#header-group .header-menu__inner {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
 }
 
 /* Header nav links */
@@ -74,6 +111,11 @@ body {
   letter-spacing: 0;
   line-height: 1;
   color: var(--schnappix-dark);
+}
+
+#header-group .header nav a {
+  font-size: 1.25rem;
+  white-space: nowrap;
 }
 
 #header-group .header nav a:hover {
@@ -90,9 +132,58 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Remove the divider/border on the header row since the pill border handles it */
-#header-group .header .header__row--top {
-  --border-bottom-width: 0px !important;
+/* ============ HEADER RESPONSIVE ============ */
+
+/* Tablet */
+@media (max-width: 991px) {
+  #header-group .header .header__row--top {
+    margin: 0.5rem 1.25rem !important;
+    padding: 0.5rem 1rem !important;
+    max-width: calc(100% - 2.5rem);
+    border-radius: 2rem !important;
+  }
+
+  #header-group .header .header__columns {
+    grid-template-columns: auto 1fr auto !important;
+  }
+
+  #header-group .header nav a {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  #header-group .header .header__row--top {
+    margin: 0.5rem 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
+    max-width: calc(100% - 1.5rem);
+    border-radius: 1.5rem !important;
+  }
+
+  #header-group .header .header__columns {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 0.5rem !important;
+  }
+
+  #header-group .header a,
+  #header-group .header button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 479px) {
+  #header-group .header .header__row--top {
+    margin: 0.4rem 0.5rem !important;
+    padding: 0.4rem 0.5rem !important;
+    max-width: calc(100% - 1rem);
+  }
+
+  #header-group .header a,
+  #header-group .header button {
+    font-size: 0.8rem;
+  }
 }
 
 /* ========================================
