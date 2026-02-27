@@ -1,0 +1,288 @@
+{{ 'schnappix-homepage.css' | asset_url | stylesheet_tag }}
+
+<div class="snx-homepage" data-schnappix-homepage>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="snx-hero" data-snx-section="hero">
+    <div class="snx-hero__bg">
+      <div class="snx-hero__shape snx-hero__shape--1" data-snx-parallax="0.3"></div>
+      <div class="snx-hero__shape snx-hero__shape--2" data-snx-parallax="0.5"></div>
+      <div class="snx-hero__shape snx-hero__shape--3" data-snx-parallax="0.2"></div>
+    </div>
+    <div class="snx-container">
+      <div class="snx-hero__content">
+        <h1 class="snx-hero__title" data-snx-reveal="split">
+          <span class="snx-hero__title-line" data-snx-letter-animate>SCHNAPPIX</span>
+        </h1>
+        <h2 class="snx-hero__subtitle" data-snx-reveal="fade-up" data-snx-delay="400">
+          24/7 Convenience
+        </h2>
+        <p class="snx-hero__desc" data-snx-reveal="fade-up" data-snx-delay="600">
+          Modern. Schnell. Vertrauenswürdig.
+        </p>
+        <div class="snx-hero__buttons" data-snx-reveal="fade-up" data-snx-delay="800">
+          <a href="/collections/all" class="snx-btn snx-btn--primary">
+            <span class="snx-btn__shadow"></span>
+            <span class="snx-btn__text">Sortiment entdecken</span>
+          </a>
+          <a href="/pages/standorte" class="snx-btn snx-btn--secondary">
+            <span class="snx-btn__text">Standorte ansehen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="snx-hero__scroll-indicator" data-snx-reveal="fade" data-snx-delay="1200">
+      <div class="snx-hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE TICKER ============ -->
+  <section class="snx-ticker" data-snx-section="ticker">
+    <div class="snx-ticker__track" data-snx-ticker>
+      {% for i in (1..3) %}
+        <div class="snx-ticker__content">
+          <span>SNACKS</span>
+          <span class="snx-ticker__dot">●</span>
+          <span>GETRÄNKE</span>
+          <span class="snx-ticker__dot">●</span>
+          <span>ENERGY</span>
+          <span class="snx-ticker__dot">●</span>
+          <span>HYGIENE</span>
+          <span class="snx-ticker__dot">●</span>
+          <span>24/7</span>
+          <span class="snx-ticker__dot">●</span>
+          <span>TREND-PRODUKTE</span>
+          <span class="snx-ticker__dot">●</span>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS SECTION ============ -->
+  <section class="snx-products" data-snx-section="products">
+    <div class="snx-container">
+      <div class="snx-section-header" data-snx-reveal="fade-up">
+        <h2 class="snx-section-title snx-text-cream">
+          <span class="snx-text-yellow">POPULAR</span> PRODUCTS
+        </h2>
+      </div>
+      <div class="snx-products__grid">
+        {% for product in collections['schnappix-store'].products limit: 6 %}
+          <div class="snx-product-card" data-snx-reveal="fade-up" data-snx-delay="{{ forloop.index | times: 150 }}" data-snx-tilt>
+            <a href="{{ product.url }}" class="snx-product-card__link">
+              <div class="snx-product-card__image">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
+                {% endif %}
+              </div>
+              <div class="snx-product-card__info">
+                <h3 class="snx-product-card__name">{{ product.title }}</h3>
+                <p class="snx-product-card__price">{{ product.price | money }}</p>
+              </div>
+            </a>
+            <form action="/cart/add" method="post">
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <button type="submit" class="snx-product-card__btn">
+                ADD TO CART →
+              </button>
+            </form>
+          </div>
+        {% else %}
+          {% for i in (1..6) %}
+            <div class="snx-product-card" data-snx-reveal="fade-up" data-snx-delay="{{ i | times: 150 }}" data-snx-tilt>
+              <div class="snx-product-card__link">
+                <div class="snx-product-card__image snx-product-card__image--placeholder">
+                  <span class="snx-product-card__placeholder-icon">📦</span>
+                </div>
+                <div class="snx-product-card__info">
+                  <h3 class="snx-product-card__name">Coming Soon</h3>
+                  <p class="snx-product-card__price">€0,00</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+      <div class="snx-products__cta" data-snx-reveal="fade-up">
+        <a href="/collections/all" class="snx-btn snx-btn--primary snx-btn--large">
+          <span class="snx-btn__shadow"></span>
+          <span class="snx-btn__text">VIEW ALL PRODUCTS</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="snx-how" data-snx-section="how">
+    <div class="snx-container">
+      <div class="snx-section-header" data-snx-reveal="fade-up">
+        <h2 class="snx-section-title">So funktioniert's</h2>
+      </div>
+      <div class="snx-how__steps">
+        <div class="snx-how__step" data-snx-reveal="fade-right" data-snx-delay="0">
+          <div class="snx-how__step-number">01</div>
+          <div class="snx-how__step-content">
+            <h3>Standort finden</h3>
+            <p>Finde den nächsten SCHNAPPIX Automaten in deiner Nähe</p>
+          </div>
+        </div>
+        <div class="snx-how__step" data-snx-reveal="fade-right" data-snx-delay="200">
+          <div class="snx-how__step-number">02</div>
+          <div class="snx-how__step-content">
+            <h3>Produkt wählen</h3>
+            <p>Wähle aus einer großen Auswahl an Snacks, Drinks & mehr</p>
+          </div>
+        </div>
+        <div class="snx-how__step" data-snx-reveal="fade-right" data-snx-delay="400">
+          <div class="snx-how__step-number">03</div>
+          <div class="snx-how__step-content">
+            <h3>Bezahlen & genießen</h3>
+            <p>Bargeldlos bezahlen und sofort genießen – rund um die Uhr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="snx-testimonials" data-snx-section="testimonials">
+    <div class="snx-container">
+      <div class="snx-section-header" data-snx-reveal="fade-up">
+        <h2 class="snx-section-title snx-text-cream">
+          What people say<br>
+          about <span class="snx-text-yellow">schnappix</span>
+        </h2>
+      </div>
+      <div class="snx-testimonials__slider" data-snx-slider>
+        <div class="snx-testimonials__track" data-snx-slider-track>
+          <div class="snx-testimonial-card">
+            <h3 class="snx-testimonial-card__title">Super praktisch – Tag & Nacht!</h3>
+            <p>Der Automat ist immer sauber und hat genau das, was ich brauche. Perfekt für nach dem Training!</p>
+            <div class="snx-testimonial-card__author">
+              <div class="snx-testimonial-card__avatar">ER</div>
+              <div>
+                <strong>Emma R.</strong>
+                <span>Nutritionist & Wellness Coach</span>
+              </div>
+            </div>
+          </div>
+          <div class="snx-testimonial-card">
+            <h3 class="snx-testimonial-card__title">Energy boost ohne Crash!</h3>
+            <p>Endlich ein Automat mit coolen Produkten. Die Trend-Drinks sind mega – und das Beste: 24/7 verfügbar!</p>
+            <div class="snx-testimonial-card__author">
+              <div class="snx-testimonial-card__avatar">JL</div>
+              <div>
+                <strong>James L.</strong>
+                <span>Fitness Trainer & Entrepreneur</span>
+              </div>
+            </div>
+          </div>
+          <div class="snx-testimonial-card">
+            <h3 class="snx-testimonial-card__title">Beste Auswahl in der Uni!</h3>
+            <p>Zwischen den Vorlesungen kurz was holen – kein Anstehen, kein Stress. Einfach genial!</p>
+            <div class="snx-testimonial-card__author">
+              <div class="snx-testimonial-card__avatar">SK</div>
+              <div>
+                <strong>Sarah K.</strong>
+                <span>Studentin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="snx-testimonials__nav">
+          <button class="snx-testimonials__arrow snx-testimonials__arrow--prev" data-snx-slider-prev aria-label="Previous">←</button>
+          <button class="snx-testimonials__arrow snx-testimonials__arrow--next" data-snx-slider-next aria-label="Next">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="snx-faq" data-snx-section="faq">
+    <div class="snx-container">
+      <div class="snx-faq__layout">
+        <div class="snx-faq__heading" data-snx-reveal="fade-right">
+          <h2 class="snx-section-title">You ask,<br><span class="snx-text-white">we answer!</span></h2>
+        </div>
+        <div class="snx-faq__list">
+          <div class="snx-faq__item" data-snx-reveal="fade-up" data-snx-delay="0" data-snx-accordion>
+            <button class="snx-faq__question" data-snx-accordion-trigger>
+              <span>Welche Produkte gibt es?</span>
+              <span class="snx-faq__icon">+</span>
+            </button>
+            <div class="snx-faq__answer" data-snx-accordion-content>
+              <p>Unser Sortiment umfasst Snacks, Getränke, Energy Drinks, Trend-Produkte und Hygiene-Essentials – und variiert je nach Standort.</p>
+            </div>
+          </div>
+          <div class="snx-faq__item" data-snx-reveal="fade-up" data-snx-delay="100" data-snx-accordion>
+            <button class="snx-faq__question" data-snx-accordion-trigger>
+              <span>Wie kann ich bezahlen?</span>
+              <span class="snx-faq__icon">+</span>
+            </button>
+            <div class="snx-faq__answer" data-snx-accordion-content>
+              <p>Bargeldlos per Karte sowie mobile Payment (je nach Standort).</p>
+            </div>
+          </div>
+          <div class="snx-faq__item" data-snx-reveal="fade-up" data-snx-delay="200" data-snx-accordion>
+            <button class="snx-faq__question" data-snx-accordion-trigger>
+              <span>Gibt es Altersprüfung?</span>
+              <span class="snx-faq__icon">+</span>
+            </button>
+            <div class="snx-faq__answer" data-snx-accordion-content>
+              <p>Ja, für altersbeschränkte Produkte wird eine Altersverifikation eingesetzt.</p>
+            </div>
+          </div>
+          <div class="snx-faq__item" data-snx-reveal="fade-up" data-snx-delay="300" data-snx-accordion>
+            <button class="snx-faq__question" data-snx-accordion-trigger>
+              <span>Kann ich auch online bestellen?</span>
+              <span class="snx-faq__icon">+</span>
+            </button>
+            <div class="snx-faq__answer" data-snx-accordion-content>
+              <p>Noch nicht – aber kommt bald! Folge uns auf Social Media für Updates.</p>
+            </div>
+          </div>
+          <div class="snx-faq__item" data-snx-reveal="fade-up" data-snx-delay="400" data-snx-accordion>
+            <button class="snx-faq__question" data-snx-accordion-trigger>
+              <span>Wie werden Standorte ausgewählt?</span>
+              <span class="snx-faq__icon">+</span>
+            </button>
+            <div class="snx-faq__answer" data-snx-accordion-content>
+              <p>Wir setzen auf zentrale, sichere Lagen mit hoher Relevanz für 24/7 Convenience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA SECTION ============ -->
+  <section class="snx-cta" data-snx-section="cta">
+    <div class="snx-container">
+      <div class="snx-cta__card" data-snx-reveal="zoom">
+        <h2 class="snx-cta__title">Du hast eine <span class="snx-text-yellow">Top-Location?</span></h2>
+        <p class="snx-cta__desc">Vermiete deine Fläche an SCHNAPPIX und profitiere von einem zuverlässigen Partner.</p>
+        <a href="/pages/kontakt" class="snx-btn snx-btn--primary snx-btn--large">
+          <span class="snx-btn__shadow"></span>
+          <span class="snx-btn__text">Standort vorschlagen</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="{{ 'schnappix-homepage.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Schnappix Homepage",
+  "tag": "section",
+  "class": "schnappix-homepage-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Schnappix Homepage"
+    }
+  ]
+}
+{% endschema %}
