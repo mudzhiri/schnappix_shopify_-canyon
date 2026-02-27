@@ -1,22 +1,19 @@
 /**
- * Schnappix 24/7 - Custom CSS Utilities
- * Design system utilities for Schnappix brand
+ * Schnappix 24/7 - Webflow Design Matching Styles
+ * Aligns the Shopify theme with the Webflow site at schnappix.com
  */
 
 :root {
-  /* Schnappix Brand Colors */
-  --schnappix-primary: #F15A29;
-  --schnappix-primary-hover: #D44E22;
-  --schnappix-secondary: #000000;
-  --schnappix-accent: #FFFFFF;
-  --schnappix-background: #000000;
-  --schnappix-surface: #111111;
-  --schnappix-surface-alt: #1A1A1A;
-  --schnappix-text-primary: #FFFFFF;
-  --schnappix-text-secondary: #CCCCCC;
-  --schnappix-border: #333333;
-  --schnappix-glow-orange: rgba(241, 90, 41, 0.35);
-  
+  /* Schnappix Brand Colors - Webflow palette */
+  --schnappix-lime: #D4E600;
+  --schnappix-lime-hover: #c2d400;
+  --schnappix-orange: #F15A29;
+  --schnappix-orange-hover: #D44E22;
+  --schnappix-pink: #FFB6C8;
+  --schnappix-black: #000000;
+  --schnappix-white: #ffffff;
+  --schnappix-cream: #f0ead2;
+
   /* Animation Timing */
   --schnappix-animation-fast: 120ms;
   --schnappix-animation-normal: 240ms;
@@ -25,105 +22,197 @@
   --schnappix-ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-/* Glow Helpers */
-.schnappix-glow {
-  box-shadow: 0 0 20px var(--schnappix-glow-orange);
+/* ========================================
+   HEADER STYLING - Match Webflow navbar
+   ======================================== */
+
+#header-group {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.schnappix-glow-hover:hover {
-  box-shadow: 0 0 30px var(--schnappix-glow-orange);
-  transition: box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
+#header-group .header {
+  border-radius: 0 0 20px 20px;
 }
 
-.schnappix-glow-pulse {
-  animation: schnappix-pulse 2s ease-in-out infinite;
+#header-group .header a,
+#header-group .header button {
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-@keyframes schnappix-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px var(--schnappix-glow-orange);
-  }
-  50% {
-    box-shadow: 0 0 40px var(--schnappix-glow-orange);
-  }
+/* Nav links styling */
+#header-group .header nav a {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: opacity var(--schnappix-animation-normal) var(--schnappix-ease-out);
 }
 
-/* Animation Utilities */
+#header-group .header nav a:hover {
+  opacity: 0.7;
+}
+
+/* Announcement bar with orange background */
+.header-announcements {
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   TYPOGRAPHY - Match Webflow fonts
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  font-weight: 800;
+}
+
+/* ========================================
+   BUTTON STYLING - Match Webflow pill buttons
+   ======================================== */
+
+.button,
+button[type="submit"],
+.shopify-payment-button button,
+.cart-drawer button,
+input[type="submit"] {
+  border-radius: 100px !important;
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+/* ========================================
+   PRODUCT CARDS - Modern styling
+   ======================================== */
+
+.product-card {
+  transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out),
+    box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   FOOTER STYLING - Match Webflow footer
+   ======================================== */
+
+#footer-group .section:first-child {
+  border-radius: 20px;
+  margin: 0 auto;
+  max-width: calc(100% - 40px);
+  padding: 40px;
+}
+
+/* Footer menus with accordion style matching Webflow */
+#footer-group details summary {
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ========================================
+   INPUT FIELDS - Match Webflow cream inputs
+   ======================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="url"],
+textarea,
+select {
+  border-radius: 100px !important;
+  padding: 14px 24px;
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
+}
+
+textarea {
+  border-radius: 20px !important;
+}
+
+/* ========================================
+   GENERAL LAYOUT
+   ======================================== */
+
+.content-for-layout {
+  flex-grow: 1;
+}
+
+/* Rounded section containers */
+.section-group__container {
+  overflow: hidden;
+}
+
+/* ========================================
+   ANIMATION UTILITIES
+   ======================================== */
+
 .schnappix-fade-in {
   animation: schnappix-fade-in var(--schnappix-animation-normal) var(--schnappix-ease-out);
 }
 
 @keyframes schnappix-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.schnappix-slide-up {
+  animation: schnappix-slide-up var(--schnappix-animation-normal) var(--schnappix-ease-out);
+}
+
+@keyframes schnappix-slide-up {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.schnappix-slide-in-left {
-  animation: schnappix-slide-in-left var(--schnappix-animation-normal) var(--schnappix-ease-out);
+/* ========================================
+   CART DRAWER - Modern styling
+   ======================================== */
+
+.cart-drawer {
+  font-family: 'Montserrat Alternates', var(--font-heading--family), sans-serif;
 }
 
-@keyframes schnappix-slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+/* ========================================
+   RESPONSIVE HELPERS
+   ======================================== */
 
-.schnappix-slide-in-right {
-  animation: schnappix-slide-in-right var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.schnappix-zoom-in {
-  animation: schnappix-zoom-in var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-zoom-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Layout Spacing Utilities */
-.schnappix-spacing-section {
-  padding-top: var(--section-spacing-desktop, 100px);
-  padding-bottom: var(--section-spacing-desktop, 100px);
-}
-
-@media (max-width: 768px) {
-  .schnappix-spacing-section {
-    padding-top: var(--section-spacing-mobile, 50px);
-    padding-bottom: var(--section-spacing-mobile, 50px);
-  }
-}
-
-/* Responsive Helpers */
 @media (max-width: 768px) {
   .schnappix-hide-mobile {
     display: none !important;
+  }
+
+  #footer-group .section:first-child {
+    margin: 0 auto;
+    max-width: calc(100% - 20px);
+    padding: 24px;
+  }
+
+  #header-group .header {
+    border-radius: 0 0 14px 14px;
   }
 }
 
@@ -132,107 +221,3 @@
     display: none !important;
   }
 }
-
-/* Product Card Hover Effects */
-.schnappix-card-hover-zoom:hover {
-  transform: scale(1.05);
-  transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-card-hover-glow:hover {
-  box-shadow: 0 0 30px var(--schnappix-glow-orange);
-  transition: box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-/* Button Styles */
-.schnappix-button-primary {
-  background-color: var(--schnappix-primary);
-  color: var(--schnappix-accent);
-  border-radius: 10px;
-  transition: background-color var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-button-primary:hover {
-  background-color: var(--schnappix-primary-hover);
-}
-
-.schnappix-button-secondary {
-  background-color: transparent;
-  color: var(--schnappix-accent);
-  border: 1px solid var(--schnappix-accent);
-  border-radius: 10px;
-  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-button-secondary:hover {
-  background-color: var(--schnappix-accent);
-  color: var(--schnappix-background);
-}
-
-/* Input Field Styles */
-.schnappix-input {
-  background-color: var(--schnappix-surface);
-  color: var(--schnappix-text-primary);
-  border: 1px solid var(--schnappix-border);
-  border-radius: 8px;
-  transition: border-color var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-input:focus {
-  outline: none;
-  border-color: var(--schnappix-primary);
-  box-shadow: 0 0 0 2px var(--schnappix-glow-orange);
-}
-
-/* Badge Styles */
-.schnappix-badge {
-  background-color: var(--schnappix-primary);
-  color: var(--schnappix-accent);
-  border-radius: 16px;
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Sticky Header */
-.schnappix-header-sticky {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-header-sticky.scrolled {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.schnappix-header-sticky.scrolled.shrink {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-/* Drawer Styles */
-.schnappix-drawer {
-  background-color: var(--schnappix-background);
-  backdrop-filter: blur(18px);
-  transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-/* Price Styles */
-.schnappix-price {
-  color: var(--schnappix-text-primary);
-  font-weight: 700;
-}
-
-.schnappix-price-compare {
-  color: var(--schnappix-text-secondary);
-  text-decoration: line-through;
-}
-
-/* Swatch Glow Ring */
-.schnappix-swatch-selected {
-  box-shadow: 0 0 0 2px var(--schnappix-primary), 0 0 10px var(--schnappix-glow-orange);
-}
-
