@@ -155,8 +155,9 @@ body {
 /* Mobile: hamburger LEFT | logo CENTER | cart/account RIGHT */
 @media (max-width: 767px) {
 
-  /* Pill centered properly */
+  /* FORCE desktop row visible on mobile (theme hides it) */
   #header-group .header .header__row--top {
+    display: grid !important;
     margin: 0.5rem auto !important;
     padding: 0.5rem 1rem !important;
     width: calc(100% - 2rem) !important;
