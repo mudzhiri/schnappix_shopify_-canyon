@@ -197,9 +197,12 @@ body {
     z-index: 2;
   }
 
-  /* Hamburger visible */
-  #header-group .header .header__drawer {
+  /* Hamburger visible — override desktop:hidden */
+  #header-group .header .header__drawer,
+  #header-group .header .header__drawer.desktop\:hidden,
+  #header-group .header [class*="header__drawer"] {
     display: block !important;
+    visibility: visible !important;
   }
 
   /* Hide search in left column */
