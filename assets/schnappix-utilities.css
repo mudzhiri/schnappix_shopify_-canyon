@@ -177,15 +177,20 @@ body {
   #header-group .header .header__row--top {
     border: 3px solid #000 !important;
     border-radius: 6.25rem !important;
-    margin: 0.5rem 0.75rem !important;
+    margin: 0.5rem 1rem !important;
     padding: 0.5rem 0 !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: #e1f532cc !important;
     backdrop-filter: blur(4px);
     --border-bottom-width: 0px !important;
     --border-bottom-width-mobile: 0px !important;
-    max-width: calc(100% - 1.5rem) !important;
+    max-width: calc(100% - 2rem) !important;
     box-sizing: border-box !important;
+  }
+
+  #header-group .header .header__row--top.section--full-width-margin {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
   }
 
   /* Columns become transparent — children flow into parent grid */
