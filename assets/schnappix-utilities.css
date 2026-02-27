@@ -155,29 +155,53 @@ body {
 /* Mobile — match Webflow: logo LEFT, hamburger RIGHT, nothing else */
 @media (max-width: 767px) {
 
-  /* Style the MOBILE row as the pill (this is the one with hamburger + logo) */
-  #header-group .header .header__row--mobile {
-    border: 3px solid #000 !important;
-    border-radius: 6.25rem !important;
+  /* Keep desktop row visible but simplified */
+  #header-group .header .header__row--top {
     margin: 0.5rem 1rem !important;
     padding: 0.5rem 1rem !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: #e1f532cc !important;
-    backdrop-filter: blur(4px);
+    max-width: calc(100% - 2rem);
+    border-radius: 6.25rem !important;
+  }
+
+  /* Hide the mobile nav bar (horizontal menu links below header) */
+  #header-group .header .header__row--mobile {
+    display: none !important;
+  }
+
+  /* 2-column grid: logo left, hamburger right */
+  #header-group .header .header__columns {
     display: flex !important;
     align-items: center;
     justify-content: space-between;
   }
 
-  /* Hide the DESKTOP row on mobile — let the theme's mobile row handle it */
-  #header-group .header .header__row--top {
+  /* LEFT column: show logo + hamburger drawer */
+  #header-group .header .header__column--left {
+    display: flex !important;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* HIDE center column (desktop nav) */
+  #header-group .header .header__column--center {
     display: none !important;
   }
 
-  /* Ensure body doesn't scroll horizontally */
-  .snx-homepage,
-  body {
-    overflow-x: hidden;
+  /* HIDE right column (search, account, cart, EUR/DE) */
+  #header-group .header .header__column--right {
+    display: none !important;
+  }
+
+  /* Make sure the hamburger drawer button is visible */
+  #header-group .header .header__drawer {
+    display: block !important;
+  }
+
+  /* Prevent horizontal scroll */
+  body, .snx-homepage {
+    overflow-x: hidden !important;
   }
 
   #header-group .header a,
@@ -188,9 +212,10 @@ body {
 
 /* Small mobile */
 @media (max-width: 479px) {
-  #header-group .header .header__row--mobile {
-    margin: 0.4rem 0.75rem !important;
+  #header-group .header .header__row--top {
+    margin: 0.4rem 0.5rem !important;
     padding: 0.4rem 0.5rem !important;
+    max-width: calc(100% - 1rem);
   }
 }
 
