@@ -23,8 +23,10 @@ All commands are run from the repository root (`/workspace`).
 
 ### Non-obvious caveats
 
-- `shopify theme dev` requires `SHOPIFY_CLI_THEME_TOKEN` as an **environment variable** (not a CLI flag). The CLI auto-detects it.
+- `shopify theme dev` requires `SHOPIFY_CLI_THEME_TOKEN` as an **environment variable**. The CLI auto-detects it. You can also pass it explicitly with `--password "$SHOPIFY_CLI_THEME_TOKEN"`.
+- To verify the token is valid before starting the dev server, run: `shopify theme list --store p1pmt1-zi.myshopify.com --password "$SHOPIFY_CLI_THEME_TOKEN"`. A 401 error means the token is expired or revoked and must be regenerated in Shopify Admin.
 - Theme IDs: dev=`148524400836`, main=`148524433604`, live=`148518502596`. See `SHOPIFY_SETUP_GUIDE.md` for details.
 - There are no automated tests. Validation is done via `shopify theme check` (Liquid linter) and visual inspection in the browser.
+- `shopify theme check` (linting) works offline without a token. It currently reports ~22 pre-existing warnings/errors (DeprecatedTag, RemoteAsset, MatchingTranslations) — these are existing theme issues.
 - The CI/CD pipeline (`.github/workflows/deploy.yml`) deploys on push to `dev`, `main`, or `live` branches. It uses the `SHOPIFY_CLI_THEME_TOKEN` GitHub secret.
 - Third-party page builder snippets (Shogun, GemPages, PageFly) exist in the codebase but don't affect core theme functionality.
