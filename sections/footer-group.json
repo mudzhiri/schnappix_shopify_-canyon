@@ -438,7 +438,7 @@
                   "name": "t:names.heading",
                   "settings": {
                     "text": "<h2>Join our community</h2>",
-                    "width": "100%",
+                    "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "right",
                     "type_preset": "h4",
