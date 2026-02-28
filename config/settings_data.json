@@ -30,7 +30,7 @@
     "type_case_h3": "none",
     "type_size_h5": "heading-xs",
     "type_size_h6": "heading-xs",
-    "page_width": "normal",
+    "page_width": "wide",
     "card_hover_effect": "scale",
     "badge_position": "top-right",
     "badge_corner_radius": 14,
