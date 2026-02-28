@@ -14,28 +14,6 @@
     "section_beBRk7": {
       "type": "section",
       "blocks": {
-        "menu_gh3QUW": {
-          "type": "menu",
-          "name": "t:names.menu",
-          "disabled": true,
-          "settings": {
-            "menu": "footer-menus-marke",
-            "heading": "es",
-            "menu_spacing": 28,
-            "show_as_accordion": false,
-            "accordion_icon": "caret",
-            "accordion_dividers": false,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "heading_preset": "h3",
-            "link_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 100,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "group_Bz6TNR": {
           "type": "group",
           "name": "t:names.group",
@@ -78,7 +56,7 @@
           "blocks": {
             "group_ihFf89": {
               "type": "group",
-              "name": "t:names.group",
+              "name": "footer cont",
               "settings": {
                 "content_direction": "row",
                 "vertical_on_mobile": true,
@@ -118,7 +96,7 @@
               "blocks": {
                 "group_mYTznM": {
                   "type": "group",
-                  "name": "t:names.group",
+                  "name": "footer standort",
                   "settings": {
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -184,7 +162,7 @@
                 },
                 "group_4AriLE": {
                   "type": "group",
-                  "name": "t:names.group",
+                  "name": "footer support",
                   "settings": {
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -250,7 +228,7 @@
                 },
                 "group_NmrpBd": {
                   "type": "group",
-                  "name": "t:names.group",
+                  "name": "footer rechtlich",
                   "settings": {
                     "content_direction": "column",
                     "vertical_on_mobile": true,
@@ -417,7 +395,7 @@
             },
             "group_mrT86p": {
               "type": "group",
-              "name": "t:names.group",
+              "name": "footer email",
               "settings": {
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -521,7 +499,6 @@
         }
       },
       "block_order": [
-        "menu_gh3QUW",
         "group_Bz6TNR"
       ],
       "name": "t:names.custom_section",
@@ -550,7 +527,7 @@
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 40,
-        "padding-block-end": 20
+        "padding-block-end": 40
       }
     },
     "footer_utilities": {
