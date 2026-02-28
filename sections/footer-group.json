@@ -140,7 +140,7 @@
                       "settings": {
                         "menu": "footer-menus-marke",
                         "heading": "Standorte",
-                        "menu_spacing": 8,
+                        "menu_spacing": 0,
                         "show_as_accordion": true,
                         "accordion_icon": "plus",
                         "accordion_dividers": false,
@@ -464,7 +464,7 @@
                   "name": "t:names.email_signup",
                   "settings": {
                     "width": "custom",
-                    "custom_width": 76,
+                    "custom_width": 67,
                     "inherit_color_scheme": true,
                     "color_scheme": "",
                     "heading": "",
