@@ -1,238 +1,580 @@
 /**
- * Schnappix 24/7 - Custom CSS Utilities
- * Design system utilities for Schnappix brand
+ * Schnappix 24/7 - Webflow Design System Exact Match
+ * Port of schnappix.com Webflow styles to Shopify
  */
 
 :root {
-  /* Schnappix Brand Colors */
-  --schnappix-primary: #F15A29;
-  --schnappix-primary-hover: #D44E22;
-  --schnappix-secondary: #000000;
-  --schnappix-accent: #FFFFFF;
-  --schnappix-background: #000000;
-  --schnappix-surface: #111111;
-  --schnappix-surface-alt: #1A1A1A;
-  --schnappix-text-primary: #FFFFFF;
-  --schnappix-text-secondary: #CCCCCC;
-  --schnappix-border: #333333;
-  --schnappix-glow-orange: rgba(241, 90, 41, 0.35);
-  
-  /* Animation Timing */
-  --schnappix-animation-fast: 120ms;
-  --schnappix-animation-normal: 240ms;
-  --schnappix-animation-slow: 400ms;
-  --schnappix-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --schnappix-ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+  --schnappix-pink: #ffade6;
+  --schnappix-dark: #211509;
+  --schnappix-cream: #f6ede4;
+  --schnappix-yellow: #e1f532;
+  --schnappix-purple: #5541ba;
+  --schnappix-orange: #ff6316;
+  --schnappix-white: #ffffff;
+
+  --schnappix-heading-font: 'Londrina Solid', sans-serif;
+  --schnappix-text-font: 'Inter', sans-serif;
 }
 
-/* Glow Helpers */
-.schnappix-glow {
-  box-shadow: 0 0 20px var(--schnappix-glow-orange);
+/* ========================================
+   GLOBAL TYPOGRAPHY - Londrina Solid
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
-.schnappix-glow-hover:hover {
-  box-shadow: 0 0 30px var(--schnappix-glow-orange);
-  transition: box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
+body {
+  font-family: var(--schnappix-text-font);
 }
 
-.schnappix-glow-pulse {
-  animation: schnappix-pulse 2s ease-in-out infinite;
-}
+/* ========================================
+   HEADER - Webflow floating pill navbar
+   Exact match: .nav-wrapper from Webflow
+   ======================================== */
 
-@keyframes schnappix-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px var(--schnappix-glow-orange);
-  }
-  50% {
-    box-shadow: 0 0 40px var(--schnappix-glow-orange);
-  }
-}
-
-/* Animation Utilities */
-.schnappix-fade-in {
-  animation: schnappix-fade-in var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.schnappix-slide-in-left {
-  animation: schnappix-slide-in-left var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.schnappix-slide-in-right {
-  animation: schnappix-slide-in-right var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.schnappix-zoom-in {
-  animation: schnappix-zoom-in var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-@keyframes schnappix-zoom-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Layout Spacing Utilities */
-.schnappix-spacing-section {
-  padding-top: var(--section-spacing-desktop, 100px);
-  padding-bottom: var(--section-spacing-desktop, 100px);
-}
-
-@media (max-width: 768px) {
-  .schnappix-spacing-section {
-    padding-top: var(--section-spacing-mobile, 50px);
-    padding-bottom: var(--section-spacing-mobile, 50px);
-  }
-}
-
-/* Responsive Helpers */
-@media (max-width: 768px) {
-  .schnappix-hide-mobile {
-    display: none !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .schnappix-hide-desktop {
-    display: none !important;
-  }
-}
-
-/* Product Card Hover Effects */
-.schnappix-card-hover-zoom:hover {
-  transform: scale(1.05);
-  transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-card-hover-glow:hover {
-  box-shadow: 0 0 30px var(--schnappix-glow-orange);
-  transition: box-shadow var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-/* Button Styles */
-.schnappix-button-primary {
-  background-color: var(--schnappix-primary);
-  color: var(--schnappix-accent);
-  border-radius: 10px;
-  transition: background-color var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-button-primary:hover {
-  background-color: var(--schnappix-primary-hover);
-}
-
-.schnappix-button-secondary {
-  background-color: transparent;
-  color: var(--schnappix-accent);
-  border: 1px solid var(--schnappix-accent);
-  border-radius: 10px;
-  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-button-secondary:hover {
-  background-color: var(--schnappix-accent);
-  color: var(--schnappix-background);
-}
-
-/* Input Field Styles */
-.schnappix-input {
-  background-color: var(--schnappix-surface);
-  color: var(--schnappix-text-primary);
-  border: 1px solid var(--schnappix-border);
-  border-radius: 8px;
-  transition: border-color var(--schnappix-animation-normal) var(--schnappix-ease-out);
-}
-
-.schnappix-input:focus {
-  outline: none;
-  border-color: var(--schnappix-primary);
-  box-shadow: 0 0 0 2px var(--schnappix-glow-orange);
-}
-
-/* Badge Styles */
-.schnappix-badge {
-  background-color: var(--schnappix-primary);
-  color: var(--schnappix-accent);
-  border-radius: 16px;
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Sticky Header */
-.schnappix-header-sticky {
+#header-group {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  transition: all var(--schnappix-animation-normal) var(--schnappix-ease-out);
+  z-index: 99;
 }
 
-.schnappix-header-sticky.scrolled {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+/* The main header bar — floating pill matching Webflow .nav-wrapper */
+#header-group .header .header__row--top {
+  border: 3px solid #000 !important;
+  border-radius: 6.25rem !important;
+  margin: 0.75rem 2.5rem !important;
+  padding: 0.75rem 2rem !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #e1f532cc !important;
+  backdrop-filter: blur(4px);
+  max-width: calc(100% - 5rem);
+  --border-bottom-width: 0px !important;
 }
 
-.schnappix-header-sticky.scrolled.shrink {
-  padding-top: 10px;
-  padding-bottom: 10px;
+/* Ensure left margin on the pill is equal to right */
+#header-group .header .header__row--top.section--full-width-margin {
+  margin-left: 2.5rem !important;
+  margin-right: 2.5rem !important;
 }
 
-/* Drawer Styles */
-.schnappix-drawer {
-  background-color: var(--schnappix-background);
-  backdrop-filter: blur(18px);
-  transition: transform var(--schnappix-animation-normal) var(--schnappix-ease-out);
+/* Override the section full-width to allow the pill to float */
+#header-group .header .header__row--top.section--full-width-margin {
+  margin-left: 2.5rem !important;
+  margin-right: 2.5rem !important;
 }
 
-/* Price Styles */
-.schnappix-price {
-  color: var(--schnappix-text-primary);
-  font-weight: 700;
+#header-group .header .header__row--top.section--page-width {
+  max-width: none;
 }
 
-.schnappix-price-compare {
-  color: var(--schnappix-text-secondary);
-  text-decoration: line-through;
+/* CENTER the nav menu: use CSS grid with 3 equal columns */
+#header-group .header .header__columns {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
 }
 
-/* Swatch Glow Ring */
-.schnappix-swatch-selected {
-  box-shadow: 0 0 0 2px var(--schnappix-primary), 0 0 10px var(--schnappix-glow-orange);
+#header-group .header .header__column--left {
+  justify-self: start;
 }
 
+#header-group .header .header__column--center {
+  justify-self: center;
+}
+
+#header-group .header .header__column--right {
+  justify-self: end;
+}
+
+/* Nav menu: centered with Webflow-exact spacing */
+#header-group .header-menu {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+#header-group .header-menu__inner,
+#header-group .header-menu .overflow-menu::part(list),
+#header-group .header-menu .menu-list__list {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem !important;
+}
+
+/* Header nav links */
+#header-group .header a,
+#header-group .header button {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--schnappix-dark);
+}
+
+#header-group .header nav a {
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+#header-group .header nav a:hover {
+  color: var(--schnappix-orange) !important;
+  transform: scale(1.05);
+  transition: transform 0.2s, color 0.3s;
+}
+
+/* Announcement bar */
+.header-announcements {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ============ HEADER RESPONSIVE ============ */
+
+/* Tablet */
+@media (max-width: 991px) {
+  #header-group .header .header__row--top {
+    margin: 0.5rem 1.5rem !important;
+    padding: 0.5rem 1rem !important;
+    max-width: calc(100% - 3rem);
+    border-radius: 6.25rem !important;
+  }
+
+  #header-group .header .header__row--top.section--full-width-margin {
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+  }
+
+  #header-group .header .header__columns {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 0.75rem !important;
+  }
+
+  #header-group .header nav a {
+    font-size: 1rem;
+  }
+
+  #header-group .header-menu .menu-list__list {
+    gap: 1rem !important;
+  }
+}
+
+/* Mobile: adopt the theme's 5-column grid layout
+   leftA=drawer, leftB=search, center=logo, rightA=empty, rightB=actions */
+@media (max-width: 749px) {
+
+  /* Pill styling — equal margins on both sides */
+  #header-group .header .header__row--top {
+    border: 3px solid #000 !important;
+    border-radius: 6.25rem !important;
+    margin: 0.5rem 1rem !important;
+    padding: 0.5rem 0 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #e1f532cc !important;
+    backdrop-filter: blur(4px);
+    --border-bottom-width: 0px !important;
+    --border-bottom-width-mobile: 0px !important;
+    max-width: calc(100% - 2rem) !important;
+    box-sizing: border-box !important;
+  }
+
+  #header-group .header .header__row--top.section--full-width-margin {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
+  /* Columns become transparent — children flow into parent grid */
+  #header-group .header .header__column {
+    display: contents !important;
+  }
+
+  /* 5-column mobile grid: drawer | search | logo | empty | actions */
+  #header-group .header .header__columns {
+    --header-mobile-bookend: 40px;
+    display: grid !important;
+    grid-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr var(--header-mobile-bookend) var(--header-mobile-bookend) !important;
+    grid-template-areas: 'leftA leftB center rightA rightB' !important;
+    column-gap: 0 !important;
+    align-items: center !important;
+    padding-block: 0 !important;
+    padding-inline: 0.5rem !important;
+  }
+
+  /* Logo centered */
+  #header-group .header .header-logo {
+    grid-area: center !important;
+    justify-self: center;
+  }
+
+  /* Search action in leftB */
+  #header-group .header .search-action {
+    grid-area: leftB !important;
+  }
+
+  /* Cart/account actions in rightB */
+  #header-group .header header-actions {
+    grid-area: rightB !important;
+  }
+
+  /* Hide the mobile nav bar (horizontal scroll links) */
+  #header-group .header .header__row--mobile {
+    display: none !important;
+  }
+
+  /* Hide localization on mobile */
+  #header-group .header .dropdown-localization {
+    display: none !important;
+  }
+
+  /* Hide desktop-only nav menu */
+  #header-group .header .header-menu {
+    display: none !important;
+  }
+
+  /* Prevent horizontal scroll */
+  body, .snx-homepage {
+    overflow-x: hidden !important;
+  }
+}
+
+@media (max-width: 479px) {
+  #header-group .header .header__row--top {
+    margin: 0.4rem 0.5rem !important;
+    padding: 0.4rem 0 !important;
+    max-width: calc(100% - 1rem) !important;
+  }
+
+  #header-group .header .header__columns {
+    --header-mobile-bookend: 36px !important;
+    padding-inline: 0.4rem !important;
+  }
+}
+
+/* ========================================
+   FOOTER - Webflow exact match
+   Orange bg with lime-green rounded card
+   ======================================== */
+
+/* ALL footer sections get orange background */
+.shopify-section-group-footer-group {
+  background-color: var(--schnappix-orange) !important;
+}
+
+/* The first footer section (main content card) — lime card inside orange */
+.shopify-section-group-footer-group.section-wrapper {
+  background-color: var(--schnappix-orange) !important;
+  padding: 2rem 2rem 0 !important;
+}
+
+/* The section inside — this is the lime card */
+.shopify-section-group-footer-group.section-wrapper .section {
+  background-color: var(--schnappix-yellow) !important;
+  border-radius: 42px !important;
+  overflow: hidden;
+}
+
+/* The section background div */
+.shopify-section-group-footer-group.section-wrapper .section-background {
+  background-color: var(--schnappix-yellow) !important;
+  border-radius: 42px !important;
+}
+
+/* The border-style div already has inline border from settings — ensure visibility */
+.shopify-section-group-footer-group.section-wrapper .border-style.custom-section-content {
+  border-color: var(--schnappix-dark) !important;
+}
+
+/* Footer utilities section (social icons, copyright) */
+.shopify-section-group-footer-group.footer-utilities {
+  background-color: var(--schnappix-orange) !important;
+}
+
+.shopify-section-group-footer-group.footer-utilities .section-background {
+  background-color: var(--schnappix-orange) !important;
+}
+
+/* Footer text styling */
+.shopify-section-group-footer-group {
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+}
+
+.shopify-section-group-footer-group a {
+  color: var(--schnappix-dark);
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+  text-transform: lowercase;
+  font-size: 1.1rem;
+}
+
+.shopify-section-group-footer-group a:hover {
+  color: var(--schnappix-orange);
+}
+
+.shopify-section-group-footer-group details summary {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+/* "Join our community" heading */
+.shopify-section-group-footer-group h2 {
+  font-family: var(--schnappix-heading-font) !important;
+  color: var(--schnappix-dark);
+}
+
+/* Email signup input */
+.shopify-section-group-footer-group input[type="email"] {
+  border: 2px solid var(--schnappix-dark) !important;
+  background-color: var(--schnappix-cream) !important;
+  border-radius: 32px !important;
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+}
+
+/* Footer link color for social icons area */
+.shopify-section-group-footer-group.footer-utilities a {
+  color: var(--schnappix-cream) !important;
+}
+
+.shopify-section-group-footer-group.footer-utilities a:hover {
+  color: var(--schnappix-yellow) !important;
+}
+
+/* ========================================
+   BUTTONS - Webflow exact match
+   ======================================== */
+
+.button,
+button[type="submit"],
+.shopify-payment-button button,
+input[type="submit"] {
+  border-radius: 100px !important;
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  line-height: 1;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+/* ========================================
+   PRODUCT CARDS
+   ======================================== */
+
+.product-card {
+  border-radius: 30px;
+  overflow: hidden;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(33, 21, 9, 0.12);
+}
+
+/* ========================================
+   INPUT FIELDS
+   ======================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="url"],
+select {
+  border-radius: 32px !important;
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+}
+
+textarea {
+  border-radius: 20px !important;
+  font-family: var(--schnappix-heading-font);
+  font-weight: 300;
+}
+
+/* ========================================
+   FAQ / ACCORDION
+   ======================================== */
+
+details {
+  border-radius: 30px;
+}
+
+details summary {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+/* ========================================
+   CART DRAWER
+   ======================================== */
+
+.cart-drawer {
+  font-family: var(--schnappix-text-font);
+}
+
+.cart-drawer h2,
+.cart-drawer h3,
+.cart-drawer h4 {
+  font-family: var(--schnappix-heading-font) !important;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* ============ FOOTER LAYOUT — menus row + email in one line ============ */
+
+/* Override inline --flex-direction: column to row on desktop */
+@media (min-width: 768px) {
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    --flex-direction: row !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  /* All top-level group blocks fill equally */
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper > .group-block {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+  }
+
+  /* The row inside first group — 3 equal menus side by side */
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  /* Each menu column — equal width, same height */
+  .shopify-section-group-footer-group .layout-panel-flex--row > .group-block {
+    flex: 1 !important;
+    width: 33.33% !important;
+  }
+}
+
+/* ============ FOOTER MENU ACCORDION — pill button style ============ */
+
+/* Each accordion menu becomes a pill-shaped button */
+.shopify-section-group-footer-group .menu--accordion {
+  border: 2px solid var(--schnappix-dark) !important;
+  background-color: var(--schnappix-cream) !important;
+  border-radius: 30px !important;
+  overflow: hidden;
+  height: 100%;
+}
+
+.shopify-section-group-footer-group .menu__heading {
+  font-family: var(--schnappix-heading-font) !important;
+  font-weight: 300;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--schnappix-dark);
+}
+
+.shopify-section-group-footer-group .menu__details summary {
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Hide dividers inside accordion */
+.shopify-section-group-footer-group .menu--dividers {
+  border: none !important;
+}
+
+/* The 3 menu group blocks should have equal height */
+.shopify-section-group-footer-group .group-block:has(.menu--accordion) {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* "Join our community" section takes its column */
+.shopify-section-group-footer-group .group-block:has(h2),
+.shopify-section-group-footer-group .group-block:has(.email-signup) {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* ============ FOOTER TABLET LAYOUT ============ */
+@media (min-width: 768px) and (max-width: 991px) {
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    --flex-direction: column !important;
+    flex-direction: column !important;
+  }
+
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* ============ FOOTER MOBILE LAYOUT ============ */
+@media (max-width: 767px) {
+  /* Stack to single column on mobile */
+  .shopify-section-group-footer-group.section-wrapper .section-content-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    text-align: center;
+  }
+
+  /* The inner row — stack vertically */
+  .shopify-section-group-footer-group .layout-panel-flex--row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
+  .shopify-section-group-footer-group .group-block {
+    width: 100% !important;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  .shopify-section-group-footer-group.section-wrapper .section {
+    border-radius: 30px !important;
+  }
+  
+  .shopify-section-group-footer-group.section-wrapper {
+    padding: 1rem !important;
+  }
+
+  .shopify-section-group-footer-group h2 {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .shopify-section-group-footer-group .menu__heading {
+    font-size: 1.1rem;
+  }
+
+  .shopify-section-group-footer-group .group-block {
+    max-width: 16rem;
+  }
+}
