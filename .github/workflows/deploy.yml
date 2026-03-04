@@ -108,7 +108,7 @@ jobs:
           VERSION="${BRANCH_NAME}-${TIMESTAMP}"
           
           if [ "$BRANCH_NAME" = "dev" ]; then
-            THEME_ID="148524400836"
+            THEME_ID="150079701188"
             THEME_NAME="Development"
           elif [ "$BRANCH_NAME" = "main" ]; then
             THEME_ID="148524433604"
@@ -199,11 +199,11 @@ jobs:
           cd "$THEME_DIR" || exit 1
           echo "Deploying from: $(pwd)"
           echo "Store: p1pmt1-zi.myshopify.com"
-          echo "Theme ID: 148524400836"
+          echo "Theme ID: 150079701188"
           
           DEPLOY_RESULT=$(shopify theme push \
             --store p1pmt1-zi.myshopify.com \
-            --theme 148524400836 \
+            --theme 150079701188 \
             --password "$SHOPIFY_CLI_THEME_TOKEN" \
             --json)
           
