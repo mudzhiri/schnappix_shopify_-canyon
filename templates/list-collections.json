@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "collection_list_Wfgh3m": {
       "type": "main-collection-list",
@@ -16,6 +15,7 @@
           "type": "group",
           "name": "t:names.header",
           "settings": {
+            "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -43,9 +43,6 @@
             "overlay_color": "#00000026",
             "overlay_style": "solid",
             "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
             "padding-block-start": 0,
             "padding-block-end": 48,
             "padding-inline-start": 0,
@@ -153,8 +150,8 @@
       ],
       "name": "Collection list",
       "settings": {
-        "layout_type": "carousel",
-        "carousel_on_mobile": true,
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
         "columns": 3,
         "mobile_columns": "2",
         "columns_gap": 12,
