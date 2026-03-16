@@ -42,6 +42,7 @@
     "secondary_button_border_width": 3,
     "button_border_radius_secondary": 100,
     "cart_type": "drawer",
+    "auto_open_cart_drawer": true,
     "drawer_color_scheme": "scheme-schnappix-cream",
     "drawer_drop_shadow": true,
     "icon_stroke": "thin",

@@ -1,0 +1,333 @@
+{%- comment -%}
+  Schnappix Hero Section
+  Modern, minimalist hero aligned with Webflow design.
+{%- endcomment -%}
+
+{%- liquid
+  assign section_id = section.id | prepend: 'hero-schnappix-'
+-%}
+
+<section id="{{ section_id }}" class="hero-schnappix">
+  <div class="hero-schnappix__inner page-width">
+    <div class="hero-schnappix__content">
+      {%- if section.settings.kicker != blank -%}
+        <p class="hero-schnappix__kicker">{{ section.settings.kicker }}</p>
+      {%- endif -%}
+
+      <h1 class="hero-schnappix__heading">
+        {{ section.settings.heading | escape }}
+      </h1>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-schnappix__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      <div class="hero-schnappix__cta-row">
+        {%- if section.settings.primary_label != blank and section.settings.primary_link != blank -%}
+          <a
+            href="{{ section.settings.primary_link }}"
+            class="hero-schnappix__btn hero-schnappix__btn--primary"
+          >
+            {{ section.settings.primary_label }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_label != blank and section.settings.secondary_link != blank -%}
+          <a
+            href="{{ section.settings.secondary_link }}"
+            class="hero-schnappix__btn hero-schnappix__btn--secondary"
+          >
+            {{ section.settings.secondary_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="hero-schnappix__visual">
+      <div class="hero-schnappix__blob hero-schnappix__blob--large"></div>
+      <div class="hero-schnappix__blob hero-schnappix__blob--small"></div>
+
+      {%- if section.settings.image_primary != blank -%}
+        {{ section.settings.image_primary | image_url: width: 600 | image_tag:
+          class: 'hero-schnappix__image hero-schnappix__image--primary',
+          loading: 'lazy'
+        }}
+      {%- endif -%}
+
+      {%- if section.settings.image_secondary != blank -%}
+        {{ section.settings.image_secondary | image_url: width: 360 | image_tag:
+          class: 'hero-schnappix__image hero-schnappix__image--secondary',
+          loading: 'lazy'
+        }}
+      {%- endif -%}
+
+      {%- if section.settings.image_accent != blank -%}
+        {{ section.settings.image_accent | image_url: width: 260 | image_tag:
+          class: 'hero-schnappix__image hero-schnappix__image--accent',
+          loading: 'lazy'
+        }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #{{ section_id }} {
+    background-color: #ffffff;
+    color: var(--color-foreground);
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  #{{ section_id }} .hero-schnappix__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: center;
+  }
+
+  #{{ section_id }} .hero-schnappix__content {
+    max-width: 36rem;
+  }
+
+  #{{ section_id }} .hero-schnappix__kicker {
+    font-family: var(--font-body--family);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+  }
+
+  #{{ section_id }} .hero-schnappix__heading {
+    font-family: var(--font-h1--family);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: 0.02em;
+    margin: 0 0 1.25rem;
+  }
+
+  #{{ section_id }} .hero-schnappix__subheading {
+    font-family: var(--font-body--family);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
+    color: rgb(var(--color-foreground-rgb) / 0.8);
+    max-width: 30rem;
+  }
+
+  #{{ section_id }} .hero-schnappix__cta-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  #{{ section_id }} .hero-schnappix__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 1.4rem;
+    padding-block: 0.85rem;
+    border-radius: 999px;
+    font-family: var(--font-body--family);
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition:
+      background-color var(--hover-transition-duration, 0.22s) var(--hover-transition-timing, ease-out),
+      color var(--hover-transition-duration, 0.22s) var(--hover-transition-timing, ease-out),
+      box-shadow var(--hover-transition-duration, 0.22s) var(--hover-transition-timing, ease-out),
+      transform var(--hover-transition-duration, 0.22s) var(--hover-transition-timing, ease-out);
+    cursor: pointer;
+    gap: 0.4rem;
+  }
+
+  #{{ section_id }} .hero-schnappix__btn--primary {
+    background-color: #111827;
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgb(15 23 42 / 0.23);
+  }
+
+  #{{ section_id }} .hero-schnappix__btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgb(15 23 42 / 0.3);
+  }
+
+  #{{ section_id }} .hero-schnappix__btn--secondary {
+    background-color: #ffffff;
+    color: #111827;
+    border-color: rgb(17 24 39 / 0.12);
+  }
+
+  #{{ section_id }} .hero-schnappix__btn--secondary:hover {
+    background-color: rgb(17 24 39 / 0.04);
+    transform: translateY(-1px);
+  }
+
+  #{{ section_id }} .hero-schnappix__visual {
+    position: relative;
+    min-height: clamp(15rem, 35vw, 21rem);
+    isolation: isolate;
+  }
+
+  #{{ section_id }} .hero-schnappix__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(18px);
+    opacity: 0.85;
+    z-index: -1;
+  }
+
+  #{{ section_id }} .hero-schnappix__blob--large {
+    width: clamp(14rem, 32vw, 18rem);
+    height: clamp(14rem, 32vw, 18rem);
+    background: radial-gradient(circle at 30% 20%, #f97316, #facc15 60%, #f97316);
+    top: 10%;
+    right: 0;
+    transform: translateX(5%);
+  }
+
+  #{{ section_id }} .hero-schnappix__blob--small {
+    width: clamp(7rem, 18vw, 10rem);
+    height: clamp(7rem, 18vw, 10rem);
+    background: radial-gradient(circle at 10% 0%, #22c55e, #16a34a 55%, #0ea5e9);
+    bottom: 0;
+    left: 4%;
+  }
+
+  #{{ section_id }} .hero-schnappix__image {
+    position: absolute;
+    max-width: 40%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 40px rgb(15 23 42 / 0.28));
+  }
+
+  #{{ section_id }} .hero-schnappix__image--primary {
+    right: 10%;
+    bottom: -4%;
+  }
+
+  #{{ section_id }} .hero-schnappix__image--secondary {
+    left: 2%;
+    top: 4%;
+  }
+
+  #{{ section_id }} .hero-schnappix__image--accent {
+    right: 32%;
+    top: -6%;
+    max-width: 26%;
+  }
+
+  @media (max-width: 900px) {
+    #{{ section_id }} .hero-schnappix__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+
+    #{{ section_id }} .hero-schnappix__visual {
+      order: -1;
+      min-height: 14rem;
+    }
+
+    #{{ section_id }} .hero-schnappix__content {
+      max-width: 100%;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 640px) {
+    #{{ section_id }} {
+      padding-block: 2.5rem;
+    }
+
+    #{{ section_id }} .hero-schnappix__heading {
+      font-size: clamp(2rem, 9vw, 2.4rem);
+    }
+
+    #{{ section_id }} .hero-schnappix__cta-row {
+      width: 100%;
+    }
+
+    #{{ section_id }} .hero-schnappix__btn {
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Schnappix Hero",
+  "tag": "section",
+  "class": "section hero-schnappix-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kleiner Intro-Text",
+      "default": "Schnappix 24/7 Automaten"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift (H1)",
+      "default": "24/7 Convenience Modern. Schnell. Vertrauenswürdig."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Unterzeile",
+      "default": "Snacks, Drinks und mehr – genau dort, wo du sie brauchst. Frisch, rund um die Uhr verfügbar und immer in deiner Nähe."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary Button Label",
+      "default": "Standorte ansehen"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Sortiment entdecken"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_primary",
+      "label": "Hauptbild (z. B. Flasche)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_secondary",
+      "label": "Zweites Bild (z. B. Orange)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_accent",
+      "label": "Akzentbild (z. B. Blätter)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Schnappix Hero",
+      "category": "Schnappix"
+    }
+  ]
+}
+{% endschema %}
+
